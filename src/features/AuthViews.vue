@@ -1,59 +1,62 @@
 <script setup>
+
 import { ref } from 'vue'
-// import { useRouter } from "vue-router";
-// import user from "@/user.json";
-// console.log(user.users);
+import { useRouter } from 'vue-router'
+import emailjs from '@emailjs/browser'
 
-// const name = ref('');
-// const password = ref('');
-// const surname = ref('');
-// const email = ref('');
-// let id = 1;
+const router = useRouter()
 
+const name = ref('')
+const email = ref('')
+const password = ref('')
 
-// const router = useRouter()
-// const inscription = ref(true)
+function generateCode(length = 6) {
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  let result = '';
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+  return result;
+}
 
-// function login() {
-//     console.log(name.value);
+async function login() {
+  const verificationCode = generateCode()
 
-//     const foundUser = user.users.find(
-//         el => el.name === name.value && el.password === password.value
-//     );
+  // Préparer les paramètres pour EmailJS
+  const templateParams = {
+    to_name: name.value,
+    to_email: email.value,
+    verification_code: verificationCode,
+  }
 
-//     if (foundUser) {
-//         localStorage.setItem('token', true);
-//         router.push('/PanierUser');
-//     } else {
-//         alert('error')
-//         console.log("Erreur de connexion");
-//         name.value = '';
-//         password.value = '';
-//     }
-// }
+  try {
+    // Envoi du mail via EmailJS (à configurer avec tes infos EmailJS)
+    await emailjs.send(
+      'YOUR_SERVICE_ID',       // Exemple : 'service_xxx'
+      'YOUR_TEMPLATE_ID',      // Exemple : 'template_xxx'
+      templateParams,
+      'YOUR_PUBLIC_KEY'        // Clé publique EmailJS
+    )
+    alert('Email envoyé ! Vérifie ta boîte mail.')
 
-// function register() {
-//     const newUser = {
-//         id: id++,
-//         name: name.value,
-//         surname: surname.value,
-//         email: email.value,
-//         password: password.value,
-//         sex: "male" || "female"
-//     };
+    // Puis redirection vers la page de vérification
+    router.push({ name: 'Verification', query: { code: verificationCode } })
 
-//     user.users.push(newUser);
+  } catch (error) {
+    alert('Erreur lors de l\'envoi du mail : ' + error.text)
+  }
+}
 
-//     console.log(user.users);
+// Toggle sign in / sign up
+const isActive = ref(false)
 
-//     name.value = '';
-//     surname.value = '';
-//     email.value = '';
-//     password.value = '';
+function handleRegister() {
+    isActive.value = true
+}
 
-//     localStorage.setItem('token', true);
-//     router.push({ name: 'PanierUser' });
-// }
+function handleLogin() {
+    isActive.value = false
+}
 
 const isActive = ref(false)
 
@@ -69,7 +72,7 @@ function handleLogin() {
 
 
 <template>
-    <div class="body">
+    <div class="body bg-gray-50 dark:bg-gray-900">
         <div class="container" :class="{ active: isActive }">
             <div class="form-container sign-up">
                 <form @submit.prevent="login">
@@ -136,15 +139,21 @@ function handleLogin() {
     font-family: 'Montserrat', sans-serif;
 }
 
+h1 {
+    font-size: 1.7rem;
+}
+
 .body {
-    background-color: #c9d6ff;
-    background: linear-gradient(to right, #e2e2ee, #c9d6ff);
+    /* background-color: #c9d6ff; */
+    /* background: linear-gradient(to right, #e2e2ee, #c9d6ff); */
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 90vh;
+    height: 95vh;
     margin-top: -45px;
+    width: 100%;
+    /* border: 1px solid red; */
 }
 
 .container {
@@ -153,15 +162,15 @@ function handleLogin() {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
     position: relative;
     overflow: hidden;
-    width: 930px;
+    width: 1100px;
     /* +30px */
     max-width: 100%;
-    min-height: 530px;
+    min-height: 630px;
     /* +30px */
 }
 
 .container p {
-    font-size: 16px;
+    font-size: 18px;
     /* légèrement plus grand */
     line-height: 22px;
     letter-spacing: 0.3px;
@@ -169,12 +178,12 @@ function handleLogin() {
 }
 
 .container span {
-    font-size: 14px;
+    font-size: 18px;
 }
 
 .container a {
     color: #333;
-    font-size: 14px;
+    font-size: 15px;
     text-decoration: none;
     margin: 15px 0 10px;
 }
@@ -182,8 +191,8 @@ function handleLogin() {
 .container button {
     background-color: #512da8;
     color: #fff;
-    font-size: 14px;
-    padding: 12px 50px;
+    font-size: 16px;
+    padding: 13px 50px;
     border: 1px solid transparent;
     border-radius: 8px;
     font-weight: 600;
@@ -213,7 +222,7 @@ function handleLogin() {
     border: none;
     margin: 10px 0;
     padding: 12px 18px;
-    font-size: 14px;
+    font-size: 16px;
     border-radius: 8px;
     width: 100%;
     outline: none;
