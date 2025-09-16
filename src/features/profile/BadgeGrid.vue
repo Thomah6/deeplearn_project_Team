@@ -14,15 +14,18 @@ const badges = ref([
 </script>
 
 <template>
-  <!-- Responsive grid -->
-  <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-6 light:bg-gray-100 p-4 rounded-lg  dark:bg-gray-800">
-    <BadgeCard
-      v-for="badge in badges"
-      :key="index"
-      :icon="badge.icon"
-      :label="badge.label"
-      :color="badge.color"
-    />
-  </div>
+      <div class="bg-white rounded-lg  md:w-1/3 border border-sky-200">
+          <h2 class="text-2xl font-bold mb-4 light:text-gray-800 dark:text-gray-200 text-center">Mes Badges</h2>
+            <!-- Responsive grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-6 light:bg-gray-100 p-4 rounded-lg  dark:bg-gray-800 ">
+              <BadgeCard
+          v-for="badge in badges"
+          :key="index"
+          :icon="badge.icon"
+          :label="badge.label"
+          :color="badge.color"
+              />
+            </div>
+      </div>
 </template>
 <style scoped></style>

@@ -5,12 +5,21 @@ import UserStats from '@/features/profile/UserStats.vue';
 import Completed from '@/features/profile/completed.vue';
 
 
+
 </script>
 <template>
 
-<div class="container mx-auto p-4 space-y-6">
+<div class="container mx-auto p-4 space-y-6 dark:text-white">
+
     <UserStats />
-    <Completed />
-    <BadgeGrid />
+    
+    <div class=" grid md:flex gap-6 w-full dark:text-white">
+
+      
+            <Completed />
+     
+            <BadgeGrid />
+     
+    </div>
     </div>
 </template>

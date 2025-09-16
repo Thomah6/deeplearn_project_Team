@@ -5,7 +5,7 @@ const add = '/add_reaction_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png';
 
 
 <template>
-<div class="flex items-center space-x-4 p-4 bg-white rounded-lg shadow-md">
+<div class="flex items-center space-x-4 p-4 bg-white rounded-lg border border-sky-200  dark:bg-gray-800 dark:border-gray-700">
     
     <div class="rounded-full overflow-hidden w-25 h-30">
         <img :src="add" alt="">

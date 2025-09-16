@@ -7,12 +7,13 @@ defineProps({
 </script>
 
 <template>
+
   <div class="flex flex-col items-center bg-white p-4 rounded-lg border border-gray-200  hover:shadow-lg transition-shadow duration-300">
     <!-- Cercle coloré avec icône -->
     <div
       class="w-16 h-16 rounded-full flex items-center justify-center text-2xl"
-      :class="color"
-    >
+      :class="color">
+    
       {{ icon }}
     </div>
     <!-- Nom du badge -->
