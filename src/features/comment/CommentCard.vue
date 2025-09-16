@@ -1,5 +1,5 @@
 <script setup>
-import CommentList from './CommentList.vue';
+
 
 
 
