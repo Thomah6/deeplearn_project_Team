@@ -42,6 +42,7 @@ async function Register() {
     name: registrationName.value,
     email: registrationEmail.value,
     password: registrationPassword.value,
+    completedCourses: [],
   })
 
   // Préparer les paramètres pour EmailJS
@@ -99,7 +100,16 @@ function handleLogin() {
 
 <template>
   <div class="body bg-gray-50 dark:bg-gray-900">
-    <div class="container" :class="{ active: isActive }">
+    <router-link to="/">
+      <h1
+        class="flex-none rounded-md cursor-pointer text-7xl mt-24 text-black dark:text-white inline-block font-semibold focus:outline-hidden focus:opacity-80"
+        aria-label="Preline"
+        style="font-family: 'Caveat', cursive"
+      >
+        DeepLearn.io
+      </h1>
+    </router-link>
+    <div class="container mt-16" :class="{ active: isActive }">
       <div class="form-container sign-up">
         <form @submit.prevent="Login">
           <h1>Connection</h1>
@@ -177,6 +187,7 @@ h1 {
   /* +30px */
   max-width: 100%;
   min-height: 630px;
+  margin-top: 50px;
   /* +30px */
 }
 

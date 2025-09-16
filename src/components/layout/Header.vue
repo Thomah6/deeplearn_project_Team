@@ -1,7 +1,13 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, computed } from 'vue'
+import { useRouter } from 'vue-router'
+const image = '/user.png';
 
 const searchInput = ref(null)
+const router = useRouter()
+
+const user = ref(null)
+const isLogin = computed(() => localStorage.getItem('token') === 'true')
 
 const handleKeyDown = (e) => {
   if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
@@ -10,7 +16,22 @@ const handleKeyDown = (e) => {
   }
 }
 
-onMounted(() => window.addEventListener('keydown', handleKeyDown))
+function logout() {
+  localStorage.removeItem('token')
+  localStorage.removeItem('user')
+  localStorage.removeItem('status')
+  user.value = null
+  router.push('/auth').then(() => {
+    window.location.reload()
+  })
+}
+
+onMounted(() => {
+  window.addEventListener('keydown', handleKeyDown)
+  if (isLogin.value) {
+    user.value = JSON.parse(localStorage.getItem('user'))
+  }
+})
 onUnmounted(() => window.removeEventListener('keydown', handleKeyDown))
 </script>
 
@@ -183,14 +204,48 @@ onUnmounted(() => window.removeEventListener('keydown', handleKeyDown))
             class="hs-dark-mode-active:hidden hs-dark-mode group flex items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-sky-200 focus:outline-hidden focus:bg-sky-200 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-slate-800 dark:focus:bg-slate-800"
             data-hs-theme-click-value="dark"
           >
-            <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9a9 9 0 1 1-9-9Z"/></svg>
+            <svg
+              class="shrink-0 size-4"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M12 3a6 6 0 0 0 9 9a9 9 0 1 1-9-9Z" />
+            </svg>
           </button>
           <button
             type="button"
             class="hs-dark-mode-active:block hidden hs-dark-mode group flex items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-sky-200 focus:outline-hidden focus:bg-sky-200 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-slate-800 dark:focus:bg-slate-800"
             data-hs-theme-click-value="light"
           >
-            <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93l1.41 1.41"/><path d="m17.66 17.66l1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66l-1.41 1.41"/><path d="m19.07 4.93l-1.41 1.41"/></svg>
+            <svg
+              class="shrink-0 size-4"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 2v2" />
+              <path d="M12 20v2" />
+              <path d="m4.93 4.93l1.41 1.41" />
+              <path d="m17.66 17.66l1.41 1.41" />
+              <path d="M2 12h2" />
+              <path d="M20 12h2" />
+              <path d="m6.34 17.66l-1.41 1.41" />
+              <path d="m19.07 4.93l-1.41 1.41" />
+            </svg>
           </button>
 
           <button
@@ -215,33 +270,32 @@ onUnmounted(() => window.removeEventListener('keydown', handleKeyDown))
           </button>
 
           <!-- Dropdown -->
-          <div class="hs-dropdown [--placement:bottom-right] relative inline-flex">
+          <div
+            v-if="isLogin && user"
+            class="hs-dropdown [--placement:bottom-right] relative inline-flex"
+          >
             <button
               id="hs-dropdown-account"
               type="button"
               class="size-9.5 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 focus:outline-hidden disabled:opacity-50 disabled:pointer-events-none dark:text-white"
-              aria-haspopup="menu"
-              aria-expanded="false"
-              aria-label="Dropdown"
             >
               <img
                 class="shrink-0 size-9.5 rounded-full"
-                src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80"
+                :src="image"
                 alt="Avatar"
               />
             </button>
 
             <div
-              class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-lg mt-2 dark:bg-neutral-800 dark:border dark:border-neutral-700 dark:divide-neutral-700 after:h-4 after:absolute after:-bottom-4 after:start-0 after:w-full before:h-4 before:absolute before:-top-4 before:start-0 before:w-full"
+              class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-lg mt-2 dark:bg-neutral-800 dark:border dark:border-neutral-700"
               role="menu"
-              aria-orientation="vertical"
-              aria-labelledby="hs-dropdown-account"
             >
-              <div class="py-3 px-5 bg-gray-100 rounded-t-lg dark:bg-neutral-700">
-                <p class="text-sm text-gray-500 dark:text-neutral-500">Signed in as</p>
+              <div class="py-3 px-5 bg-sky-50 rounded-t-lg dark:bg-slate-800">
+                <p class="text-sm text-gray-500 dark:text-neutral-400">Connecté en tant que</p>
                 <p class="text-sm font-medium text-gray-800 dark:text-neutral-200">
-                  son_mail@site.com
+                  {{ user.name }}
                 </p>
+                <p class="text-xs text-gray-600 dark:text-neutral-300">{{ user.email }}</p>
               </div>
               <div class="p-1.5 space-y-0.5">
                 <router-link
@@ -251,12 +305,27 @@ onUnmounted(() => window.removeEventListener('keydown', handleKeyDown))
                   Profile
                 </router-link>
                 <a
-                  class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300"
+                  @click="logout"
+                  class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300 cursor-pointer"
                 >
                   Logout
                 </a>
               </div>
             </div>
+          </div>
+          <div v-else class="flex items-center gap-x-2">
+            <router-link
+              to="/auth"
+              class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800"
+            >
+              Sign In
+            </router-link>
+            <router-link
+              to="/auth"
+              class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
+            >
+              Sign Up
+            </router-link>
           </div>
           <!-- End Dropdown -->
         </div>

@@ -40,6 +40,7 @@ const router = createRouter({
       path: '/profile',
       name: 'profile',
       component: ProfileView,
+      props: true,
       meta: { title: 'Profil - DeepLearn', requiresAuth: true },
     },
     {
