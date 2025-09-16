@@ -1,10 +1,17 @@
 <script setup>
 import { ref, onMounted, watch, nextTick } from 'vue'
+import MarkdownIt from 'markdown-it'
 
 const messages = ref([])
 const userInput = ref('')
 const isLoading = ref(false)
 const chatContainer = ref(null)
+
+// Initialiser MarkdownIt avec quelques options de base
+const md = new MarkdownIt({
+  breaks: true,
+  linkify: true
+})
 
 const OPENROUTER_API_KEY = "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"
 
@@ -108,7 +115,7 @@ const sendMessage = async () => {
 
 <template>
   <!-- Content -->
-  <div class="relative h-screen w-full">
+  <div class="relative min-h-screen w-full">
     <div class="py-10 lg:py-14">
       <!-- Title -->
       <div class="max-w-4xl px-4 sm:px-6 lg:px-8 mx-auto text-center">
@@ -129,7 +136,7 @@ const sendMessage = async () => {
           <!-- User Message -->
           <div v-if="message.role === 'user'" class="flex justify-end gap-x-4">
             <div class="grow text-end space-y-2">
-              <div class="inline-block bg-sky-600 dark:bg-sky-500 rounded-2xl p-4 shadow-sm">
+              <div class="inline-block min-w-20 bg-sky-600 dark:bg-sky-500 rounded-2xl p-4 shadow-sm">
                 <p class="text-sm text-white">{{ message.content }}</p>
               </div>
             </div>
@@ -167,9 +174,9 @@ const sendMessage = async () => {
 
             <div class="grow space-y-2">
               <div
-                class="inline-block border border-sky-200 dark:border-sky-400 rounded-2xl p-4"
+                class="inline-block border border-sky-200 dark:border-sky-400 rounded-2xl p-4 bg-white dark:bg-gray-800"
               >
-                <p class="text-sm text-gray-800 dark:text-white">{{ message.content }}</p>
+                <div class="prose prose-sm max-w-none text-sm text-gray-800 dark:text-white" v-html="md.render(message.content)"></div>
               </div>
             </div>
           </div>
@@ -204,7 +211,7 @@ const sendMessage = async () => {
             </div>
           </div>
           <div class="grow space-y-2">
-            <div class="inline-block border border-sky-200 dark:border-sky-400 rounded-2xl p-4 ">
+            <div class="inline-block border border-sky-200 dark:border-sky-400 rounded-2xl p-4 bg-white dark:bg-gray-800">
               <div class="flex items-center space-x-2">
                 <div class="w-2 h-2 bg-sky-500 rounded-full animate-pulse"></div>
                 <div class="w-2 h-2 bg-sky-500 rounded-full animate-pulse delay-75"></div>
@@ -275,3 +282,129 @@ const sendMessage = async () => {
   </div>
   <!-- End Content -->
 </template>
+
+<style>
+@import 'github-markdown-css/github-markdown.css';
+
+.prose {
+  max-width: none;
+}
+
+.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+  color: inherit;
+  margin-top: 1.2em;
+  margin-bottom: 0.6em;
+  font-weight: 600;
+}
+
+.prose h1 {
+  font-size: 1.5em;
+}
+
+.prose h2 {
+  font-size: 1.3em;
+}
+
+.prose h3 {
+  font-size: 1.1em;
+}
+
+.prose p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.prose ul, .prose ol {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  padding-left: 1.5em;
+}
+
+.prose li {
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+}
+
+.prose code {
+  background-color: rgba(135, 131, 120, 0.15);
+  border-radius: 3px;
+  padding: 0.2em 0.4em;
+  font-size: 0.85em;
+}
+
+.prose pre {
+  background-color: #f6f8fa;
+  border-radius: 6px;
+  padding: 0.75em 1em;
+  overflow-x: auto;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.prose pre code {
+  background-color: transparent;
+  padding: 0;
+  font-size: 0.9em;
+}
+
+.prose blockquote {
+  border-left: 4px solid #ddd;
+  padding-left: 1em;
+  margin-left: 0;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  color: #666;
+}
+
+.prose table {
+  border-collapse: collapse;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  width: 100%;
+}
+
+.prose th, .prose td {
+  border: 1px solid #ddd;
+  padding: 0.5em;
+}
+
+.prose th {
+  background-color: #f6f8fa;
+  font-weight: 600;
+}
+
+.prose a {
+  color: #0366d6;
+  text-decoration: none;
+}
+
+.prose a:hover {
+  text-decoration: underline;
+}
+
+/* Dark mode support */
+.dark .prose code {
+  background-color: rgba(135, 131, 120, 0.3);
+}
+
+.dark .prose pre {
+  background-color: rgba(36, 41, 46, 0.8);
+}
+
+.dark .prose blockquote {
+  border-left-color: #444;
+  color: #aaa;
+}
+
+.dark .prose th, .dark .prose td {
+  border-color: #444;
+}
+
+.dark .prose th {
+  background-color: rgba(36, 41, 46, 0.8);
+}
+
+.dark .prose a {
+  color: #58a6ff;
+}
+</style>
