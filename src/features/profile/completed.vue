@@ -21,7 +21,7 @@ const completedCourses = ref([
                 class="bg-gray-100 mb-2 p-4 rounded shadow-sm hover:bg-gray-200 transition-colors duration-200 shadow-md dark:bg-gray-700 dark:hover:bg-gray-600"
             >
                 <strong class="font-bold">{{ course.code }}</strong> - {{ course.title }} <br>
-                <small class="text-gray-500 dark:gray-800">Date terminée : {{ course.date }}</small>
+                <small class="text-gray-500 dark:text-white">Date terminée : {{ course.date }}</small>
             </li>
         </ul>
         <div v-if="completedCourses.length === 0" class="text-gray-500 mt-4">

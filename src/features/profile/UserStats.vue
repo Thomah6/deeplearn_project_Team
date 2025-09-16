@@ -12,9 +12,9 @@ const add = '/add_reaction_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png';
         <span><img :src="image" alt=""></span>
     </div>
     <div>
-        <h2 class="text-xl font-bold">Nadège Djossou</h2>
-        <p class="text-gray-600">Student</p>
-        <p class="text-gray-600">nadegedjossou299@gmail.com</p>
+        <h2 class="text-xl font-bold dark:text-white">Nadège Djossou</h2>
+        <p class="text-gray-600 dark:text-white">Student</p>
+        <p class="text-gray-600 dark:text-white">nadegedjossou299@gmail.com</p>
     </div>
 </div>
 
