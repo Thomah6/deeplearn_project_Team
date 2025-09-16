@@ -1,15 +1,9 @@
 <script setup>
 import AppView from './views/AppView.vue';
-
-
 </script>
 
 <template>
-
-<div class="">
-  <AppView />
-</div>
-
+ <AppView />
 </template>
 
 <style scoped></style>
