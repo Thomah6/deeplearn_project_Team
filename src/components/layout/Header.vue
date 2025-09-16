@@ -1,3 +1,19 @@
+<script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
+
+const searchInput = ref(null)
+
+const handleKeyDown = (e) => {
+  if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+    e.preventDefault()
+    searchInput.value?.focus()
+  }
+}
+
+onMounted(() => window.addEventListener('keydown', handleKeyDown))
+onUnmounted(() => window.removeEventListener('keydown', handleKeyDown))
+</script>
+
 <template>
   <!-- ========== HEADER ========== -->
   <header
@@ -47,8 +63,9 @@
               </svg>
             </div>
             <input
+              ref="searchInput"
               type="text"
-              class="py-2 ps-10 pe-16 block w-full bg-white border-gray-200 rounded-lg text-sm focus:outline-hidden focus:border-blue-500 focus:ring-blue-500 checked:border-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder:text-neutral-400 dark:focus:ring-neutral-600"
+              class="py-2 ps-10 pe-16 block w-full bg-white border-gray-200 rounded-lg text-sm focus:outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-500 checked:border-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder:text-neutral-400 dark:focus:ring-sky-500"
               placeholder="Search"
             />
             <div class="hidden absolute inset-y-0 end-0 flex items-center z-20 pe-1">
@@ -159,6 +176,21 @@
               <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
             </svg>
             <span class="sr-only">Notifications</span>
+          </button>
+
+          <button
+            type="button"
+            class="hs-dark-mode-active:hidden hs-dark-mode group flex items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-sky-200 focus:outline-hidden focus:bg-sky-200 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-slate-800 dark:focus:bg-slate-800"
+            data-hs-theme-click-value="dark"
+          >
+            <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9a9 9 0 1 1-9-9Z"/></svg>
+          </button>
+          <button
+            type="button"
+            class="hs-dark-mode-active:block hidden hs-dark-mode group flex items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-sky-200 focus:outline-hidden focus:bg-sky-200 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-slate-800 dark:focus:bg-slate-800"
+            data-hs-theme-click-value="light"
+          >
+            <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93l1.41 1.41"/><path d="m17.66 17.66l1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66l-1.41 1.41"/><path d="m19.07 4.93l-1.41 1.41"/></svg>
           </button>
 
           <button
