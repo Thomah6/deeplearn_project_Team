@@ -19,8 +19,16 @@ function generateCode(length = 6) {
   return result;
 }
 
-async function login() {
+async function Register() {
   const verificationCode = generateCode()
+
+  const NewUser = ref({
+
+    name :  name.value,
+    email : email.value,
+    password: password.value,
+
+  })
 
   // Préparer les paramètres pour EmailJS
   const templateParams = {
@@ -47,16 +55,6 @@ async function login() {
   }
 }
 
-// Toggle sign in / sign up
-const isActive = ref(false)
-
-function handleRegister() {
-    isActive.value = true
-}
-
-function handleLogin() {
-    isActive.value = false
-}
 
 const isActive = ref(false)
 
@@ -75,37 +73,25 @@ function handleLogin() {
     <div class="body bg-gray-50 dark:bg-gray-900">
         <div class="container" :class="{ active: isActive }">
             <div class="form-container sign-up">
-                <form @submit.prevent="login">
-                    <h1>Create Account</h1>
-                    <div class="social-icons">
-                        <a href="" class="icon"><i class="fa-brands fa-google"></i></a>
-                        <a href="" class="icon"><i class="fa-brands fa-github"></i></a>
-                        <a href="" class="icon"><i class="fa-brands fa-linkedin"></i></a>
-                        <a href="" class="icon"><i class="fa-brands fa-facebook"></i></a>
-                    </div>
-                    <span>or use your email for registration</span>
-                    <input type="text" placeholder="Name" required v-model="name" />
+                <form >
+                    <h1>Connection</h1>
+                    
                     <input type="email" placeholder="Email" required v-model="email" />
                     <input type="password" placeholder="Password" required v-model="password" />
-                    <button type="submit">Sign Up</button>
+                    <button type="submit">Sign In</button>
                 </form>
             </div>
 
             <div class="form-container sign-in">
-                <form>
-                    <h1>Sign In</h1>
-                    <div class="social-icons">
-                        <a href="" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
-                        <a href="" class="icon"><i class="fa-brands fa-github"></i></a>
-                        <a href="" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href="" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
-                    </div>
-                    <span>or use your email password</span>
+                <form @submit.prevent="Register">
+                    <h1>Insciption</h1>
+                    
+                    
                     <input type="text" placeholder="Name" required v-model="name" />
                     <input type="email" placeholder="Email" required v-model="email" />
                     <input type="password" placeholder="Password" required v-model="password" />
                     <a href="#">Forget your password?</a>
-                    <button type="submit">Sign In</button>
+                    <button type="submit">Sign Up</button>
                 </form>
             </div>
 
@@ -114,12 +100,12 @@ function handleLogin() {
                     <div class="toggle-panel toggle-left">
                         <h1>Welcome Back</h1>
                         <p>Enter your personal details to use all of site features</p>
-                        <button  @click="handleLogin">Sign In</button>
+                        <button  @click="handleLogin">Sign Up</button>
                     </div>
                     <div class="toggle-panel toggle-right">
                         <h1>Hello, Friend</h1>
                         <p>Register with your personal details to use all of site features</p>
-                        <button  @click="handleRegister">Sign Up</button>
+                        <button  @click="handleRegister">Sign In</button>
                     </div>
                 </div>
             </div>
