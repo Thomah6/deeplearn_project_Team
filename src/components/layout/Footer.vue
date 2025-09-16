@@ -6,11 +6,9 @@
     <!-- Grid -->
     <div class="text-center w-[fit-content] mx-auto">
       <div>
-        <a
-          class="flex-none text-xl font-semibold text-black dark:text-white"
-          href="#"
-          aria-label="Brand"
-          >DeepLearn</a
+        <router-link to="/" class="flex-none text-xl font-semibold text-black dark:text-white"
+         
+          aria-label="Brand">DeepLearn</router-link
         >
       </div>
       <!-- End Col -->

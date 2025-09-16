@@ -5,9 +5,9 @@
   <nav class="px-4 sm:px-6 flex basis-full items-center w-full mx-auto">
     <div class="me-5 lg:me-0 lg:hidden">
       <!-- Logo -->
-      <a class="flex-none rounded-md text-3xl text-black dark:text-white inline-block font-semibold focus:outline-hidden focus:opacity-80" href="#" aria-label="Preline">
+      <router-link to="/" class="flex-none rounded-md text-3xl text-black dark:text-white inline-block font-semibold focus:outline-hidden focus:opacity-80" aria-label="Preline">
         DeepLearn
-      </a>
+      </router-link>
       <!-- End Logo -->
 
       <div class="lg:hidden ms-1">
@@ -70,10 +70,10 @@
             </div>
             <div class="p-1.5 space-y-0.5">
               
-              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300" href="#">
+              <router-link to="/profile" class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300">
                Profile
-              </a>
-              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300" href="#">
+              </router-link>
+              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300">
                 Logout
               </a>
               
