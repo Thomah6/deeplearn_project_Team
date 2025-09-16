@@ -13,7 +13,7 @@ const completedCourses = ref([
 
 <template>
     <div class="md:w-2/3 p-4 bg-white rounded-lg  border border-sky-200  dark:bg-gray-800 dark:border-gray-700">
-        <h2 class="mb-4 text-xl font-bold text-center">Cours terminés</h2>
+        <h2 class="mb-4 text-2xl font-bold text-center hover:underline cursor-pointer">Cours Terminés</h2>
         <ul class="list-none p-0">
             <li
                 v-for="course in completedCourses"

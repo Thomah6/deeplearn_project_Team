@@ -2,7 +2,7 @@
 import BadgeCard from "./BadgeCard.vue";
 
 import { ref } from "vue"
-
+//Mes badges
 const badges = ref([
   { icon: "⭐", label: "Débutant", color: "bg-yellow-300" },
   { icon: "🔥", label: "Intermédiaire", color: "bg-green-300" },
@@ -11,11 +11,12 @@ const badges = ref([
   { icon: "🎯", label: "Pro", color: "bg-red-300" },
   { icon: "👑", label: "Maître", color: "bg-pink-300" },
 ])
+
 </script>
 
 <template>
       <div class="bg-white rounded-lg  md:w-1/3 border border-sky-200">
-          <h2 class="text-2xl font-bold mb-4 light:text-gray-800 dark:text-gray-200 text-center">Mes Badges</h2>
+          <h2 class="text-2xl font-bold mb-4 light:text-gray-800 dark:text-gray-200 text-center hover:underline cursor-pointer">Mes Badges</h2>
             <!-- Responsive grid -->
             <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-6 light:bg-gray-100 p-4 rounded-lg  dark:bg-gray-800 ">
               <BadgeCard
@@ -24,6 +25,7 @@ const badges = ref([
           :icon="badge.icon"
           :label="badge.label"
           :color="badge.color"
+          
               />
             </div>
       </div>
