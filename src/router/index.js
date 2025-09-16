@@ -6,6 +6,7 @@ import ProfileView from '@/views/ProfileView.vue'
 import AuthViews from '@/features/auth/AuthViews.vue'
 import VerificationCodeViews from '@/features/auth/VerificationCodeViews.vue'
 import Welcome from '@/features/auth/Welcome.vue'
+import ChatAiView from '@/views/ChatAiView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -22,6 +23,13 @@ const router = createRouter({
       component: AuthViews,
       props: true,
       meta: { title: 'AuthViews - DeepLearn' },
+    },
+    {
+      path: '/c',
+      name: 'chatai',
+      component: ChatAiView,
+      props: true,
+      meta: { title: 'ChatAI - DeepLearn' },
     },
     {
       path: '/catalog',

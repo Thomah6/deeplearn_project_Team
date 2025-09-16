@@ -42,6 +42,10 @@ const showLayout = computed(() => {
   const pathsToHideOn = ['/auth', '/verification', '/welcome']
   return !pathsToHideOn.includes(route.path)
 })
+const showFooter = computed(() => {
+  const pathsToHideOn = ['/c']
+  return !pathsToHideOn.includes(route.path)
+})
 </script>
 <template>
   <div class="w-full">
@@ -57,7 +61,7 @@ const showLayout = computed(() => {
       >
         <RouterView :catalog="catalog" :usersData="usersData" :courses="catalog"></RouterView>
       </div>
-      <Footer v-if="showLayout" />
+      <Footer v-if="showFooter" />
     </div>
   </div>
 </template>
