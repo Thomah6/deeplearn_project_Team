@@ -1,6 +1,7 @@
 <script setup>
 // import CategoryFilter from './CategoryFilter.vue';
 import { ref } from 'vue'
+import courseData from '@/data/courses.json'
 
 const props = defineProps({
   course : Array
@@ -18,12 +19,12 @@ function toggleDropdown() {
 
 
 <template>
- <div class="relative bottom-10 left-48">
-   <div class="absolute left-50 inline-block text-left">
+ <div class="relative top-8">
+    <div class="absolute left-40 inline-block text-left">
       <!-- Bouton -->
       <button
         @click="toggleDropdown"
-        class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg focus:outline-none hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+        class="flex cursor-pointer items-center justify-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg focus:outline-none hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
         type="button"
       >
         <svg class="-ml-1 mr-1.5 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -47,41 +48,44 @@ function toggleDropdown() {
         </div>
       </div>
     </div>
-    <div class="flex items-center justify-center absolute left-80 gap-6 border-l-[1px] pr-10 h-10"></div>
-    <div class="flex absolute left-85 gap-3 ">
+
+    <div class="flex items-center justify-center absolute left-66 gap-6 border-l-[1px] pr-10 h-10"></div>
+
+
+    <div class="flex absolute left-70 text-left gap-3 ">
       <button
-          class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-3xl focus:outline-none hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+          class="flex cursor-pointer items-center justify-center w-20 h-10 text-md font-medium text-gray-900 bg-white border border-gray-200 rounded-3xl focus:outline-none hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
           type="button"
         >
           Tous
       </button>
 
       <button
-          class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-3xl focus:outline-none hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+          class="flex cursor-pointer items-center justify-center w-65 h-10 text-md font-medium text-gray-900 bg-white border border-gray-200 rounded-3xl focus:outline-none hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
           type="button"
         >
           Ingénerie logicielle et informatique
       </button>
       <button
-          class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-3xl focus:outline-none hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+          class="flex cursor-pointer items-center justify-center w-32 h-10 text-md font-medium text-gray-900 bg-white border border-gray-200 rounded-3xl focus:outline-none hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
           type="button"
         >
           Entreprise
       </button>
       <button
-          class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-3xl focus:outline-none hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+          class="flex cursor-pointer items-center justify-center w-50 h-10 text-md font-medium text-gray-900 bg-white border border-gray-200 rounded-3xl focus:outline-none hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
           type="button"
         >
           Ventes et marketing
       </button>
       <button
-          class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-3xl focus:outline-none hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+          class="flex cursor-pointer items-center justify-center w-60 h-10 text-md font-medium text-gray-900 bg-white border border-gray-200 rounded-3xl focus:outline-none hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
           type="button"
         >
           Sience des données et analyse
       </button>
       <button
-          class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-3xl focus:outline-none hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+          class="flex cursor-pointer items-center justify-center w-30 h-10 text-md font-medium text-gray-900 bg-white border border-gray-200 rounded-3xl focus:outline-none hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
           type="button"
         >
           Soins de santé
@@ -91,8 +95,8 @@ function toggleDropdown() {
 
 
 
-<article class="grid grid-cols-3 mx-60 relative left-30 mt-25">
-  <div class="flex justify-center items-center min-h-[65vh]" v-for="cours in course" :key="cours.id">
+<article class="grid grid-cols-3 mx-40 gap-10 relative mt-20">
+  <div class="flex justify-center items-center min-h-[65vh]" v-for="cours in courseData" :key="cours.id">
       <div class="max-w-[720px] mx-auto hover:shadow-2xl rounded-2xl cursor-pointer transition ease-in duration-500  transform hover:scale-105">
           <!-- Centering wrapper -->
           <div class="relative flex w-full max-w-[26rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg">
@@ -123,11 +127,11 @@ function toggleDropdown() {
                   </div>
               </div>
               <div class="p-6 pt-3">
-                  <button
+                  <RouterLink :to="{ name: 'description.show', params: {id: cours.id}}"
                       class="block w-full select-none rounded-lg bg-gray-900 py-3.5 px-7 text-center align-middle font-sans text-sm font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                       type="button">
                       En savoir plus
-                  </button>
+                  </RouterLink>
               </div>
           </div>
       </div>

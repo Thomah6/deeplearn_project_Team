@@ -27,6 +27,20 @@ const router = createRouter({
     meta: { title: 'Cours - DeepLearn' }
   },
   {
+    path: '/description/:id',
+    name: 'description.show',
+    component: () => import('@/cours/CoursesDescription.vue'),
+    props:(route) => ({id: parseInt(route.params.id)}),
+    meta: { title: 'Description - DeepLearn' }
+  },
+  {
+    path: '/lessons/:id',
+    name: 'lessons.show',
+    component: () => import('@/cours/LessonItem.vue'),
+    props:(route) => ({id: parseInt(route.params.id)}),
+    meta: { title: 'Lessons - DeepLearn' }
+  },
+  {
     path: '/profile',
     name: 'profile',
     component: ProfileView,
@@ -39,6 +53,16 @@ const router = createRouter({
     meta: { title: 'Administration - DeepLearn', requiresAuth: true, isAdmin: true }
   }
   ],
+
+  scrollBehavior(to, from, savedPosition) {
+    // Si on a une position sauvegardée (ex: bouton "retour arrière")
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      // Sinon scroll tout en haut
+      return { top: 0 }
+    }
+  }
 })
 
 // router.beforeEach((to, from, next) => {
