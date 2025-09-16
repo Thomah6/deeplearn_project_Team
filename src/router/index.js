@@ -3,15 +3,22 @@ import AdminView from '@/views/AdminView.vue'
 import CatalogView from '@/views/CatalogView.vue'
 import CourseView from '@/views/CourseView.vue'
 import ProfileView from '@/views/ProfileView.vue'
+import AuthViews from '@/features/AuthViews.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    {
+  {
     path: '/',
     name: 'home_catalogue',
     component: CatalogView,
     meta: { title: 'Accueil - DeepLearn' }
+  },
+  {
+    path: '/authviews',
+    name: 'authviews',
+    component: AuthViews,
+    meta: { title: 'AuthViews - DeepLearn' }
   },
   {
     path: '/catalog',
