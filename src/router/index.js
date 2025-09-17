@@ -6,6 +6,7 @@ import ProfileView from '@/views/ProfileView.vue'
 import AuthViews from '@/features/auth/AuthViews.vue'
 import VerificationCodeViews from '@/features/auth/VerificationCodeViews.vue'
 import Welcome from '@/features/auth/Welcome.vue'
+import Admin from '@/features/Admin/Admin.vue'
 import ChatAiView from '@/views/ChatAiView.vue'
 
 const router = createRouter({
@@ -58,6 +59,16 @@ const router = createRouter({
     props:(route) => ({id: parseInt(route.params.id)}),
     meta: { title: 'Lessons - DeepLearn', requiresAuth: true }
   },
+
+      {
+      path: '/modifycourse',
+      name: 'modifyourscourse',
+      component: Admin,
+      props: true,
+      meta: { title: 'modifycourses - DeepLearn' },
+    },
+
+
     {
       path: '/profile',
       name: 'profile',
@@ -69,7 +80,7 @@ const router = createRouter({
       path: '/admin',
       name: 'admin',
       component: AdminView,
-      meta: { title: 'Administration - DeepLearn', requiresAuth: true, isAdmin: true },
+      meta: { title: 'Administration - DeepLearn', requiresAuth: true },
     },
     {
       path: '/verification',

@@ -1,6 +1,13 @@
 <script setup>
 import { ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 //Valeur pour afficher le nombre de cours
+const router = useRouter()
+
+//Tableau des cours
+
+
+
 const coursesCount = ref(0)
 //Valeur pour afficher le nombre d'utilisateurs
 const usersCount = ref(0)
@@ -12,9 +19,9 @@ const showCourses = ref(false)
 let id;
 //Tableau des utilisateurs
 const userArray = ref([
-    { id: 1, name: 'Alice', email: 'nadegedjossou299@gmail.com' ,statues:'Débutant'},
-    { id: 2, name: 'Bob', email: 'bob@gmail.com',statues:'Intermédiaire' },
-    { id: 3, name: 'Charlie', email: 'charlie@gmail.com',statues:'Expert' },
+    { id: 1, name: 'Alice', email: 'nadegedjossou299@gmail.com' , statues:'Débutant'},
+    { id: 2, name: 'Bob', email: 'bob@gmail.com' , statues:'Intermédiaire' },
+    { id: 3, name: 'Charlie', email: 'charlie@gmail.com', statues:'Expert' },
 ])
 //Tableau des cours
 const courseArray = ref([
@@ -27,10 +34,7 @@ onMounted(() => {
     coursesCount.value = 12
     usersCount.value = 45
 })
-//Fonction pour afficher les utilisateurs
-function userButton() {
-    showUsers.value = !showUsers.value
-}
+
 //Fonction pour afficher les cours
 function courseButton() {
   showCourses.value = !showCourses.value
@@ -43,6 +47,76 @@ function SupButton(courseId) {
   console.log(id);
 courseArray.value = courseArray.value.filter(course => course.id !== id);
 // coursesCount.value = courseArray.value.length;
+}
+
+
+//Fonction pour modifier un cours
+function Update(courseId) {
+  id = courseId;
+  router.push('/modifycourse')
+  // Trouver le cours avec l'id correspondant
+  courseArray.value = courseArray.value.find(course => course.id === id);
+//   if (course) {
+//     // Logique de modification (par exemple, ouvrir un modal ou rediriger vers une page de modification)
+//     console.log('Modifier le cours :', course);
+//     alert(`Modifier le cours : ${course.title}`);
+//   } else {
+//     console.log('Cours non trouvé avec l\'ID :', id);
+//   }
+}   
+
+
+//Fonction pour ajouter un cours
+function addCourse(courseId) {
+  id = courseId;
+  router.push('/modifycourse')
+  // Trouver le cours avec l'id correspondant
+courseArray.value = courseArray.value.find(course => course.id === id);
+//   if (course) {
+//     // Logique pour ajouter le cours (par exemple, mettre à jour son statut dans la base de données)
+//     console.log('Ajouter le cours :', course);
+//    alert(`Ajouter le cours : ${course.title}`); 
+//   } else {
+//     console.log('Cours non trouvé avec l\'ID :', id);
+//   }
+}   
+ 
+
+//Fonction pour afficher les utilisateurs
+function userButton() {
+    showUsers.value = !showUsers.value
+}
+
+//Fonction pour supprimer un utilisateur
+function userSupButton(userId) {
+  id = userId;
+  //filter pour supprimer l'utilisateur avec l'id correspondant
+  console.log(id);
+userArray.value = userArray.value.filter(user => user.id !== id);
+
+}
+//fonction pour faire le toggle du button Ajouter un admin en button admin ajouté
+const isAdmin = ref(true);
+// function toggleAdminButton(user) {
+ 
+// } 
+
+//Fonction pour ajouter un utilisateur comme admin
+function addUserAsAdmin(userId) {
+  // Trouver l'utilisateur avec l'id correspondant
+id = userId;
+console.log(id);
+ userId.isAdmin = !userId.isAdmin;
+
+  
+  // const user = userArray.value.find(user => user.id === id);
+//   if (user) {
+//     // Logique pour ajouter l'utilisateur comme admin (par exemple, mettre à jour son rôle dans la base de données)
+//     console.log('Ajouter comme admin :', user);
+//     alert(`Ajouter comme admin : ${user.name}`);
+//   } else {
+//     console.log('Utilisateur non trouvé avec l\'ID :', id);
+//   }
 }
 </script>
 
@@ -126,6 +200,7 @@ courseArray.value = courseArray.value.filter(course => course.id !== id);
             </thead>
  
             <tbody class="divide-y divide-gray-200 dark:divide-neutral-700">
+           
               <tr v-for="user in userArray" :key="user.id" class="bg-white hover:bg-gray-50 dark:bg-neutral-900 dark:hover:bg-neutral-800">
                 <td class="size-px whitespace-nowrap align-top p-5">{{ user.name }} </td>
                  
@@ -137,10 +212,11 @@ courseArray.value = courseArray.value.filter(course => course.id !== id);
                  <td class="size-px whitespace-nowrap align-top p-5">{{ user.statues }} </td>
              
                    <td class="size-px whitespace-nowrap align-top p-5">
-                    <button class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 mr-2">Supprimer</button>
-                    <button class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">Modifier</button>
-                   </td>
-                 
+                    <button @click="userSupButton(user.id)" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 mr-2 dark:text-white">Supprimer</button>
+                    <button v-if="isAdmin" @click="addUserAsAdmin(user.id)" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 mr-2 dark:text-white">Ajouter comme Admin</button>
+                  
+                   <button v-else class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 mr-2 dark:text-white">Admin</button>
+                  </td>
       
               
                
@@ -148,7 +224,9 @@ courseArray.value = courseArray.value.filter(course => course.id !== id);
  
  
             </tbody>
+            
           </table>
+               <div v-if="userArray.length === 0" class="p-4 text-yellow-800 text-center rounded-lg mb-4 dark:text-white dark:text-center"> Aucnun utilisateurs disponible.</div>
           <!-- End Table -->
 
         </div>
@@ -205,7 +283,7 @@ courseArray.value = courseArray.value.filter(course => course.id !== id);
             </thead>
  
 
-            <div v-if="courseArray.length === 0" class="p-4 text-yellow-800 rounded-lg mb-4"> Aucnun cours disponible.</div>
+           
                 <tbody class="divide-y divide-gray-200 dark:divide-neutral-700">
                   <tr v-for="course in courseArray" :key="course.id" class="bg-white hover:bg-gray-50 dark:bg-neutral-900 dark:hover:bg-neutral-800">
                     <td class="size-px whitespace-nowrap align-top p-5">{{ course.title }} </td>
@@ -218,8 +296,9 @@ courseArray.value = courseArray.value.filter(course => course.id !== id);
                 
                 
                        <td class="size-px whitespace-nowrap align-top p-5">
-                        <button @click="SupButton(course.id)" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 mr-2 cursor-pointer">Supprimer</button>
-                        <button class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 cursor-poniter">Modifier</button>
+                            <RouterLink to="modifycourse"><button @click="addCourse(course.id)" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 mr-2 cursor-pointer dark:text-white">Ajouter</button></RouterLink>
+                        <button @click="SupButton(course.id)" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 mr-2 cursor-pointer dark:text-white">Supprimer</button>
+                        <RouterLink to="modifycourse"><button @click="Update(course.id)" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 cursor-poniter dark:text-white">Modifier</button></RouterLink>
                        </td>
                 
                 
@@ -228,6 +307,7 @@ courseArray.value = courseArray.value.filter(course => course.id !== id);
                 </tbody>
             
           </table>
+           <div v-if="courseArray.length === 0" class="p-4 text-yellow-800 rounded-lg mb-4 text-center dark:text-white"> Aucnun cours disponible.</div>
           <!-- End Table -->
  
         </div>
@@ -242,4 +322,7 @@ courseArray.value = courseArray.value.filter(course => course.id !== id);
                     </div> 
     </div>
 
+
+
 </template>
+<style scoped> </style>
