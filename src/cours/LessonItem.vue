@@ -10,6 +10,7 @@ const props = defineProps({
 const getData = ref([])
 const currentLesson = ref(null)
 const openLessonId = ref(null)
+const showLessonsOnMobile = ref(false)
 
 function getCourse() {
   getData.value = courseData.filter((cour) => cour.id === props.id)
@@ -38,10 +39,20 @@ function openLesson(lesson) {
 </script>
 
 <template>
-  <div class="flex">
-    <section>
-      <article class="mx-10 mt-8 grid w-70 gap-4">
-        <div class="max-w-3xl mx-auto space-y-4" v-for="course in getData" :key="course.id">
+  <div class="flex flex-col lg:flex-row">
+    <section class="w-full lg:w-96 flex-shrink-0">
+      <!-- Bouton pour afficher/masquer les leçons sur mobile -->
+      <div class="p-4 text-center lg:hidden">
+        <button
+          @click="showLessonsOnMobile = !showLessonsOnMobile"
+          class="w-full px-6 py-3 font-semibold text-white transition duration-500 ease-in-out transform bg-sky-600 rounded-lg hover:bg-sky-700 focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2"
+        >
+          {{ showLessonsOnMobile ? 'Cacher les leçons' : 'Voir toutes les leçons' }}
+        </button>
+      </div>
+
+      <article class="mx-4 sm:mx-10 mt-8 gap-4" :class="[showLessonsOnMobile ? 'grid' : 'hidden', 'lg:grid']">
+        <div class="max-w-3xl mx-auto space-y-4 w-full" v-for="course in getData" :key="course.id">
           <!-- Loop through lessons instead of course -->
           <div v-for="lesson in course.lessons" :key="lesson.id"
                class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
@@ -54,11 +65,11 @@ function openLesson(lesson) {
               </svg>
             </div>
             <div class="max-h-0 overflow-hidden transition-all duration-300" :class="{ 'max-h-screen': openLessonId === lesson.id }">
-              <div class="p-1.5 bg-white dark:bg-gray-700">
+              <div class="p-4 bg-white dark:bg-gray-700">
                 
-                <div class="mt-2 flex items-center justify-between p-2 ">
+                <div class="flex items-center justify-between">
                   <div class="flex items-center justify-center gap-2">
-                    <p class="text-gray-700 dark:text-white/80 text-lg font-semibold  leading-relaxed">{{ lesson.description }}</p>
+                    <p class="text-gray-700 dark:text-white/80 text-base leading-relaxed">{{ lesson.description }}</p>
                   </div>
                 </div>
               </div>
@@ -68,7 +79,7 @@ function openLesson(lesson) {
       </article>
     </section>
 
-    <section>
+    <section class="flex-grow">
       <Ressource :lesson="currentLesson" />
     </section>
   </div>

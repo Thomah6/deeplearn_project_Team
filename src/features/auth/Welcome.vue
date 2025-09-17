@@ -2,7 +2,7 @@
   <div
     class="w-full bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-neutral-800 px-4"
   >
-    <div class="items-center h-[500px] w-full gap-8 py-8">
+    <div class="items-center h-full  w-full gap-8 py-8">
       <!-- Logo --><br /><br /><br /><br />
       <h1
         class="rounded-md mb-12 text-center text-3xl text-black dark:text-white font-semibold focus:outline-hidden focus:opacity-80"

@@ -9,6 +9,13 @@ import AuthViews from '@/features/auth/AuthViews.vue'
 
 const testUsers = [
   {
+    id: 0,
+    name: 'Hermès',
+    email: 'admin@gmail.com',
+    password: 'admin',
+    completedCourses: [1, 2, 3, 5, 6],
+  },
+  {
     id: 1,
     name: 'John Doe',
     email: 'john@example.com',

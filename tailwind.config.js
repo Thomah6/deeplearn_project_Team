@@ -1,6 +1,5 @@
 module.exports = {
-  mode: "jit",
-  darkMode: 'class', // ou 'media' pour détecter le mode sombre du système
+  darkMode: 'media', // ou 'media' pour détecter le mode sombre du système
   content: [
     "./src/**/*.{vue,js,ts,jsx,tsx,html}"
   ],

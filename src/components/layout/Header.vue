@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted, computed } from 'vue'
 import { useRouter } from 'vue-router'
+
 const image = '/user.png';
 
 const searchInput = ref(null)
@@ -11,18 +12,11 @@ const isDark = ref(false)
 
 function toggleDark() {
   isDark.value = !isDark.value
-  if (isDark.value) {
-    document.documentElement.classList.add('dark')
-    localStorage.setItem('theme', 'dark')
-  } else {
-    document.documentElement.classList.remove('dark')
-    localStorage.setItem('theme', 'light')
-  }
+  document.documentElement.classList.toggle('dark', isDark.value)
+  localStorage.setItem('theme', isDark.value ? 'dark' : 'light')
 }
 
-function checkTheme() {
-  
-}
+
 
 const user = ref(null)
 const isLogin = computed(() => localStorage.getItem('token') === 'true')
@@ -50,19 +44,15 @@ onMounted(() => {
     user.value = JSON.parse(localStorage.getItem('user'))
   }
   const savedTheme = localStorage.getItem('theme')
-  if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    isDark.value = true
-    document.documentElement.classList.add('dark')
-  } else {
-    isDark.value = false
-    document.documentElement.classList.remove('dark')
-  }
+  // L'état initial est maintenant géré par le script dans index.html
+  // On initialise juste la réactivité de Vue
+  isDark.value = document.documentElement.classList.contains('dark')
 })
 onUnmounted(() => window.removeEventListener('keydown', handleKeyDown))
 </script>
 
 <template>
-  <!-- ========== HEADER ========== -->
+ 
   <header
     class="sticky top-0 inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap z-48 w-full bg-sky-50 border-b border-sky-200 text-sm py-2.5 lg:ps-65 dark:bg-slate-900 dark:border-slate-800"
   >
@@ -83,7 +73,7 @@ onUnmounted(() => window.removeEventListener('keydown', handleKeyDown))
 
         <div class="lg:hidden ms-1"></div>
       </div>
-
+   
       <div
         class="w-full flex items-center justify-end ms-auto md:justify-between gap-x-1 md:gap-x-3"
       >
