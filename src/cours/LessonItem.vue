@@ -2,6 +2,7 @@
 import { defineProps, ref, onMounted, watch } from 'vue';
 import courseData from '@/data/courses.json';
 import Ressource from './Ressource.vue';
+import CompoComponent from '@/component/compoComponent.vue';
 
 const props = defineProps({
   id: Number,
@@ -84,8 +85,9 @@ console.log(getData);
       </article>
     </section>
 
-    <section class="flex-grow">
-      <Ressource :lesson="currentLesson"/>
+    <section>
+      <Ressource :lesson="currentLesson" />
+      <CompoComponent/>
     </section>
   </div>
 </template>
