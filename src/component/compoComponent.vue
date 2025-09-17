@@ -2,11 +2,9 @@
 import { ref } from "vue";
 
 
-const comment = ref([]);
-
-
+const comment = ref(JSON.parse(localStorage.getItem("comment")) || []);
 const com = ref("");
-localStorage.setItem("com", JSON.stringify(com))
+// localStorage.setItem("com", JSON.stringify(com))
 
 // // Plus tard... Tu veux les relire
 // const donnees = localStorage.getItem('com');
@@ -28,6 +26,8 @@ const ajouter = (e) => {
   };
 
   comment.value.unshift(ob);
+  
+  localStorage.setItem("comment", JSON.stringify(comment.value))
   com.value = "";
 };
 
