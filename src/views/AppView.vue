@@ -1,5 +1,4 @@
 <script setup>
-<<<<<<< HEAD
 import { ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import CourseData from '@/data/courses.json'
@@ -53,48 +52,15 @@ const showFooter = computed(() => {
     <Header v-if="showLayout" />
     <Sidebar v-if="showLayout" />
     <div class="w-full">
-      <div style="height: 100%;"
-        :class="
-          showLayout
-            ? 'h-[fit-content] min-h-screen  bg-gray-50 dark:bg-gray-900 relative inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap w-full text-sm py-2.5 lg:ps-65'
-            : ''
-        "
-      >
+      <div style="height: 100%;" :class="showLayout
+          ? 'h-[fit-content] min-h-screen  bg-gray-50 dark:bg-gray-900 relative inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap w-full text-sm py-2.5 lg:ps-65'
+          : ''
+        ">
         <RouterView :catalog="catalog" :usersData="usersData" :courses="catalog"></RouterView>
       </div>
       <Footer v-if="showFooter" />
     </div>
   </div>
-=======
-import { ref } from 'vue';
-import { useRoute } from 'vue-router';
-import CourseData from '@/data/courses.json'
-import Header from '@/components/layout/Header.vue';
-import Footer from '@/components/layout/Footer.vue';
-import Sidebar from '@/components/layout/Sidebar.vue';
-const usersData = ref([])
-const route = useRoute()
-const catalog = CourseData
-
-const isLogin = ref(localStorage.getItem('token') || false)
 
 
-</script>
-<template>
-
-<div class="w-full">
-<Header />
-
-<Sidebar />
-<div class="w-full">
-   <div class="min-h-screen bg-gray-50 dark:bg-gray-900 relative inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap w-full text-sm py-2.5 lg:ps-65">
-
-    <RouterView :catalog="catalog"></RouterView>
-   </div>
-    <Footer />
-</div>
-
-</div>
-
->>>>>>> 362162e707857e9103ef73a7cb6ab63243a38519
 </template>
