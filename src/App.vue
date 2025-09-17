@@ -1,12 +1,14 @@
 <script setup>
-import compoComponent from './component/compoComponent.vue';
+import AppView from './views/AppView.vue';
+
+
 
 
 </script>
 
 <template>
     
- <compoComponent/>
+<AppView/>
  
 </template>
 
