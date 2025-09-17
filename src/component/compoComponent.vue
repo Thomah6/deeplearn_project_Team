@@ -68,7 +68,7 @@ const sauvegarderCommentaire = () => {
 
     
     <div class="pdiv">
-      <div  v-for="c in comment" :key="c.commentId"   classe="bg-red-500 dark:bg-gray-800" >
+      <div class="oui" v-for="c in comment" :key="c.commentId">
        
         <div v-if="editingId === c.commentId">
           <input class="inputest" v-model="editingText"  placeholder="modifier"/>
@@ -92,7 +92,7 @@ const sauvegarderCommentaire = () => {
 <style scoped>
 
 .oui {
-    background-color:rgb(230, 218, 205);
+    background-color:rgb(207, 197, 233);
     border: 1px solid;
     width: 400px;
     height: fit-content;
