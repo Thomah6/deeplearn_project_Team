@@ -117,38 +117,8 @@ onUnmounted(() => window.removeEventListener('keydown', handleKeyDown))
             <div
               class="absolute inset-y-0 end-0 flex items-center pointer-events-none z-20 pe-3 text-gray-400"
             >
-              <svg
-                class="shrink-0 size-3 text-gray-400 dark:text-white/60"
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3" />
-              </svg>
-              <span class="mx-1">
-                <svg
-                  class="shrink-0 size-3 text-gray-400 dark:text-white/60"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M5 12h14" />
-                  <path d="M12 5v14" />
-                </svg>
-              </span>
-              <span class="text-xs">/</span>
+
+              <span class="text-xs">Ctrl+K</span>
             </div>
           </div>
           <!-- End Search Input -->
@@ -177,97 +147,8 @@ onUnmounted(() => window.removeEventListener('keydown', handleKeyDown))
             <span class="sr-only">Search</span>
           </button>
 
-          <button
-            type="button"
-            class="size-9.5 relative inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-sky-200 focus:outline-hidden focus:bg-sky-200 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-slate-800 dark:focus:bg-slate-800"
-          >
-            <svg
-              class="shrink-0 size-4"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
-              <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
-            </svg>
-            <span class="sr-only">Notifications</span>
-          </button>
 
-          <button
-            type="button"
-            class="hs-dark-mode-active:hidden hs-dark-mode group flex items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-sky-200 focus:outline-hidden focus:bg-sky-200 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-slate-800 dark:focus:bg-slate-800"
-            data-hs-theme-click-value="dark"
-          >
-            <svg
-              class="shrink-0 size-4"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path d="M12 3a6 6 0 0 0 9 9a9 9 0 1 1-9-9Z" />
-            </svg>
-          </button>
-          <button
-            type="button"
-            class="hs-dark-mode-active:block hidden hs-dark-mode group flex items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-sky-200 focus:outline-hidden focus:bg-sky-200 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-slate-800 dark:focus:bg-slate-800"
-            data-hs-theme-click-value="light"
-          >
-            <svg
-              class="shrink-0 size-4"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <circle cx="12" cy="12" r="4" />
-              <path d="M12 2v2" />
-              <path d="M12 20v2" />
-              <path d="m4.93 4.93l1.41 1.41" />
-              <path d="m17.66 17.66l1.41 1.41" />
-              <path d="M2 12h2" />
-              <path d="M20 12h2" />
-              <path d="m6.34 17.66l-1.41 1.41" />
-              <path d="m19.07 4.93l-1.41 1.41" />
-            </svg>
-          </button>
 
-          <button
-            type="button"
-            class="size-9.5 relative inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-sky-200 focus:outline-hidden focus:bg-sky-200 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-slate-800 dark:focus:bg-slate-800"
-          >
-            <svg
-              class="shrink-0 size-4"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-            </svg>
-            <span class="sr-only">Activity</span>
-          </button>
 
           <!-- Dropdown -->
           <div
@@ -314,17 +195,12 @@ onUnmounted(() => window.removeEventListener('keydown', handleKeyDown))
             </div>
           </div>
           <div v-else class="flex items-center gap-x-2">
-            <router-link
-              to="/auth"
-              class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800"
-            >
-              Sign In
-            </router-link>
+
             <router-link
               to="/auth"
               class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
             >
-              Sign Up
+             Get Started
             </router-link>
           </div>
           <!-- End Dropdown -->

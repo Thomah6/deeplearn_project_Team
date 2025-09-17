@@ -90,6 +90,39 @@ import { RouterLink } from 'vue-router';
               </router-link>
             </li>
 
+             <li class="hs-accordion" id="users-accordion">
+              <router-link
+                to="/c"
+                type="button"
+                class="hs-accordion-toggle w-full text-start flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-sky-200 focus:outline-hidden focus:bg-sky-200 dark:bg-slate-900 dark:hover:bg-slate-800 dark:focus:bg-slate-800 dark:text-neutral-200"
+                aria-expanded="true"
+                aria-controls="users-accordion-child"
+              >
+
+
+                <svg
+                  class="size-6"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M12 8V4H8" />
+                  <rect width="16" height="12" x="4" y="8" rx="2" />
+                  <path d="M2 14h2" />
+                  <path d="M20 14h2" />
+                  <path d="M15 13v2" />
+                  <path d="M9 13v2" />
+                </svg>
+                AI Chatbot
+              </router-link>
+            </li>
+
           </ul>
         </nav>
       </div>

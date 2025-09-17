@@ -7,6 +7,7 @@ import AuthViews from '@/features/auth/AuthViews.vue'
 import VerificationCodeViews from '@/features/auth/VerificationCodeViews.vue'
 import Welcome from '@/features/auth/Welcome.vue'
 import Admin from '@/features/Admin/Admin.vue'
+import ChatAiView from '@/views/ChatAiView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -25,6 +26,13 @@ const router = createRouter({
       meta: { title: 'AuthViews - DeepLearn' },
     },
     {
+      path: '/c',
+      name: 'chatai',
+      component: ChatAiView,
+      props: true,
+      meta: { title: 'ChatAI - DeepLearn' },
+    },
+    {
       path: '/catalog',
       name: 'catalog',
       component: CatalogView,
@@ -37,6 +45,20 @@ const router = createRouter({
       props: true,
       meta: { title: 'Cours - DeepLearn' },
     },
+    {
+    path: '/description/:id',
+    name: 'description.show',
+    component: () => import('@/cours/CoursesDescription.vue'),
+    props:(route) => ({id: parseInt(route.params.id)}),
+    meta: { title: 'Description - DeepLearn' }
+  },
+  {
+    path: '/lessons/:id',
+    name: 'lessons.show',
+    component: () => import('@/cours/LessonItem.vue'),
+    props:(route) => ({id: parseInt(route.params.id)}),
+    meta: { title: 'Lessons - DeepLearn' }
+  },
 
       {
       path: '/modifycourse',

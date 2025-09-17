@@ -42,22 +42,26 @@ const showLayout = computed(() => {
   const pathsToHideOn = ['/auth', '/verification', '/welcome']
   return !pathsToHideOn.includes(route.path)
 })
+const showFooter = computed(() => {
+  const pathsToHideOn = ['/c']
+  return !pathsToHideOn.includes(route.path)
+})
 </script>
 <template>
   <div class="w-full">
     <Header v-if="showLayout" />
     <Sidebar v-if="showLayout" />
     <div class="w-full">
-      <div
+      <div style="height: 100%;"
         :class="
           showLayout
-            ? 'min-h-screen bg-gray-50 dark:bg-gray-900 relative inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap w-full text-sm py-2.5 lg:ps-65'
+            ? 'h-[fit-content] min-h-screen  bg-gray-50 dark:bg-gray-900 relative inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap w-full text-sm py-2.5 lg:ps-65'
             : ''
         "
       >
         <RouterView :catalog="catalog" :usersData="usersData" :courses="catalog"></RouterView>
       </div>
-      <Footer v-if="showLayout" />
+      <Footer v-if="showFooter" />
     </div>
   </div>
 </template>
