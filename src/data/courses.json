@@ -3,7 +3,7 @@
     "id": 1,
     "title": "Introduction à Python",
     "level": "Débutant",
-    "category": "Software engineering & IT",
+    "category": "Business",
     "lessons_count": 6,
     "description": "Apprentissage des bases de la programmation Python, de la syntaxe aux concepts fondamentaux",
     "lessons": [
@@ -343,7 +343,7 @@
     "id": 7,
     "title": "Node.js et Express",
     "level": "Intermédiaire",
-    "category": "Software engineering & IT",
+    "category": "Business",
     "lessons_count": 5,
     "description": "Création d'applications serveur avec JavaScript",
     "lessons": [
@@ -393,7 +393,7 @@
     "id": 8,
     "title": "Cloud Computing AWS",
     "level": "Avancé",
-    "category": "Software engineering & IT",
+    "category": "Business",
     "lessons_count": 6,
     "description": "Maîtrise des services cloud Amazon Web Services",
     "lessons": [
@@ -451,7 +451,7 @@
     "id": 9,
     "title": "Machine Learning Fundamentals",
     "level": "Intermédiaire",
-    "category": "Software engineering & IT",
+    "category": "Business",
     "lessons_count": 5,
     "description": "Introduction aux concepts et algorithmes du machine learning",
     "lessons": [
@@ -501,7 +501,7 @@
     "id": 10,
     "title": "Git et GitHub avancé",
     "level": "Intermédiaire",
-    "category": "Software engineering & IT",
+    "category": "Business",
     "lessons_count": 5,
     "description": "Techniques avancées de gestion de version et collaboration",
     "lessons": [

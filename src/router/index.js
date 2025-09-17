@@ -45,6 +45,20 @@ const router = createRouter({
       meta: { title: 'Cours - DeepLearn' },
     },
     {
+    path: '/description/:id',
+    name: 'description.show',
+    component: () => import('@/cours/CoursesDescription.vue'),
+    props:(route) => ({id: parseInt(route.params.id)}),
+    meta: { title: 'Description - DeepLearn' }
+  },
+  {
+    path: '/lessons/:id',
+    name: 'lessons.show',
+    component: () => import('@/cours/LessonItem.vue'),
+    props:(route) => ({id: parseInt(route.params.id)}),
+    meta: { title: 'Lessons - DeepLearn' }
+  },
+    {
       path: '/profile',
       name: 'profile',
       component: ProfileView,
