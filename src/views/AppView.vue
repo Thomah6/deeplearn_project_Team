@@ -41,7 +41,7 @@ const testUsers = [
 const usersData = ref(JSON.parse(localStorage.getItem('users') || JSON.stringify(testUsers)))
 const route = useRoute()
 const catalog = CourseData
-console.log(route.path)
+// console.log(route.path)
 
 const isLogin = ref(localStorage.getItem('token') === 'true')
 

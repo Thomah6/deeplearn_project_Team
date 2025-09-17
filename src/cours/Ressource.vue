@@ -1,8 +1,9 @@
 <script setup>
 import { defineProps, ref, watch } from 'vue';
+import CourseProgress from './CourseProgress.vue';
 
 const props = defineProps({
-  lesson: Object
+  lesson: Object,
 })
 
 const videoId = ref('')
@@ -20,9 +21,13 @@ watch(() => props.lesson, (newLesson) => {
     videoId.value = extractYoutubeId(newLesson.link_video)
   }
 }, { immediate: true })
+
+//Nbre total de cours
+
 </script>
 
 <template>
+  <CourseProgress />
   <section class="p-4 md:p-6 lg:p-10">
     <iframe
       v-if="videoId"
@@ -33,10 +38,14 @@ watch(() => props.lesson, (newLesson) => {
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       allowfullscreen>
     </iframe>
-
+      <div>
+        <button
+        class=" relative left-250 font-semibold bg-green-500 rounded-lg p-2 text-lg dark:text-white cursor-pointer"
+        @click="markAsCompleted(index)"></button>
+      </div>
     <div v-if="props.lesson" class="mt-6">
-      <h2 class="text-xl md:text-2xl dark:text-sky-400 font-bold mb-4">{{ props.lesson.title }}</h2>
-      <p class="text-gray-700 dark:text-white/80 text-base md:text-lg">{{ props.lesson.contenu }}</p>
+      <h2 class="text-xl md:text-2xl dark:text-sky-400 font-bold mb-4 dark:text-white">{{ props.lesson.title }}</h2>
+      <p class="text-gray-700 dark:text-white dark:text-white/80 text-base md:text-lg">{{ props.lesson.contenu }}</p>
     </div>
 
     <div v-else class="mt-6">

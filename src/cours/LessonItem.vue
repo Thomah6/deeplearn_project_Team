@@ -36,6 +36,11 @@ function openLesson(lesson) {
     openLessonId.value = lesson.id // Open the clicked one
   }
 }
+
+
+
+console.log(getData);
+
 </script>
 
 <template>
@@ -80,7 +85,7 @@ function openLesson(lesson) {
     </section>
 
     <section class="flex-grow">
-      <Ressource :lesson="currentLesson" />
+      <Ressource :lesson="currentLesson"/>
     </section>
   </div>
 </template>

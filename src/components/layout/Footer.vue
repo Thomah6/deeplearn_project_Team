@@ -1,3 +1,6 @@
+<script setup>
+
+</script>
 <template>
   <!-- ========== FOOTER ========== -->
   <footer class="w-full py-10 px-4 sm:px-6 lg:px-8 lg:ps-65 bg-sky-50 dark:bg-slate-900">

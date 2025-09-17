@@ -1,7 +1,6 @@
 <script setup>
 // import CategoryFilter from './CategoryFilter.vue';
 import { ref,onMounted } from 'vue'
-import courseData from '@/data/courses.json'
 
 const props = defineProps({
   course : Array
@@ -112,7 +111,7 @@ onMounted(()=>{
                       src="https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1470&amp;q=80"
                       alt="ui/ux review check" />
                   <div
-                      class="absolute inset-0 w-full h-full to-bg-black-10 bg-gradient-to-tr from-transparent via-transparent to-black/60">
+                      class="absolute  inset-0 w-full h-full to-bg-black-10 bg-gradient-to-tr from-transparent via-transparent to-black/60">
                   </div>
               </div>
               <div class="p-6 flex-grow">
