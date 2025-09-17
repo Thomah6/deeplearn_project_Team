@@ -39,7 +39,7 @@ watch(() => props.id, getCourse)
                   <div class="h-12 w-12">
                     <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/testimonials/t_1.png" alt class="h-full w-full object-cover overflow-hidden rounded-full" />
                   </div>
-                  <p class="text-indigo-200 font-bold ml-3">
+                  <p class="text-indigo-500 font-bold ml-3">
                     Jane Doe <br />
                     <span class="text-indigo-200 text-base font-light">Apple Inc</span>
                   </p>
@@ -58,8 +58,8 @@ watch(() => props.id, getCourse)
     </section>
 
     <!-- component -->
-    <section class="mx-15 dark:bg-gray-900 border">
-      <div class="container px-6 py-10 mx-auto border">
+    <section class="mx-15 dark:bg-gray-900 ">
+      <div class="container px-6 py-10 mx-auto ">
           <div class="xl:grid xl:grid-cols-6 xl:gap-8 xl:items-center xl:justify-center xL:-mx-4 w-[75vw]">
               <div class="grid grid-cols-1 mt-8 xl:mt-0 xl:w-1/2 md:grid-cols-2" v-for="lesson in dataTable.lessons" :key="lesson.id">
                   <div class="w-60 p-2 text-center">

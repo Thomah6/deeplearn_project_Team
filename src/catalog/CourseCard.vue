@@ -1,7 +1,6 @@
 <script setup>
 // import CategoryFilter from './CategoryFilter.vue';
 import { ref,onMounted } from 'vue'
-import courseData from '@/data/courses.json'
 
 const props = defineProps({
   course : Array
@@ -109,13 +108,14 @@ onMounted(()=>{
       <div class="max-w-[720px] mx-auto hover:shadow-2xl rounded-2xl cursor-pointer transition ease-in duration-500  transform hover:scale-105">
           <!-- Centering wrapper -->
           <div class="relative flex w-full max-w-[26rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg">
-              <div
-                  class="relative mx-4 mt-4 overflow-hidden text-white shadow-lg rounded-xl bg-blue-gray-500 bg-clip-border shadow-blue-gray-500/40">
+            <div
+            class="relative mx-4 mt-4 overflow-hidden text-white shadow-lg rounded-xl bg-blue-gray-500 bg-clip-border shadow-blue-gray-500/40">
+
                   <img
                       src="https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1470&amp;q=80"
                       alt="ui/ux review check" />
                   <div
-                      class="absolute inset-0 w-full h-full to-bg-black-10 bg-gradient-to-tr from-transparent via-transparent to-black/60">
+                      class="absolute  inset-0 w-full h-full to-bg-black-10 bg-gradient-to-tr from-transparent via-transparent to-black/60">
                   </div>
               </div>
               <div class="p-6">

@@ -27,6 +27,11 @@ watch(() => props.id, () => getCourse())
 function openLesson(lesson) {
   currentLesson.value = lesson
 }
+
+
+
+console.log(getData);
+
 </script>
 
 <template>
@@ -76,7 +81,7 @@ function openLesson(lesson) {
     </section>
 
     <section>
-      <Ressource :lesson="currentLesson" />
+      <Ressource :lesson="currentLesson" :countlesson=""/>
     </section>
   </div>
 </template>
