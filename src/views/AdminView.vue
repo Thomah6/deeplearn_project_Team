@@ -201,15 +201,15 @@ console.log(id);
  
             <tbody class="divide-y divide-gray-200 dark:divide-neutral-700">
            
-              <tr v-for="user in userArray" :key="user.id" class="bg-white hover:bg-gray-50 dark:bg-neutral-900 dark:hover:bg-neutral-800">
-                <td class="size-px whitespace-nowrap align-top p-5">{{ user.name }} </td>
+              <tr v-for="user in userArray" :key="user.id" class="bg-white text-black hover:bg-gray-50 dark:bg-neutral-900 dark:hover:bg-neutral-800 light:text-black">
+                <td class="size-px whitespace-nowrap align-top p-5 light:text-black">{{ user.name }} </td>
                  
                    
                
-                <td class="size-px whitespace-nowrap align-top p-5">{{ user.email }} </td>
+                <td class="size-px whitespace-nowrap align-top p-5 light:text-black">{{ user.email }} </td>
                  
                    
-                 <td class="size-px whitespace-nowrap align-top p-5">{{ user.statues }} </td>
+                 <td class="size-px whitespace-nowrap align-top p-5 light:text-black">{{ user.statues }} </td>
              
                    <td class="size-px whitespace-nowrap align-top p-5">
                     <button @click="userSupButton(user.id)" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 mr-2 dark:text-white">Supprimer</button>
@@ -285,7 +285,7 @@ console.log(id);
 
            
                 <tbody class="divide-y divide-gray-200 dark:divide-neutral-700">
-                  <tr v-for="course in courseArray" :key="course.id" class="bg-white hover:bg-gray-50 dark:bg-neutral-900 dark:hover:bg-neutral-800">
+                  <tr v-for="course in courseArray" :key="course.id" class="bg-white text-black hover:bg-gray-50 dark:bg-neutral-900 dark:hover:bg-neutral-800">
                     <td class="size-px whitespace-nowrap align-top p-5">{{ course.title }} </td>
                 
                 
