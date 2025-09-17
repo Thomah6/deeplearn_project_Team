@@ -4,7 +4,12 @@ import CourseList from '@/catalog/CourseList.vue';
 
 </script>
 <template>
+<!-- Announcement Banner -->
 
-  <CourseList />
+<!-- End Announcement Banner -->
+ <div class="mx-auto">
+
+   <CourseList />
+ </div>
 
 </template>
