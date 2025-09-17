@@ -6,6 +6,7 @@ import ProfileView from '@/views/ProfileView.vue'
 import AuthViews from '@/features/auth/AuthViews.vue'
 import VerificationCodeViews from '@/features/auth/VerificationCodeViews.vue'
 import Welcome from '@/features/auth/Welcome.vue'
+import Admin from '@/features/Admin/Admin.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -36,6 +37,16 @@ const router = createRouter({
       props: true,
       meta: { title: 'Cours - DeepLearn' },
     },
+
+      {
+      path: '/modifycourse',
+      name: 'modifyourscourse',
+      component: Admin,
+      props: true,
+      meta: { title: 'modifycourses - DeepLearn' },
+    },
+
+
     {
       path: '/profile',
       name: 'profile',
