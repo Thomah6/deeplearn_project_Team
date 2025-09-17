@@ -45,19 +45,19 @@ const router = createRouter({
       meta: { title: 'Cours - DeepLearn' },
     },
     {
-      path: '/description/:id',
-      name: 'description.show',
-      component: () => import('@/cours/CoursesDescription.vue'),
-      props: route => ({ id: parseInt(route.params.id) }),
-      meta: { title: 'Description - DeepLearn' },
-    },
-    {
-      path: '/lessons/:id',
-      name: 'lessons.show',
-      component: () => import('@/cours/LessonItem.vue'),
-      props: route => ({ id: parseInt(route.params.id) }),
-      meta: { title: 'Lessons - DeepLearn' },
-    },
+    path: '/description/:id',
+    name: 'description.show',
+    component: () => import('@/cours/CoursesDescription.vue'),
+    props:(route) => ({id: parseInt(route.params.id)}),
+    meta: { title: 'Description - DeepLearn' }
+  },
+  {
+    path: '/lessons/:id',
+    name: 'lessons.show',
+    component: () => import('@/cours/LessonItem.vue'),
+    props:(route) => ({id: parseInt(route.params.id)}),
+    meta: { title: 'Lessons - DeepLearn' }
+  },
     {
       path: '/profile',
       name: 'profile',
@@ -80,22 +80,8 @@ const router = createRouter({
       path: '/welcome',
       name: 'welcome',
       component: Welcome,
-      meta: { title: 'Bienvenue - DeepLearn' },
-    },
-    {
-      path: '/searchcours',
-      name: 'searchcours',
-      component: () => import("@/catalog/SearchCours.vue"),
-      meta: { title: 'searchcours - DeepLearn' },
     },
   ],
-  scrollBehavior(to, from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition
-    } else {
-      return { top: 0 }
-    }
-  },
 })
 
 
@@ -116,7 +102,5 @@ const router = createRouter({
 //     next({ name: 'home_catalogue' })
 //   }
 // })
-
-
 
 export default router

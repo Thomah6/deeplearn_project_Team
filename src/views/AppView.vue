@@ -61,6 +61,4 @@ const showFooter = computed(() => {
       <Footer v-if="showFooter" />
     </div>
   </div>
-
-
 </template>

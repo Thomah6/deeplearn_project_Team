@@ -35,8 +35,8 @@ watch(() => props.lesson, (newLesson) => {
     </iframe>
 
     <div v-if="props.lesson" class="mt-6">
-      <h2 class="text-2xl font-bold mb-4">{{ props.lesson.title }}</h2>
-      <p class="text-gray-700">{{ props.lesson.contenu }}</p>
+      <h2 class="text-2xl dark:text-sky-400 font-bold mb-4">{{ props.lesson.title }}</h2>
+      <p class="text-gray-700 dark:text-white/80 text-xl">{{ props.lesson.contenu }}</p>
     </div>
 
     <div v-else class="mt-6">

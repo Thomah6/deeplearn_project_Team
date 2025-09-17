@@ -98,7 +98,7 @@ import { RouterLink } from 'vue-router';
                 aria-expanded="true"
                 aria-controls="users-accordion-child"
               >
-                
+
 
                 <svg
                   class="size-6"
@@ -123,7 +123,6 @@ import { RouterLink } from 'vue-router';
               </router-link>
             </li>
 
-=======
           </ul>
         </nav>
       </div>
