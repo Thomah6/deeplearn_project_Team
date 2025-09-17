@@ -59,13 +59,10 @@ const showFooter = computed(() => {
     <Header v-if="showLayout" />
     <Sidebar v-if="showLayout" />
     <div class="w-full">
-      <div style="height: 100%;"
-        :class="
-          showLayout
-            ? 'h-[fit-content] min-h-screen  bg-gray-50 dark:bg-gray-900 relative inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap w-full text-sm py-2.5 lg:ps-65'
-            : ''
-        "
-      >
+      <div style="height: 100%;" :class="showLayout
+          ? 'h-[fit-content] min-h-screen  bg-gray-50 dark:bg-gray-900 relative inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap w-full text-sm py-2.5 lg:ps-65'
+          : ''
+        ">
         <RouterView :catalog="catalog" :usersData="usersData" :courses="catalog"></RouterView>
       </div>
       <Footer v-if="showFooter" />

@@ -73,7 +73,6 @@ const router = createRouter({
       path: '/profile',
       name: 'profile',
       component: ProfileView,
-      props: true,
       meta: { title: 'Profil - DeepLearn', requiresAuth: true },
     },
     {
@@ -86,11 +85,17 @@ const router = createRouter({
       path: '/verification',
       name: 'Verification',
       component: VerificationCodeViews,
+      meta: { title: 'Vérification - DeepLearn' },
     },
     {
       path: '/welcome',
       name: 'welcome',
       component: Welcome,
+    },
+    {
+      path: '/searchcours',
+      name: 'searchcours',
+      component: () => import("@/catalog/SearchCours.vue"),
     },
   ],
 })
