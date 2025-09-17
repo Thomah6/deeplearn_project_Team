@@ -1,19 +1,16 @@
 <script setup>
 
-import CourseData from '@/data/Courses.json';
-
-console.log(CourseData);
 
 </script>
 
 
 <template>
-    <form class="w-lg mx-auto bg-gray-800 p-8 rounded-lg shadow-lg" action="">
-        <h1 class="text-2xl font-bold text-white mb-6 text-center">Formulaire Admin Cour</h1>
+    <form class="w-full max-w-lg mx-auto bg-white dark:bg-gray-800 p-4 sm:p-6 md:p-8 rounded-lg shadow-lg my-8" action="">
+        <h1 class="text-2xl font-bold text-gray-800 dark:text-white mb-6 text-center">Formulaire Admin Cour</h1>
         <div class="mb-4">
-            <label class="block text-white mb-2" for="title">Titre du cours:</label>
+            <label class="block text-gray-700 dark:text-white mb-2" for="title">Titre du cours:</label>
             <input
-                class="w-full px-4 py-2 rounded border border-sky-700 bg-gray-700 text-white focus:outline-none focus:border-sky-500"
+                class="w-full px-4 py-2 rounded border border-gray-300 dark:border-sky-700 bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-white focus:outline-none focus:border-sky-500"
                 type="text"
                 id="title"
                 name="title"
@@ -21,9 +18,9 @@ console.log(CourseData);
             >
         </div>
         <div class="mb-4">
-            <label class="block text-white mb-2" for="level">Level</label>
+            <label class="block text-gray-700 dark:text-white mb-2" for="level">Level</label>
             <input
-                class="w-full px-4 py-2 rounded border border-sky-700 bg-gray-700 text-white focus:outline-none focus:border-sky-500"
+                class="w-full px-4 py-2 rounded border border-gray-300 dark:border-sky-700 bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-white focus:outline-none focus:border-sky-500"
                 type="text"
                 id="level"
                 name="level"
@@ -31,9 +28,9 @@ console.log(CourseData);
             >
         </div>
         <div class="mb-4">
-            <label class="block text-white mb-2" for="category">Category</label>
+            <label class="block text-gray-700 dark:text-white mb-2" for="category">Category</label>
             <input
-                class="w-full px-4 py-2 rounded border border-sky-700 bg-gray-700 text-white focus:outline-none focus:border-sky-500"
+                class="w-full px-4 py-2 rounded border border-gray-300 dark:border-sky-700 bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-white focus:outline-none focus:border-sky-500"
                 type="text"
                 id="category"
                 name="category"
@@ -41,9 +38,9 @@ console.log(CourseData);
             >
         </div>
         <div class="mb-4">
-            <label class="block text-white mb-2" for="lessons_count">Lessons Count</label>
+            <label class="block text-gray-700 dark:text-white mb-2" for="lessons_count">Lessons Count</label>
             <input
-                class="w-full px-4 py-2 rounded border border-sky-700 bg-gray-700 text-white focus:outline-none focus:border-sky-500"
+                class="w-full px-4 py-2 rounded border border-gray-300 dark:border-sky-700 bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-white focus:outline-none focus:border-sky-500"
                 type="number"
                 id="lessons_count"
                 name="lessons_count"
@@ -51,9 +48,9 @@ console.log(CourseData);
             >
         </div>
         <div class="mb-6">
-            <label class="block text-white mb-2" for="description">Description:</label>
+            <label class="block text-gray-700 dark:text-white mb-2" for="description">Description:</label>
             <textarea
-                class="w-full px-4 py-2 rounded border border-sky-700 bg-gray-700 text-white focus:outline-none focus:border-sky-500"
+                class="w-full px-4 py-2 rounded border border-gray-300 dark:border-sky-700 bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-white focus:outline-none focus:border-sky-500"
                 id="description"
                 name="description"
                 required
