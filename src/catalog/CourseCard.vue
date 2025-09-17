@@ -1,6 +1,6 @@
 <script setup>
 // import CategoryFilter from './CategoryFilter.vue';
-import { ref } from 'vue'
+import { ref,onMounted } from 'vue'
 import courseData from '@/data/courses.json'
 
 const props = defineProps({
@@ -8,12 +8,42 @@ const props = defineProps({
 })
 console.log(props.course);
 
+const categorysAll=ref([])
+const categorys=ref([])
 
 const isOpen = ref(false)
 
 function toggleDropdown() {
   isOpen.value = !isOpen.value
 }
+
+
+const DataFiltered=ref(props.course)
+
+
+function filter(cat) {
+if(cat=="all"){
+DataFiltered.value=props.course
+}else{
+ DataFiltered.value = props.course.filter(el => el.category === cat)
+
+
+}
+
+}
+
+function filterByLevel(level) {
+  if(level!=="all"){
+
+    DataFiltered.value = props.course.filter(el => el.level === level)
+  }
+}
+
+onMounted(()=>{
+ props.course.map((cour)=>{categorysAll.value.push(cour.category)})
+  categorys.value=[...new Set(categorysAll.value)]
+  filterByLevel("all")
+})
 
 </script>
 
@@ -38,13 +68,13 @@ function toggleDropdown() {
         class="absolute left-0 mt-2 z-10 w-44 bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600 p-4"
       >
         <div class="py-1">
-          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Débutant</a>
+          <span @click="()=>{filterByLevel('Débutant')}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Débutant</span>
         </div>
         <div class="py-1">
-          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Intermédiaire</a>
+          <span @click="()=>{filterByLevel('Intermédiaire')}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Intermédiaire</span>
         </div>
         <div class="py-1">
-          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Avancé</a>
+          <span @click="()=>{filterByLevel('Avancé')}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Avancé</span>
         </div>
       </div>
     </div>
@@ -56,47 +86,26 @@ function toggleDropdown() {
       <button
           class="flex cursor-pointer items-center justify-center w-20 h-10 text-md font-medium text-gray-900 bg-white border border-gray-200 rounded-3xl focus:outline-none hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
           type="button"
+          @click="()=>{filter('all')}"
         >
           Tous
       </button>
 
-      <button
-          class="flex cursor-pointer items-center justify-center w-65 h-10 text-md font-medium text-gray-900 bg-white border border-gray-200 rounded-3xl focus:outline-none hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+      <button v-for="cat in categorys" :key="cat"
+          class="flex cursor-pointer items-center justify-center text-nowrap px-8 h-10 text-md font-medium text-gray-900 bg-white border border-gray-200 rounded-3xl focus:outline-none hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
           type="button"
+          @click="()=>{filter(cat)}"
         >
-          Ingénerie logicielle et informatique
+          {{cat}}
       </button>
-      <button
-          class="flex cursor-pointer items-center justify-center w-32 h-10 text-md font-medium text-gray-900 bg-white border border-gray-200 rounded-3xl focus:outline-none hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-          type="button"
-        >
-          Entreprise
-      </button>
-      <button
-          class="flex cursor-pointer items-center justify-center w-50 h-10 text-md font-medium text-gray-900 bg-white border border-gray-200 rounded-3xl focus:outline-none hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-          type="button"
-        >
-          Ventes et marketing
-      </button>
-      <button
-          class="flex cursor-pointer items-center justify-center w-60 h-10 text-md font-medium text-gray-900 bg-white border border-gray-200 rounded-3xl focus:outline-none hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-          type="button"
-        >
-          Sience des données et analyse
-      </button>
-      <button
-          class="flex cursor-pointer items-center justify-center w-30 h-10 text-md font-medium text-gray-900 bg-white border border-gray-200 rounded-3xl focus:outline-none hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-          type="button"
-        >
-          Soins de santé
-      </button>
+
     </div>
  </div>
 
 
 
 <article class="grid grid-cols-3 mx-40 gap-10 relative mt-20">
-  <div class="flex justify-center items-center min-h-[65vh]" v-for="cours in courseData" :key="cours.id">
+  <div class="flex justify-center items-center min-h-[65vh]" v-for="cours in DataFiltered" :key="cours.id">
       <div class="max-w-[720px] mx-auto hover:shadow-2xl rounded-2xl cursor-pointer transition ease-in duration-500  transform hover:scale-105">
           <!-- Centering wrapper -->
           <div class="relative flex w-full max-w-[26rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg">
