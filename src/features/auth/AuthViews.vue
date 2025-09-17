@@ -80,7 +80,13 @@ function Login() {
     // Utilisateur trouvé, on crée la session
     localStorage.setItem('token', 'true')
     localStorage.setItem('user', JSON.stringify(user))
-    router.push('/') // Redirection vers la page d'accueil
+    if (user.email === 'admin@gmail.com') {
+      localStorage.setItem('status', 'admin')
+      router.push('/admin') // Redirection vers la page admin
+    } else {
+      localStorage.setItem('status', 'user')
+      router.push('/') // Redirection vers la page d'accueil
+    }
   } else {
     // Utilisateur non trouvé
     alert('Email ou mot de passe incorrect.')
