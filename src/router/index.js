@@ -3,30 +3,48 @@ import AdminView from '@/views/AdminView.vue'
 import CatalogView from '@/views/CatalogView.vue'
 import CourseView from '@/views/CourseView.vue'
 import ProfileView from '@/views/ProfileView.vue'
+import AuthViews from '@/features/auth/AuthViews.vue'
+import VerificationCodeViews from '@/features/auth/VerificationCodeViews.vue'
+import Welcome from '@/features/auth/Welcome.vue'
+import ChatAiView from '@/views/ChatAiView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-    path: '/',
-    name: 'home_catalogue',
-    component: CatalogView,
-    meta: { title: 'Accueil - DeepLearn' }
-  },
-  {
-    path: '/catalog',
-    name: 'catalog',
-    component: CatalogView,
-    meta: { title: 'Catalogue - DeepLearn' }
-  },
-  {
-    path: '/course/:id',
-    name: 'course',
-    component: CourseView,
-    props: true,
-    meta: { title: 'Cours - DeepLearn' }
-  },
-  {
+      path: '/',
+      name: 'home_catalogue',
+      component: CatalogView,
+      meta: { title: 'Accueil - DeepLearn' },
+    },
+    {
+      path: '/auth',
+      name: 'authviews',
+      component: AuthViews,
+      props: true,
+      meta: { title: 'AuthViews - DeepLearn' },
+    },
+    {
+      path: '/c',
+      name: 'chatai',
+      component: ChatAiView,
+      props: true,
+      meta: { title: 'ChatAI - DeepLearn' },
+    },
+    {
+      path: '/catalog',
+      name: 'catalog',
+      component: CatalogView,
+      meta: { title: 'Catalogue - DeepLearn' },
+    },
+    {
+      path: '/course/:id',
+      name: 'course',
+      component: CourseView,
+      props: true,
+      meta: { title: 'Cours - DeepLearn' },
+    },
+    {
     path: '/description/:id',
     name: 'description.show',
     component: () => import('@/cours/CoursesDescription.vue'),
@@ -40,29 +58,30 @@ const router = createRouter({
     props:(route) => ({id: parseInt(route.params.id)}),
     meta: { title: 'Lessons - DeepLearn' }
   },
-  {
-    path: '/profile',
-    name: 'profile',
-    component: ProfileView,
-    meta: { title: 'Profil - DeepLearn', requiresAuth: true }
-  },
-  {
-    path: '/admin',
-    name: 'admin',
-    component: AdminView,
-    meta: { title: 'Administration - DeepLearn', requiresAuth: true, isAdmin: true }
-  }
+    {
+      path: '/profile',
+      name: 'profile',
+      component: ProfileView,
+      props: true,
+      meta: { title: 'Profil - DeepLearn', requiresAuth: true },
+    },
+    {
+      path: '/admin',
+      name: 'admin',
+      component: AdminView,
+      meta: { title: 'Administration - DeepLearn', requiresAuth: true, isAdmin: true },
+    },
+    {
+      path: '/verification',
+      name: 'Verification',
+      component: VerificationCodeViews,
+    },
+    {
+      path: '/welcome',
+      name: 'welcome',
+      component: Welcome,
+    },
   ],
-
-  scrollBehavior(to, from, savedPosition) {
-    // Si on a une position sauvegardée (ex: bouton "retour arrière")
-    if (savedPosition) {
-      return savedPosition
-    } else {
-      // Sinon scroll tout en haut
-      return { top: 0 }
-    }
-  }
 })
 
 // router.beforeEach((to, from, next) => {
@@ -82,7 +101,5 @@ const router = createRouter({
 //     next({ name: 'home_catalogue' })
 //   }
 // })
-
-
 
 export default router
