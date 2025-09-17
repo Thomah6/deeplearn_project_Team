@@ -1,8 +1,11 @@
+<<<<<<< HEAD
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
 
 </script>
 
+=======
+>>>>>>> 362162e707857e9103ef73a7cb6ab63243a38519
 <template>
   <!-- Sidebar -->
   <div
@@ -89,6 +92,7 @@ import { RouterLink } from 'vue-router';
                 Catalog
               </router-link>
             </li>
+<<<<<<< HEAD
 
              <li class="hs-accordion" id="users-accordion">
               <router-link
@@ -123,6 +127,8 @@ import { RouterLink } from 'vue-router';
               </router-link>
             </li>
 
+=======
+>>>>>>> 362162e707857e9103ef73a7cb6ab63243a38519
           </ul>
         </nav>
       </div>

@@ -1,4 +1,5 @@
 <script setup>
+<<<<<<< HEAD
 import { ref, onMounted, computed } from 'vue'
 import BadgeGrid from '@/features/profile/BadgeGrid.vue'
 import UserStats from '@/features/profile/UserStats.vue'
@@ -40,3 +41,10 @@ onMounted(() => {
     </div>
   </div>
 </template>
+=======
+
+</script>
+<template>
+
+</template>
+>>>>>>> 362162e707857e9103ef73a7cb6ab63243a38519
