@@ -80,7 +80,7 @@ const router = createRouter({
       path: '/admin',
       name: 'admin',
       component: AdminView,
-      meta: { title: 'Administration - DeepLearn', requiresAuth: true },
+      meta: { title: 'Administration - DeepLearn', requiresAuth: true , isAdmin: true},
     },
     {
       path: '/verification',
@@ -99,16 +99,25 @@ const router = createRouter({
       component: () => import("@/catalog/CourseCard.vue"),
     },
   ],
+  scrollBehavior(to, from, savedPosition) {
+    // Si l'utilisateur revient en arrière, on restaure la position de défilement
+    if (savedPosition) {
+      return savedPosition
+    }
+    // Sinon, on remonte en haut de la page avec un effet fluide
+    return { top: 0, behavior: 'smooth' }
+  },
 })
 
 router.beforeEach((to, from, next) => {
   document.title = to.meta.title || 'DeepLearn'
 
   const isAuthenticated = localStorage.getItem('token') === 'true'
-  const userStatus = localStorage.getItem('status') // "user" ou "admin"
+  const user = JSON.parse(localStorage.getItem('user'))
+  const isAdmin = user && user.isAdmin
 
   // Si la route nécessite d'être admin mais l'utilisateur ne l'est pas
-  if (to.meta.isAdmin && userStatus !== 'admin') {
+  if (to.meta.isAdmin && !isAdmin) {
     next({ name: 'home_catalogue' }) // Redirige vers l'accueil
   }
   // Si la route nécessite d'être authentifié mais l'utilisateur ne l'est pas

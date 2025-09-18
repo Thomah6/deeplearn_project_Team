@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <script setup>
 import { ref, onMounted, onUnmounted, computed, watch } from 'vue'
 import { useRouter } from 'vue-router'
@@ -37,9 +38,8 @@ function handleKeyDown(e) {
 function logout() {
   localStorage.removeItem('token')
   localStorage.removeItem('user')
-  localStorage.removeItem('status')
   user.value = null
-  router.push('/auth').then(() => window.location.reload())
+  router.push('/auth')
 }
 
 onMounted(() => {
@@ -314,5 +314,3 @@ watch(search, (newValue) => {
 <style scoped>
 
 </style>
-
-

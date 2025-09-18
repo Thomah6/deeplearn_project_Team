@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted, } from 'vue'
 import BadgeGrid from '@/features/profile/BadgeGrid.vue'
 import UserStats from '@/features/profile/UserStats.vue'
 import Completed from '@/features/profile/completed.vue'
@@ -41,7 +41,7 @@ onMounted(() => {
 </script>
 <template>
   <div class="container mx-auto p-4 space-y-6 dark:text-white">
-    <UserStats v-if="user" :user="user" />
+    <UserStats  :user="user" />
 
     <div class="grid md:flex gap-6 w-full dark:text-white">
       <Completed :courses="completedCoursesDetails" />

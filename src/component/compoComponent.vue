@@ -2,6 +2,7 @@
 import { ref, onMounted, computed } from 'vue'
 import { useEditor, EditorContent } from '@tiptap/vue-3'
 import StarterKit from '@tiptap/starter-kit'
+const image = '/user.png'
 
 // --- Props ---
 const props = defineProps({
@@ -144,7 +145,7 @@ const formatTimestamp = (timestamp) => {
       </div>
       <button
         type="submit"
-        class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-sky-600 rounded-lg focus:ring-4 focus:ring-sky-200 dark:focus:ring-sky-900 hover:bg-sky-700"
+        class="inline-flex mt-8 items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-sky-600 rounded-lg focus:ring-4 focus:ring-sky-200 dark:focus:ring-sky-900 hover:bg-sky-700"
       >
         Poster le commentaire
       </button>
@@ -155,12 +156,12 @@ const formatTimestamp = (timestamp) => {
       <article
         v-for="comment in courseComments"
         :key="comment.id"
-        class="p-6 text-base bg-white rounded-lg dark:bg-gray-900"
+        class="p-6 text-base border border-gray-200 dark:border-sky-200 rounded-lg bg-gray-100  dark:bg-gray-900"
       >
         <footer class="flex justify-between items-center mb-2">
           <div class="flex items-center">
             <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold">
-              <img class="mr-2 w-8 h-8 rounded-full" :src="comment.userAvatar" :alt="comment.userName" />
+              <img class="mr-2 w-8 h-8 rounded-full" :src="image" :alt="comment.userName" />
               {{ comment.userName }}
             </p>
             <p class="text-sm text-gray-600 dark:text-gray-400">
