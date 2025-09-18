@@ -1,8 +1,6 @@
 <script setup>
-import { ref, onMounted, onUnmounted, computed } from 'vue'
+import { ref, onMounted, onUnmounted, computed, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
-
-
 
 const router = useRouter()
 const image = '/user.png'
@@ -12,12 +10,30 @@ const showMobileSearch = ref(false)
 
 const isDark = ref(false)
 
+onMounted(() => {
+  const savedTheme = localStorage.getItem('theme')
+  console.log("Saved theme:", savedTheme);
+  if (savedTheme) {
+    isDark.value = savedTheme === 'dark'
+    document.documentElement.classList.toggle('dark', isDark.value)
+  }
+})
+
+onMounted(()=>{
+  console.log('islogin', isLogin.value);
+  console.log('user', user.value);
+  
+  
+})
+
+
 function toggleDark() {
+  console.log(isDark.value);
   isDark.value = !isDark.value
   document.documentElement.classList.toggle('dark', isDark.value)
+  console.log(document.documentElement.classList);
   localStorage.setItem('theme', isDark.value ? 'dark' : 'light')
 }
-
 
 
 const user = ref(null)
@@ -41,13 +57,26 @@ function logout() {
 onMounted(() => {
   window.addEventListener('keydown', handleKeyDown)
   if (isLogin.value) {
-    user.value = JSON.parse(localStorage.getItem('user'))
+    console.log(localStorage.getItem('user'));
+    
+    user.value = (localStorage.getItem('user'))
   }
   const savedTheme = localStorage.getItem('theme')
   // L'état initial est maintenant géré par le script dans index.html
   // On initialise juste la réactivité de Vue
   isDark.value = document.documentElement.classList.contains('dark')
+
+  // Réinitialise Preline après navigation
+  router.afterEach(() => {
+    nextTick(() => {
+      if (window.HS && window.HS.dropdown) {
+        window.HS.dropdown.init()
+      }
+    })
+  })
 })
+
+
 
 onUnmounted(() => {
   window.removeEventListener('keydown', handleKeyDown)

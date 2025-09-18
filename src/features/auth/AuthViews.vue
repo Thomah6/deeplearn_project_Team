@@ -82,10 +82,10 @@ function Login() {
     localStorage.setItem('user', JSON.stringify(user))
     if (user.email === 'admin@gmail.com') {
       localStorage.setItem('status', 'admin')
-      router.push('/admin') // Redirection vers la page admin
+      router.push('/admin').then(() => window.location.reload()) // Redirection + reload // Redirection vers la page admin
     } else {
       localStorage.setItem('status', 'user')
-      router.push('/') // Redirection vers la page d'accueil
+      router.push('/').then(() => window.location.reload()) // Redirection + reload// Redirection vers la page d'accueil
     }
   } else {
     // Utilisateur non trouvé
