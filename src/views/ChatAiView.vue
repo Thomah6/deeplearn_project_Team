@@ -6,6 +6,7 @@ const messages = ref([])
 const userInput = ref('')
 const isLoading = ref(false)
 const chatContainer = ref(null)
+const userId = ref(null)
 
 // Initialiser MarkdownIt avec quelques options de base
 const md = new MarkdownIt({
@@ -40,16 +41,24 @@ Favorise l’autonomie progressive, en guidant sans faire à la place.`
 }
 
 onMounted(() => {
-  const savedMessages = localStorage.getItem('chatHistory')
-  if (savedMessages) {
-    messages.value = JSON.parse(savedMessages)
+  const user = JSON.parse(localStorage.getItem('user'))
+  if (user && user.id) {
+    userId.value = user.id
+    const chatHistoryKey = `chatHistory_${userId.value}`
+    const savedMessages = localStorage.getItem(chatHistoryKey)
+    if (savedMessages) {
+      messages.value = JSON.parse(savedMessages)
+    }
   }
 })
 
 watch(
   messages,
   (newMessages) => {
-    localStorage.setItem('chatHistory', JSON.stringify(newMessages))
+    if (userId.value) {
+      const chatHistoryKey = `chatHistory_${userId.value}`
+      localStorage.setItem(chatHistoryKey, JSON.stringify(newMessages))
+    }
     scrollToBottom()
   },
   { deep: true }
@@ -235,7 +244,7 @@ const sendMessage = async () => {
           <textarea
             v-model="userInput"
             @keydown.enter.exact.prevent="sendMessage"
-            class="p-3 outline-none sm:p-4 pb-12 sm:pb-12 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:placeholder-gray-500 dark:focus:ring-gray-600"
+            class="p-3 dark:text-white/80 outline-none sm:p-4 pb-12 sm:pb-12 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:placeholder-gray-500 dark:focus:ring-gray-600"
             placeholder="Ask me anything..."
             :disabled="isLoading"
           ></textarea>

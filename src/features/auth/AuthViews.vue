@@ -42,7 +42,7 @@ async function Register() {
     name: registrationName.value,
     email: registrationEmail.value,
     password: registrationPassword.value,
-    completedCourses: [],
+    completedCourses: [5, 2],
   })
 
   // Préparer les paramètres pour EmailJS

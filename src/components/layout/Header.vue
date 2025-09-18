@@ -44,8 +44,7 @@ onMounted(() => {
     user.value = JSON.parse(localStorage.getItem('user'))
   }
   const savedTheme = localStorage.getItem('theme')
-  // L'état initial est maintenant géré par le script dans index.html
-  // On initialise juste la réactivité de Vue
+
   isDark.value = document.documentElement.classList.contains('dark')
 })
 
@@ -67,7 +66,7 @@ function SearchSend() {
 <template>
  
   <header
-    class="sticky top-0 inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap z-48 w-full bg-sky-50 border-b border-sky-200 text-sm py-2.5 lg:ps-65 dark:bg-slate-900 dark:border-slate-800">
+    class="sticky top-0 inset-x-0 flex  flex-wrap md:justify-start md:flex-nowrap z-48 w-full bg-sky-50 border-b border-sky-200 text-sm py-4 lg:ps-65 dark:bg-slate-900 dark:border-slate-800">
     <nav class="px-4 sm:px-6 flex basis-full items-center w-full mx-auto">
       <div class="me-5 lg:me-0 lg:hidden">
         <!-- Logo -->
@@ -99,7 +98,7 @@ function SearchSend() {
               <input
                 ref="searchInput"
                 type="text"
-                class="py-2 ps-10 pe-16 block w-full bg-white border-gray-200 rounded-lg text-sm focus:outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-500 dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder:text-neutral-400 dark:focus:ring-sky-500"
+                class="py-2 ps-10 pe-16 block w-full border border-gray-200 bg-white border-gray-200 rounded-lg text-sm focus:outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-500 dark:bg-gray-800 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder:text-neutral-400 dark:focus:ring-sky-500"
                 placeholder="Search"
                 v-model="search"
               />

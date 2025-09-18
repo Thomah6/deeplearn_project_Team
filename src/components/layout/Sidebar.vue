@@ -30,7 +30,7 @@ import { RouterLink } from 'vue-router';
 
       <!-- Content -->
       <div
-        class="pt-8 mt-2 border-t border-sky-200 dark:border-gray-700 h-full overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-sky-100 [&::-webkit-scrollbar-thumb]:bg-sky-300 dark:[&::-webkit-scrollbar-track]:bg-slate-700 dark:[&::-webkit-scrollbar-thumb]:bg-slate-500"
+        class="pt-8 mt-4 border-t border-sky-200 dark:border-gray-700 h-full overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-sky-100 [&::-webkit-scrollbar-thumb]:bg-sky-300 dark:[&::-webkit-scrollbar-track]:bg-slate-700 dark:[&::-webkit-scrollbar-thumb]:bg-slate-500"
       >
         <nav
           class="hs-accordion-group p-3 w-full flex flex-col flex-wrap"

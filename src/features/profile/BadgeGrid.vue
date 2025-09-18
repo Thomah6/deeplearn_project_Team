@@ -14,7 +14,7 @@ defineProps({
     class="bg-white rounded-lg md:w-1/3 border border-sky-200 dark:bg-gray-800 dark:border-gray-700"
   >
     <h2
-      class="text-2xl font-bold mb-4 light:text-gray-800 dark:text-white text-center hover:underline cursor-pointer"
+      class="text-2xl pt-4 font-bold mb-4 light:text-gray-800 dark:text-white text-center cursor-pointer"
     >
       Mes Badges
     </h2>

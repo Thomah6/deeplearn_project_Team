@@ -38,7 +38,13 @@ const testUsers = [
   },
 ]
 
-const usersData = ref(JSON.parse(localStorage.getItem('users') || JSON.stringify(testUsers)))
+// Ensure localStorage is seeded with test data if it's empty
+if (!localStorage.getItem('users')) {
+  localStorage.setItem('users', JSON.stringify(testUsers))
+}
+
+// Always load from localStorage, which is now guaranteed to exist.
+const usersData = ref(JSON.parse(localStorage.getItem('users')))
 const route = useRoute()
 const catalog = CourseData
 // console.log(route.path)
@@ -55,7 +61,7 @@ const showFooter = computed(() => {
 })
 </script>
 <template>
-  <div class="w-full dark:bg-gray-900">
+  <div class="w-full min-h-screen dark:bg-gray-900">
     <Header v-if="showLayout" />
     <Sidebar v-if="showLayout" />
     <div class="w-full">
