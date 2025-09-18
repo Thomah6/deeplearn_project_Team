@@ -19,14 +19,6 @@ onMounted(() => {
   }
 })
 
-onMounted(()=>{
-  console.log('islogin', isLogin.value);
-  console.log('user', user.value);
-  
-  
-})
-
-
 function toggleDark() {
   console.log(isDark.value);
   isDark.value = !isDark.value
@@ -59,7 +51,7 @@ onMounted(() => {
   if (isLogin.value) {
     console.log(localStorage.getItem('user'));
     
-    user.value = (localStorage.getItem('user'))
+    user.value = JSON.parse(localStorage.getItem('user'))
   }
   const savedTheme = localStorage.getItem('theme')
   // L'état initial est maintenant géré par le script dans index.html
