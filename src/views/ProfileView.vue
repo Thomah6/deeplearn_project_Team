@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted, } from 'vue'
 import BadgeGrid from '@/features/profile/BadgeGrid.vue'
 import UserStats from '@/features/profile/UserStats.vue'
 import Completed from '@/features/profile/completed.vue'

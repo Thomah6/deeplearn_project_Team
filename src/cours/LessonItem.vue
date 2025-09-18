@@ -30,7 +30,7 @@ function openLesson(lesson) {
 
 
 
-console.log(getData);
+// console.log(getData);
 
 </script>
 
@@ -81,7 +81,7 @@ console.log(getData);
     </section>
 
     <section>
-      <Ressource :lesson="currentLesson" :countlesson=""/>
+      <Ressource :lesson="currentLesson"   />
     </section>
   </div>
 </template>

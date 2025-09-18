@@ -5,7 +5,7 @@ import { ref,onMounted } from 'vue'
 const props = defineProps({
   course : Array
 })
-console.log(props.course);
+// console.log(props.course);
 
 const categorysAll=ref([])
 const categorys=ref([])

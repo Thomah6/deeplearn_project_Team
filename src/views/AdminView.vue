@@ -1,6 +1,7 @@
 <script setup>
 
 </script>
-<template>
 
+<template>
+  <div class=""></div>
 </template>

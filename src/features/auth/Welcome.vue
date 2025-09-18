@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <div
     class="w-full bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-neutral-800 px-4"
@@ -84,7 +85,7 @@ let countdownInterval = null
 
 // Fonction de redirection
 const redirectNow = () => {
-  
+
   clearInterval(countdownInterval)
   router.push('/')
 }
