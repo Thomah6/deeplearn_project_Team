@@ -1,7 +1,7 @@
-<script setup>
+<!-- <script setup>
 import { computed } from 'vue'
-import { useRoute } from 'vue-router'
 import courseData from '@/data/courses.json'
+import { useRoute } from 'vue-router'
 
 // Récupération de la route
 const route = useRoute()
@@ -60,4 +60,4 @@ const filteredCourses = computed(() => {
     font-weight: bold;
    margin-bottom: 1rem;
 }
-</style>
+</style> -->

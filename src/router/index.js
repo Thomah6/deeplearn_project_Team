@@ -82,9 +82,9 @@ const router = createRouter({
       component: Welcome,
     },
     {
-      path: '/searchcours',
-      name: 'searchcours',
-      component: () => import("@/catalog/SearchCours.vue"),
+      path: '/coursecard',
+      name: 'coursecard',
+      component: () => import("@/catalog/CourseCard.vue"),
     },
   ],
 })

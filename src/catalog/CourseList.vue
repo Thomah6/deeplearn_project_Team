@@ -7,6 +7,7 @@ import { RouterLink } from 'vue-router';
 
 
 
+
 </script>
 
 
@@ -25,7 +26,7 @@ import { RouterLink } from 'vue-router';
   </div>
 </div>
 
-<CourseCard :course="courses"/>
+<CourseCard :course="courses" />
 </template>
 
 
