@@ -3,10 +3,9 @@
       import { defineProps, ref, watch } from 'vue';
       import CourseProgress from './CourseProgress.vue';
 
-      const props = defineProps({
-        lesson: Object,
-        
-      })
+const props = defineProps({
+  lesson: Object,
+})
 
       const videoId = ref('')
 
@@ -37,10 +36,10 @@
 </script>
 <template>
   <CourseProgress :progress="progress"/>
-  <section class="mx-6 relative bottom-13 p-10">
+  <section class="p-4 md:p-6 lg:p-10">
     <iframe
       v-if="videoId"
-      class="xl:w-[60vw] xl:h-[60vh] my-10 rounded-lg md:h-80"
+      class="w-full aspect-video my-4 md:my-10 rounded-lg xl:w-[60vw] xl:h-[60vh]"
       :src="`https://www.youtube.com/embed/${videoId}`"
       title="YouTube video player"
       frameborder="0"
@@ -53,8 +52,8 @@
         @click="markAsCompleted">Marqué comme Terminé</button>
       </div>
     <div v-if="props.lesson" class="mt-6">
-      <h2 class="text-2xl font-bold mb-4 dark:text-white">{{ props.lesson.title }}</h2>
-      <p class="text-gray-700 dark:text-white">{{ props.lesson.contenu }}</p>
+      <h2 class="text-xl md:text-2xl dark:text-sky-400 font-bold mb-4 dark:text-white">{{ props.lesson.title }}</h2>
+      <p class="text-gray-700 dark:text-white dark:text-white/80 text-base md:text-lg">{{ props.lesson.contenu }}</p>
     </div>
 
     <div v-else class="mt-6">

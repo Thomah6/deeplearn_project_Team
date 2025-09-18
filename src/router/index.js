@@ -6,6 +6,7 @@ import ProfileView from '@/views/ProfileView.vue'
 import AuthViews from '@/features/auth/AuthViews.vue'
 import VerificationCodeViews from '@/features/auth/VerificationCodeViews.vue'
 import Welcome from '@/features/auth/Welcome.vue'
+import Admin from '@/features/Admin/Admin.vue'
 import ChatAiView from '@/views/ChatAiView.vue'
 
 const router = createRouter({
@@ -29,7 +30,7 @@ const router = createRouter({
       name: 'chatai',
       component: ChatAiView,
       props: true,
-      meta: { title: 'ChatAI - DeepLearn' },
+      meta: { title: 'ChatAI - DeepLearn' , requiresAuth: true },
     },
     {
       path: '/catalog',
@@ -56,50 +57,71 @@ const router = createRouter({
     name: 'lessons.show',
     component: () => import('@/cours/LessonItem.vue'),
     props:(route) => ({id: parseInt(route.params.id)}),
-    meta: { title: 'Lessons - DeepLearn' }
+    meta: { title: 'Lessons - DeepLearn', requiresAuth: true }
   },
+
+      {
+      path: '/modifycourse',
+      name: 'modifyourscourse',
+      component: Admin,
+      props: true,
+      meta: { title: 'modifycourses - DeepLearn' },
+    },
+
+
     {
       path: '/profile',
       name: 'profile',
       component: ProfileView,
-      props: true,
       meta: { title: 'Profil - DeepLearn', requiresAuth: true },
     },
     {
       path: '/admin',
       name: 'admin',
       component: AdminView,
-      meta: { title: 'Administration - DeepLearn', requiresAuth: true, isAdmin: true },
+      meta: { title: 'Administration - DeepLearn', requiresAuth: true },
     },
     {
       path: '/verification',
       name: 'Verification',
       component: VerificationCodeViews,
+      meta: { title: 'Vérification - DeepLearn' },
     },
     {
       path: '/welcome',
       name: 'welcome',
       component: Welcome,
     },
+    {
+      path: '/searchcours',
+      name: 'searchcours',
+      component: () => import("@/catalog/SearchCours.vue"),
+    },
   ],
 })
 
-// router.beforeEach((to, from, next) => {
-//   document.title = to.meta.title || 'DeepLearn'
+router.beforeEach((to, from, next) => {
+  document.title = to.meta.title || 'DeepLearn'
 
-//   const isAuthenticated = localStorage.getItem('token')
-//   const userStatus = localStorage.getItem('status') // "user" ou "admin"
+  const isAuthenticated = localStorage.getItem('token') === 'true'
+  const userStatus = localStorage.getItem('status') // "user" ou "admin"
 
-//   if (!isAuthenticated && to.meta.requiresAuth) {
-//     // Non connecté → direction login
-//     next({ name: 'login' })
-//   } else if (isAuthenticated && userStatus === 'admin' && to.name !== 'admin') {
-//     // Connecté ET admin → on force vers /admin (sauf si déjà dessus)
-//     next({ name: 'admin' })
-//   } else {
-//     // Sinon accès normal
-//     next({ name: 'home_catalogue' })
-//   }
-// })
+  // Si la route nécessite d'être admin mais l'utilisateur ne l'est pas
+  if (to.meta.isAdmin && userStatus !== 'admin') {
+    next({ name: 'home_catalogue' }) // Redirige vers l'accueil
+  }
+  // Si la route nécessite d'être authentifié mais l'utilisateur ne l'est pas
+  else if (to.meta.requiresAuth && !isAuthenticated) {
+    // Redirige vers la page de connexion, sauf si on y est déjà
+    if (to.name !== 'authviews') {
+      next({ name: 'authviews' })
+    } else {
+      next()
+    }
+  } else {
+    // Dans tous les autres cas, autorise la navigation
+    next()
+  }
+})
 
 export default router

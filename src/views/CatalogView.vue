@@ -1,10 +1,17 @@
 <script setup>
+
 import CourseList from '@/catalog/CourseList.vue';
 
 
 </script>
-<template>
 
-  <CourseList />
+<template>
+<!-- Announcement Banner -->
+
+<!-- End Announcement Banner -->
+ <div class="mx-auto">
+
+   <CourseList />
+ </div>
 
 </template>

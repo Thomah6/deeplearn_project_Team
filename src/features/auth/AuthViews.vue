@@ -80,7 +80,13 @@ function Login() {
     // Utilisateur trouvé, on crée la session
     localStorage.setItem('token', 'true')
     localStorage.setItem('user', JSON.stringify(user))
-    router.push('/') // Redirection vers la page d'accueil
+    if (user.email === 'admin@gmail.com') {
+      localStorage.setItem('status', 'admin')
+      router.push('/admin').then(() => window.location.reload()) // Redirection vers la page admin
+    } else {
+      localStorage.setItem('status', 'user')
+      router.push('/').then(() => window.location.reload()) // Redirection vers la page d'accueil
+    }
   } else {
     // Utilisateur non trouvé
     alert('Email ou mot de passe incorrect.')
@@ -89,11 +95,11 @@ function Login() {
 
 const isActive = ref(false)
 
-function handleRegister() {
+function showRegistrationForm() {
   isActive.value = true
 }
 
-function handleLogin() {
+function showLoginForm() {
   isActive.value = false
 }
 </script>
@@ -137,12 +143,12 @@ function handleLogin() {
           <div class="toggle-panel toggle-left">
             <h1>Welcome Back</h1>
             <p>Enter your personal details to use all of site features</p>
-            <button @click="handleLogin">Sign Up</button>
+            <button @click="showLoginForm">Sign In</button>
           </div>
           <div class="toggle-panel toggle-right">
             <h1>Hello, Friend</h1>
             <p>Register with your personal details to use all of site features</p>
-            <button @click="handleRegister">Sign In</button>
+            <button @click="showRegistrationForm">Sign Up</button>
           </div>
         </div>
       </div>
@@ -211,7 +217,7 @@ h1 {
 }
 
 .container button {
-  background-color: #512da8;
+  background-color: #222125;
   color: #fff;
   font-size: 16px;
   padding: 13px 50px;
@@ -329,9 +335,9 @@ h1 {
 }
 
 .toggle {
-  background-color: #512da8;
+  background-color: skyblue;
   height: 100%;
-  background: linear-gradient(to right, #5c6bc0, #512da8);
+  background: linear-gradient(to right, skyblue, #132642);
   color: #fff;
   position: relative;
   left: -100%;
