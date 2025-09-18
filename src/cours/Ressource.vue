@@ -27,11 +27,11 @@ watch(() => props.lesson, (newLesson) => {
 </script>
 
 <template>
-  <CourseProgress />
   <section class="p-4 md:p-6 lg:p-10">
+    <CourseProgress />
     <iframe
       v-if="videoId"
-      class="w-full aspect-video my-4 md:my-10 rounded-lg xl:w-[60vw] xl:h-[60vh]"
+      class=" aspect-video my-4 md:my-10 rounded-lg w-full xl:h-[60vh]"
       :src="`https://www.youtube.com/embed/${videoId}`"
       title="YouTube video player"
       frameborder="0"
@@ -40,7 +40,7 @@ watch(() => props.lesson, (newLesson) => {
     </iframe>
       <div>
         <button
-        class=" relative left-250 font-semibold bg-green-500 rounded-lg p-2 text-lg dark:text-white cursor-pointer"
+        class="  font-semibold bg-green-500 rounded-lg p-2 text-lg dark:text-white cursor-pointer"
         @click="markAsCompleted(index)"></button>
       </div>
     <div v-if="props.lesson" class="mt-6">

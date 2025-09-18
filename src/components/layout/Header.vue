@@ -1,13 +1,17 @@
 <script setup>
-import { ref, onMounted, onUnmounted, computed } from 'vue'
+import { ref, onMounted, onUnmounted, computed, watch } from 'vue'
 import { useRouter } from 'vue-router'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
 
 
 
 const router = useRouter()
 const image = '/user.png'
 const searchInput = ref(null)
-const search = ref("")
+const search = ref(route.query.q || '')
+
 const showMobileSearch = ref(false)
 
 const isDark = ref(false)
@@ -52,13 +56,15 @@ onUnmounted(() => {
   window.removeEventListener('keydown', handleKeyDown)
 })
 
-function SearchSend() {
-  // console.log(search.value);
-  if (search.value.trim()) {
-    router.push({ name: 'searchcours', query: { q: search.value.trim()}})
-  }
-  search.value=""
-}
+// Watch dynamique : met à jour le query param ?q=...
+watch(search, (newValue) => {
+  router.replace({
+    query: {
+      ...route.query,
+      q: newValue || undefined, // Supprime q si vide
+    }
+  })
+})
 
 </script>
 
@@ -304,4 +310,9 @@ function SearchSend() {
     </div>
   </div>
 </template>
+
+<style scoped>
+
+</style>
+
 

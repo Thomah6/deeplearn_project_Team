@@ -7,13 +7,14 @@ import { RouterLink } from 'vue-router';
 
 
 
+
 </script>
 
 
 <template>
 
 
-<CourseCard :course="courses"/>
+<CourseCard :course="courses" />
 </template>
 
 

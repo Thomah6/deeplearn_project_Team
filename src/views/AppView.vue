@@ -7,6 +7,8 @@ import Footer from '@/components/layout/Footer.vue'
 import Sidebar from '@/components/layout/Sidebar.vue'
 import AuthViews from '@/features/auth/AuthViews.vue'
 
+
+
 const testUsers = [
   {
     id: 0,
@@ -48,6 +50,7 @@ const usersData = ref(JSON.parse(localStorage.getItem('users')))
 const route = useRoute()
 const catalog = CourseData
 // console.log(route.path)
+// console.log(route.path)
 
 const isLogin = ref(localStorage.getItem('token') === 'true')
 
@@ -59,6 +62,8 @@ const showFooter = computed(() => {
   const pathsToHideOn = ['/c']
   return !pathsToHideOn.includes(route.path)
 })
+
+
 </script>
 <template>
   <div class="w-full min-h-screen dark:bg-gray-900">
@@ -66,7 +71,7 @@ const showFooter = computed(() => {
     <Sidebar v-if="showLayout" />
     <div class="w-full">
       <div :class="showLayout ? 'w-full lg:ps-65' : ''">
-        <RouterView :catalog="catalog" :usersData="usersData" :courses="catalog"></RouterView>
+        <RouterView :catalog="catalog" :usersData="usersData" :courses="catalog" ></RouterView>
       </div>
       <Footer v-if="showFooter" />
     </div>
