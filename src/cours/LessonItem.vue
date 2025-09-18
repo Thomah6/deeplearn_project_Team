@@ -87,7 +87,7 @@ console.log(getData);
 
     <section>
       <Ressource :lesson="currentLesson" />
-      <CompoComponent/>
+      <CompoComponent :course-id="props.id" />
     </section>
   </div>
 </template>
