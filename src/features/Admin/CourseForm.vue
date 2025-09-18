@@ -1,38 +1,51 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, watch, computed } from 'vue'
+
+const props = defineProps({
+  initialData: {
+    type: Object,
+    default: null,
+  },
+})
 
 // Définir les événements que ce composant peut émettre
-const emit = defineEmits(['add-course']);
+const emit = defineEmits(['save-course', 'cancel'])
 
 // Utiliser ref pour lier les données du formulaire
 const course = ref({
-    title: '',
-    level: 'Débutant', // Valeur par défaut
-    category: '',
-    lessons_count: 0, // Initialisé à 0 car les leçons sont ajoutées après
-    description: ''
-});
+  title: '',
+  level: 'Débutant',
+  category: '',
+  description: '',
+})
+
+watch(
+  () => props.initialData,
+  (newData) => {
+    if (newData) {
+      course.value = { ...newData }
+    } else {
+      // Reset form for creation
+      course.value = { title: '', level: 'Débutant', category: '', description: '' }
+    }
+  },
+  { immediate: true },
+)
 
 const submitForm = () => {
-    // Émettre un événement vers le parent avec les données du formulaire
-    emit('add-course', { ...course.value });
-
-    // Réinitialiser le formulaire après soumission
-    course.value = {
-        title: '',
-        level: 'Débutant',
-        category: '',
-        lessons_count: 0,
-        description: ''
-    };
+  // Émettre un événement vers le parent avec les données du formulaire
+  emit('save-course', { ...course.value })
 }
 
+const isEditing = computed(() => !!props.initialData)
 </script>
 
 
 <template>
-    <form @submit.prevent="submitForm" class="max-w-lg md:w-full  mx-auto h-[fit-content] bg-white dark:bg-gray-800 p-4 sm:p-6 md:p-8 border border-sky-200 dark:border-sky-700 rounded-lg shadow-lg">
-        <h1 class="text-2xl font-bold text-gray-800 dark:text-white mb-6 text-center">Ajouter un nouveau cours</h1>
+    <form @submit.prevent="submitForm" class="max-w-2xl mx-auto bg-white dark:bg-gray-800 p-8 border border-sky-200 dark:border-sky-700 rounded-lg shadow-lg">
+        <h1 class="text-2xl font-bold text-gray-800 dark:text-white mb-6 text-center">
+            {{ isEditing ? 'Modifier le cours' : 'Ajouter un nouveau cours' }}
+        </h1>
         <div class="mb-4">
             <label class="block text-gray-700 dark:text-white mb-2" for="title">Titre du cours:</label>
             <input
@@ -76,12 +89,19 @@ const submitForm = () => {
                 rows="4"
             ></textarea>
         </div>
-        <div class="flex justify-center">
+        <div class="flex justify-center gap-4">
+            <button
+                type="button"
+                @click="emit('cancel')"
+                class="bg-gray-500 hover:bg-gray-600 text-white font-semibold px-6 py-2 rounded shadow transition duration-200 cursor-pointer"
+            >
+                Annuler
+            </button>
             <button
                 type="submit"
                 class="bg-sky-600 hover:bg-sky-700 text-white font-semibold px-6 py-2 rounded shadow transition duration-200 cursor-pointer"
             >
-                Ajouter le cours
+                {{ isEditing ? 'Sauvegarder' : 'Ajouter le cours' }}
             </button>
         </div>
     </form>

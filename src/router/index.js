@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import AdminView from '@/views/AdminView.vue'
 import CatalogView from '@/views/CatalogView.vue'
+import HomeView from '@/views/HomeView.vue'
 import CourseView from '@/views/CourseView.vue'
 import ProfileView from '@/views/ProfileView.vue'
 import AuthViews from '@/features/auth/AuthViews.vue'
@@ -15,7 +16,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'home_catalogue',
-      component: CatalogView,
+      component: HomeView,
       meta: { title: 'Accueil - DeepLearn' },
     },
     {
