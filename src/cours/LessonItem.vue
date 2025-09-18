@@ -57,7 +57,7 @@ console.log(getData);
         </button>
       </div>
 
-      <article class="mx-4 sm:mx-10 mt-8 gap-4" :class="[showLessonsOnMobile ? 'grid' : 'hidden', 'lg:grid']">
+      <article class="sticky top-20 mx-4 sm:mx-10 mt-8 gap-4" :class="[showLessonsOnMobile ? 'grid' : 'hidden', 'lg:grid']">
         <div class="max-w-3xl mx-auto space-y-4 w-full" v-for="course in getData" :key="course.id">
           <!-- Loop through lessons instead of course -->
           <div v-for="lesson in course.lessons" :key="lesson.id"

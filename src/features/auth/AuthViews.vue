@@ -82,10 +82,10 @@ function Login() {
     localStorage.setItem('user', JSON.stringify(user))
     if (user.email === 'admin@gmail.com') {
       localStorage.setItem('status', 'admin')
-      router.push('/admin').then(() => window.location.reload()) // Redirection + reload // Redirection vers la page admin
+      router.push('/admin').then(() => window.location.reload()) // Redirection vers la page admin
     } else {
       localStorage.setItem('status', 'user')
-      router.push('/').then(() => window.location.reload()) // Redirection + reload// Redirection vers la page d'accueil
+      router.push('/').then(() => window.location.reload()) // Redirection vers la page d'accueil
     }
   } else {
     // Utilisateur non trouvé
@@ -95,11 +95,11 @@ function Login() {
 
 const isActive = ref(false)
 
-function handleRegister() {
+function showRegistrationForm() {
   isActive.value = true
 }
 
-function handleLogin() {
+function showLoginForm() {
   isActive.value = false
 }
 </script>
@@ -143,12 +143,12 @@ function handleLogin() {
           <div class="toggle-panel toggle-left">
             <h1>Welcome Back</h1>
             <p>Enter your personal details to use all of site features</p>
-            <button @click="handleLogin">Sign Up</button>
+            <button @click="showLoginForm">Sign In</button>
           </div>
           <div class="toggle-panel toggle-right">
             <h1>Hello, Friend</h1>
             <p>Register with your personal details to use all of site features</p>
-            <button @click="handleRegister">Sign In</button>
+            <button @click="showRegistrationForm">Sign Up</button>
           </div>
         </div>
       </div>
