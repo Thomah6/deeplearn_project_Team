@@ -203,7 +203,7 @@ watch(search, (newValue) => {
               class="size-9.5 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 focus:outline-hidden disabled:opacity-50 disabled:pointer-events-none dark:text-white"
             >
               <img
-                class="shrink-0 size-9.5 rounded-full"
+                class="shrink-0 size-9.5 rounded-full cursor-pointer"
                 :src="image"
                 alt="Avatar"
               />

@@ -32,7 +32,7 @@ const router = createRouter({
       name: 'chatai',
       component: ChatAiView,
       props: true,
-      meta: { title: 'ChatAI - DeepLearn' , requiresAuth: true },
+      meta: { title: 'ChatAI - DeepLearn', requiresAuth: true },
     },
     {
       path: '/catalog',
@@ -48,28 +48,27 @@ const router = createRouter({
       meta: { title: 'Cours - DeepLearn' },
     },
     {
-    path: '/description/:id',
-    name: 'description.show',
-    component: () => import('@/cours/CoursesDescription.vue'),
-    props:(route) => ({id: parseInt(route.params.id)}),
-    meta: { title: 'Description - DeepLearn' }
-  },
-  {
-    path: '/lessons/:id',
-    name: 'lessons.show',
-    component: () => import('@/cours/LessonItem.vue'),
-    props:(route) => ({id: parseInt(route.params.id)}),
-    meta: { title: 'Lessons - DeepLearn', requiresAuth: true }
-  },
+      path: '/description/:id',
+      name: 'description.show',
+      component: () => import('@/cours/CoursesDescription.vue'),
+      props: (route) => ({ id: parseInt(route.params.id) }),
+      meta: { title: 'Description - DeepLearn' },
+    },
+    {
+      path: '/lessons/:id',
+      name: 'lessons.show',
+      component: () => import('@/cours/LessonItem.vue'),
+      props: (route) => ({ id: parseInt(route.params.id) }),
+      meta: { title: 'Lessons - DeepLearn', requiresAuth: true },
+    },
 
-      {
+    {
       path: '/modifycourse',
       name: 'modifyourscourse',
       component: Admin,
       props: true,
       meta: { title: 'modifycourses - DeepLearn' },
     },
-
 
     {
       path: '/profile',
@@ -81,7 +80,7 @@ const router = createRouter({
       path: '/admin',
       name: 'admin',
       component: AdminView,
-      meta: { title: 'Administration - DeepLearn', requiresAuth: true , isAdmin: true},
+      meta: { title: 'Administration - DeepLearn', requiresAuth: true, isAdmin: true },
     },
     {
       path: '/verification',
@@ -94,7 +93,7 @@ const router = createRouter({
       name: 'welcome',
       component: Welcome,
     },
-        {
+    {
       path: '/quizz/:id',
       name: 'quizz',
       component: Quizz,
@@ -102,7 +101,7 @@ const router = createRouter({
     {
       path: '/coursecard',
       name: 'coursecard',
-      component: () => import("@/catalog/CourseCard.vue"),
+      component: () => import('@/catalog/CourseCard.vue'),
     },
   ],
   scrollBehavior(to, from, savedPosition) {
