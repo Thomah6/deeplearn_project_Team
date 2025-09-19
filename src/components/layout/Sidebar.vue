@@ -1,5 +1,13 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
+import { ref,onMounted } from 'vue';
 import { RouterLink } from 'vue-router';
+const user = ref(null)
+
+onMounted(() => {
+  const storedUser = localStorage.getItem('user');
+  if (storedUser) user.value = JSON.parse(storedUser);
+})
 
 </script>
 
@@ -30,7 +38,7 @@ import { RouterLink } from 'vue-router';
 
       <!-- Content -->
       <div
-        class="pt-8 mt-2 border-t border-sky-200 dark:border-gray-700 h-full overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-sky-100 [&::-webkit-scrollbar-thumb]:bg-sky-300 dark:[&::-webkit-scrollbar-track]:bg-slate-700 dark:[&::-webkit-scrollbar-thumb]:bg-slate-500"
+        class="pt-8 mt-4 border-t border-sky-200 dark:border-gray-700 h-full overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-sky-100 [&::-webkit-scrollbar-thumb]:bg-sky-300 dark:[&::-webkit-scrollbar-track]:bg-slate-700 dark:[&::-webkit-scrollbar-thumb]:bg-slate-500"
       >
         <nav
           class="hs-accordion-group p-3 w-full flex flex-col flex-wrap"
@@ -120,6 +128,18 @@ import { RouterLink } from 'vue-router';
                   <path d="M9 13v2" />
                 </svg>
                 AI Chatbot
+              </router-link>
+            </li>
+
+             <li v-if="user && user.isAdmin" class="hs-accordion" id="users-accordion">
+              <router-link
+                to="/admin"
+                type="button"
+                class="hs-accordion-toggle w-full text-start flex items-center gap-x-3.5 py-2 px-2.5 text-xl text-slate-700 rounded-lg hover:bg-sky-200 focus:outline-hidden focus:bg-sky-200 dark:bg-slate-900 dark:hover:bg-slate-800 dark:focus:bg-slate-800 dark:text-neutral-200"
+                aria-expanded="true"
+                aria-controls="users-accordion-child"
+              >
+                Admin Space
               </router-link>
             </li>
 

@@ -35,6 +35,13 @@ function generateCode(length = 6) {
 }
 
 async function Register() {
+  // Vérifier si l'email existe déjà
+  const emailExists = users.value.some((user) => user.email === registrationEmail.value)
+  if (emailExists) {
+    alert('Cette adresse email est déjà utilisée. Veuillez en choisir une autre.')
+    return // Arrête le processus d'inscription
+  }
+
   const verificationCode = generateCode()
 
   const NewUser = ref({
@@ -42,7 +49,7 @@ async function Register() {
     name: registrationName.value,
     email: registrationEmail.value,
     password: registrationPassword.value,
-    completedCourses: [],
+    completedCourses: [5, 2],
   })
 
   // Préparer les paramètres pour EmailJS
@@ -80,12 +87,10 @@ function Login() {
     // Utilisateur trouvé, on crée la session
     localStorage.setItem('token', 'true')
     localStorage.setItem('user', JSON.stringify(user))
-    if (user.email === 'admin@gmail.com') {
-      localStorage.setItem('status', 'admin')
-      router.push('/admin').then(() => window.location.reload()) // Redirection vers la page admin
+    if (user.isAdmin) {
+      router.push('/admin') // Redirection vers la page admin
     } else {
-      localStorage.setItem('status', 'user')
-      router.push('/').then(() => window.location.reload()) // Redirection vers la page d'accueil
+      router.push('/')// Redirection vers la page d'accueil
     }
   } else {
     // Utilisateur non trouvé

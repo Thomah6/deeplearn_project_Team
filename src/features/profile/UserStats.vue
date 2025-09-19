@@ -16,8 +16,8 @@ const add = '/add_reaction_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png'
       <span><img :src="image" alt="" /></span>
     </div>
     <div>
-      <h2 class="text-xl font-bold dark:text-white">{{ user?.name }}</h2>
-      <p class="text-gray-600 dark:text-white">Student</p>
+      <h2 class="text-2xl capitalize font-bold dark:text-white">{{ user?.name }}</h2>
+
       <p class="text-gray-600 dark:text-white">{{ user?.email }}</p>
     </div>
   </div>

@@ -1,0 +1,515 @@
+{
+  "quizzes": [
+    {
+      "id": 1,
+      "course_id": 1,
+      "title": "SQL Fondamental",
+      "questions": [
+        {
+          "question": "Quelle commande SQL est utilisée pour extraire des données d'une base de données ?",
+          "options": ["SELECT", "INSERT", "UPDATE", "DELETE"],
+          "answer": "SELECT"
+        },
+        {
+          "question": "Quelle clause SQL est utilisée pour filtrer les résultats d'une requête ?",
+          "options": ["WHERE", "GROUP BY", "ORDER BY", "HAVING"],
+          "answer": "WHERE"
+        },
+        {
+          "question": "Quelle commande SQL est utilisée pour ajouter de nouvelles données dans une table ?",
+          "options": ["INSERT INTO", "UPDATE", "DELETE", "SELECT"],
+          "answer": "INSERT INTO"
+        },
+        {
+          "question": "Quelle clause SQL est utilisée pour trier les résultats d'une requête ?",
+          "options": ["ORDER BY", "GROUP BY", "WHERE", "HAVING"],
+          "answer": "ORDER BY"
+        },
+        {
+          "question": "Quelle commande SQL est utilisée pour modifier des données existantes dans une table ?",
+          "options": ["UPDATE", "INSERT INTO", "DELETE", "SELECT"],
+          "answer": "UPDATE"
+        }
+      ]
+    },
+
+    {
+      "id": 2,
+      "course_id": 2,
+      "title": "Quiz HTML",
+      "questions": [
+        {
+          "question": "Quelle balise HTML est utilisée pour créer un lien hypertexte ?",
+          "options": ["<a>", "<link>", "<href>", "<url>"],
+          "answer": "<a>"
+        },
+        {
+          "question": "Quelle balise HTML permet d’insérer une image ?",
+          "options": ["<img>", "<image>", "<src>", "<pic>"],
+          "answer": "<img>"
+        },
+        {
+          "question": "Quelle balise HTML est utilisée pour les titres principaux ?",
+          "options": ["<h1>", "<title>", "<header>", "<head>"],
+          "answer": "<h1>"
+        },
+        {
+          "question": "Quelle balise HTML permet de créer une liste non ordonnée ?",
+          "options": ["<ul>", "<ol>", "<li>", "<list>"],
+          "answer": "<ul>"
+        },
+        {
+          "question": "Quelle balise HTML permet d’insérer une ligne horizontale ?",
+          "options": ["<hr>", "<line>", "<br>", "<horizontal>"],
+          "answer": "<hr>"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "course_id": 3,
+      "title": "Introduction à Python",
+      "questions": [
+        {
+          "question": "Quel mot-clé est utilisé pour définir une fonction en Python ?",
+          "options": ["def", "function", "fun", "define"],
+          "answer": "def"
+        },
+        {
+          "question": "Comment afficher du texte en Python ?",
+          "options": ["print()", "echo()", "display()", "show()"],
+          "answer": "print()"
+        },
+
+        {
+          "question": "Quel type de boucle existe en Python ?",
+          "options": ["for", "while", "do-while", "repeat"],
+          "answer": "for"
+        },
+        {
+          "question": "Comment déclarer une variable en Python ?",
+          "options": ["x = 5", "int x = 5", "var x = 5", "x := 5"],
+          "answer": "x = 5"
+        },
+        {
+          "question": "Quelle commande est utilisée pour créer un environnement virtuel en Python ?",
+          "options": [
+            "python -m venv nom_env",
+            "virtualenv nom_env",
+            "pip install venv",
+            "create-env nom_env"
+          ],
+          "answer": "python -m venv nom_env"
+        },
+        {
+          "question": "Quelle commande est utilisée pour activer un environnement virtuel sous Windows ?",
+          "options": [
+            "nom_env\\Scripts\\activate",
+            "source nom_env/bin/activate",
+            "activate nom_env",
+            "venv activate nom_env"
+          ],
+          "answer": "nom_env\\Scripts\\activate"
+        },
+        {
+          "question": "Quelle commande est utilisée pour installer des packages dans un environnement virtuel ?",
+          "options": [
+            "pip install package_name",
+            "npm install package_name",
+            "conda install package_name",
+            "install package_name"
+          ],
+          "answer": "pip install package_name"
+        },
+        {
+          "question": "Quelle commande est utilisée pour désactiver un environnement virtuel ?",
+          "options": ["deactivate", "exit", "stop env", "end env"],
+          "answer": "deactivate"
+        },
+        {
+          "question": "Quel fichier est couramment utilisé pour lister les dépendances d’un projet Python ?",
+          "options": ["requirements.txt", "dependencies.txt", "packages.txt", "env.txt"],
+          "answer": "requirements.txt"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "course_id": 4,
+      "title": "JavaScript Moderne",
+      "questions": [
+        {
+          "question": "Quel mot-clé permet de déclarer une variable en JavaScript ?",
+          "options": ["var", "let", "const", "toutes ces réponses"],
+          "answer": "toutes ces réponses"
+        },
+        {
+          "question": "Comment afficher un message dans la console en JavaScript ?",
+          "options": ["console.log()", "print()", "echo()", "alert()"],
+          "answer": "console.log()"
+        },
+        {
+          "question": "Quel symbole est utilisé pour les commentaires sur une ligne en JavaScript ?",
+          "options": ["//", "#", "/*", "--"],
+          "answer": "//"
+        },
+        {
+          "question": "Quelle méthode permet d’ajouter un élément à la fin d’un tableau JS ?",
+          "options": ["push()", "add()", "append()", "insert()"],
+          "answer": "push()"
+        },
+        {
+          "question": "Quel est le résultat de '2' + 2 en JavaScript ?",
+          "options": ["'22'", "4", "NaN", "Erreur"],
+          "answer": "'22'"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "course_id": 5,
+      "title": "React.js Fondamental",
+      "questions": [
+        {
+          "question": "Quel hook permet de gérer l’état dans un composant React ?",
+          "options": ["useState", "useEffect", "useContext", "useReducer"],
+          "answer": "useState"
+        },
+        {
+          "question": "Comment créer un composant fonctionnel en React ?",
+          "options": [
+            "function MonComposant() {}",
+            "class MonComposant {}",
+            "def MonComposant():",
+            "component MonComposant {}"
+          ],
+          "answer": "function MonComposant() {}"
+        },
+        {
+          "question": "Quel mot-clé permet d’importer React dans un fichier JS ?",
+          "options": ["import", "require", "include", "use"],
+          "answer": "import"
+        },
+        {
+          "question": "Quel hook permet d’exécuter du code après le rendu du composant ?",
+          "options": ["useEffect", "useState", "useRef", "useMemo"],
+          "answer": "useEffect"
+        },
+        {
+          "question": "Comment passer des props à un composant React ?",
+          "options": [
+            "<MonComposant prop='valeur' />",
+            "<MonComposant.prop = 'valeur' />",
+            "<MonComposant:prop='valeur' />",
+            "<MonComposant>{prop: 'valeur'}</MonComposant>"
+          ],
+          "answer": "<MonComposant prop='valeur' />"
+        }
+      ]
+    },
+
+    {
+      "id": 6,
+      "course_id": 6,
+      "title": "DevOps avec Docker",
+      "questions": [
+        {
+          "question": "Quelle commande Docker est utilisée pour créer un conteneur ?",
+          "options": ["docker run", "docker build", "docker create", "docker start"],
+          "answer": "docker run"
+        },
+        {
+          "question": "Quel fichier est utilisé pour définir les services dans Docker Compose ?",
+          "options": ["docker-compose.yml", "Dockerfile", "docker.yml", "compose.json"],
+          "answer": "docker-compose.yml"
+        },
+        {
+          "question": "Quelle commande permet de lister les conteneurs Docker en cours d’exécution ?",
+          "options": ["docker ps", "docker ls", "docker list", "docker containers"],
+          "answer": "docker ps"
+        },
+        {
+          "question": "Quel mot-clé est utilisé dans un Dockerfile pour spécifier l’image de base ?",
+          "options": ["FROM", "BASE", "IMAGE", "START"],
+          "answer": "FROM"
+        },
+        {
+          "question": "Quelle commande Docker est utilisée pour arrêter un conteneur en cours d’exécution ?",
+          "options": ["docker stop", "docker kill", "docker end", "docker halt"],
+          "answer": "docker stop"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "course_id": 7,
+      "title": "Git et GitHub avancé",
+      "questions": [
+        {
+          "question": "Quelle commande Git est utilisée pour créer une nouvelle branche ?",
+          "options": ["git branch", "git checkout", "git merge", "git init"],
+          "answer": "git branch"
+        },
+        {
+          "question": "Quelle commande permet de fusionner une branche dans la branche courante ?",
+          "options": ["git merge", "git rebase", "git pull", "git commit"],
+          "answer": "git merge"
+        },
+        {
+          "question": "Quelle commande Git est utilisée pour cloner un dépôt distant ?",
+          "options": ["git clone", "git fork", "git pull", "git init"],
+          "answer": "git clone"
+        },
+        {
+          "question": "Quelle commande permet de voir l’historique des commits ?",
+          "options": ["git log", "git history", "git status", "git show"],
+          "answer": "git log"
+        },
+        {
+          "question": "Quelle commande est utilisée pour ajouter des fichiers à l’index avant un commit ?",
+          "options": ["git add", "git stage", "git commit", "git push"],
+          "answer": "git add"
+        },
+        {
+          "question": "Quelle commande est utilisée pour initialiser un dépôt Git ?",
+          "options": ["git init", "git start", "git create", "git new"],
+          "answer": "git init"
+        },
+        {
+          "question": "Quelle commande permet de vérifier l’état des fichiers dans un dépôt Git ?",
+          "options": ["git status", "git check", "git info", "git log"],
+          "answer": "git status"
+        },
+        {
+          "question": "Quelle commande est utilisée pour envoyer des modifications vers un dépôt distant ?",
+          "options": ["git push", "git send", "git upload", "git commit"],
+          "answer": "git push"
+        },
+        {
+          "question": "Quelle commande permet de récupérer les modifications depuis un dépôt distant ?",
+          "options": ["git pull", "git fetch", "git get", "git update"],
+          "answer": "git pull"
+        },
+        {
+          "question": "Quelle commande est utilisée pour créer un commit avec un message ?",
+          "options": [
+            "git commit -m 'message'",
+            "git save 'message'",
+            "git record 'message'",
+            "git log -m 'message'"
+          ],
+          "answer": "git commit -m 'message'"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "course_id": 8,
+      "questions": [
+        {
+          "question": "Quelle commande est utilisée pour installer un package avec npm ?",
+          "options": ["npm install", "npm add", "npm get", "npm fetch"],
+          "answer": "npm install"
+        },
+        {
+          "question": "Quel fichier contient les dépendances d’un projet Node.js ?",
+          "options": ["package.json", "dependencies.json", "node_modules.json", "config.json"],
+          "answer": "package.json"
+        },
+        {
+          "question": "Quelle commande est utilisée pour exécuter un script défini dans package.json ?",
+          "options": ["npm run", "npm exec", "npm start", "npm launch"],
+          "answer": "npm run"
+        },
+        {
+          "question": "Quelle commande est utilisée pour mettre à jour un package installé ?",
+          "options": ["npm update", "npm upgrade", "npm refresh", "npm renew"],
+          "answer": "npm update"
+        },
+        {
+          "question": "Quelle commande est utilisée pour désinstaller un package avec npm ?",
+          "options": ["npm uninstall", "npm remove", "npm delete", "npm erase"],
+          "answer": "npm uninstall"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "course_id": 9,
+      "title": "Cybersécurité Base",
+      "questions": [
+        {
+          "question": "Quel est le but principal de la cybersécurité ?",
+          "options": [
+            "Protéger les systèmes informatiques contre les cyberattaques",
+            "Augmenter la vitesse des réseaux",
+            "Développer des logiciels",
+            "Gérer les bases de données"
+          ],
+          "answer": "Protéger les systèmes informatiques contre les cyberattaques"
+        },
+        {
+          "question": "Quel type de malware se propage en se répliquant lui-même ?",
+          "options": ["Ver", "Cheval de Troie", "Spyware", "Adware"],
+          "answer": "Ver"
+        },
+        {
+          "question": "Quelle méthode est couramment utilisée pour voler des informations sensibles en se faisant passer pour une entité de confiance ?",
+          "options": ["Phishing", "Hameçonnage", "Spoofing", "Sniffing"],
+          "answer": "Phishing"
+        },
+        {
+          "question": "Quel protocole est utilisé pour sécuriser les communications sur Internet ?",
+          "options": ["HTTPS", "HTTP", "FTP", "SMTP"],
+          "answer": "HTTPS"
+        },
+        {
+          "question": "Quelle pratique est recommandée pour créer un mot de passe sécurisé ?",
+          "options": [
+            "Utiliser une combinaison de lettres, chiffres et symboles",
+            "Utiliser uniquement des lettres minuscules",
+            "Utiliser son nom ou sa date de naissance",
+            "Utiliser le même mot de passe pour tous les comptes"
+          ],
+          "answer": "Utiliser une combinaison de lettres, chiffres et symboles"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "course_id": 11,
+      "title": " Machine Learning Fundamentals",
+      "questions": [
+        {
+          "question": "What is the primary goal of supervised learning?",
+          "options": [
+            "To learn a mapping from inputs to outputs using labeled data",
+            "To find hidden patterns in unlabeled data",
+            "To reduce the dimensionality of data",
+            "To cluster similar data points together"
+          ],
+          "answer": "To learn a mapping from inputs to outputs using labeled data"
+        },
+        {
+          "question": "Which algorithm is commonly used for classification tasks?",
+          "options": ["Decision Trees", "K-Means", "PCA", "Linear Regression"],
+          "answer": "Decision Trees"
+        },
+        {
+          "question": "What is overfitting in machine learning?",
+          "options": [
+            "When a model performs well on training data but poorly on unseen data",
+            "When a model performs poorly on both training and unseen data",
+            "When a model is too simple to capture the underlying patterns in the data",
+            "When a model is trained on too little data"
+          ],
+          "answer": "When a model performs well on training data but poorly on unseen data"
+        },
+        {
+          "question": "Which technique is used to prevent overfitting?",
+          "options": ["Cross-validation", "Normalization", "Clustering", "Dimensionality Reduction"],
+          "answer": "Cross-validation"
+        },
+        {
+          "question": "What is the purpose of feature scaling?",
+          "options": [
+            "To standardize the range of independent variables",
+            "To reduce the number of features in the dataset",
+            "To increase the complexity of the model",
+            "To convert categorical variables into numerical format"
+          ],
+          "answer": "To standardize the range of independent variables"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "course_id": 12,
+      "title": "Cloud Computing AWS",
+      "questions": [
+      {
+        "question": "Que signifie AWS ?",
+        "options": [
+          "Amazon Web Services",
+          "Solutions Web Avancées",
+          "Systèmes Web Automatisés",
+          "Services Web Appliqués"
+        ],
+        "answer": "Amazon Web Services"
+      },
+      {
+        "question": "Quel service AWS est utilisé pour le stockage d’objets évolutif ?",
+        "options": ["Amazon S3", "Amazon EC2", "Amazon RDS", "Amazon VPC"],
+        "answer": "Amazon S3"
+      },
+      {
+        "question": "Quel est le but principal d’Amazon EC2 ?",
+        "options": [
+          "Fournir une capacité de calcul redimensionnable dans le cloud",
+          "Stocker et récupérer n’importe quelle quantité de données",
+          "Gérer des bases de données relationnelles",
+          "Surveiller les ressources et applications AWS"
+        ],
+        "answer": "Fournir une capacité de calcul redimensionnable dans le cloud"
+      },
+      {
+        "question": "Quel service AWS est utilisé pour déployer et gérer des applications ?",
+        "options": [
+          "AWS Elastic Beanstalk",
+          "AWS Lambda",
+          "AWS CloudFormation",
+          "AWS CloudWatch"
+        ],
+        "answer": "AWS Elastic Beanstalk"
+      },
+      {
+        "question": "Quel est le but d’Amazon RDS ?",
+        "options": [
+          "Configurer, exploiter et mettre à l’échelle une base de données relationnelle dans le cloud",
+          "Fournir un réseau de diffusion de contenu",
+          "Gérer les accès et permissions des utilisateurs",
+          "Automatiser le provisionnement de l’infrastructure"
+        ],
+        "answer": "Configurer, exploiter et mettre à l’échelle une base de données relationnelle dans le cloud"
+      }
+      ]
+    },
+    {
+      "id": 13,
+      "course_id": 13,
+      "title": " Node.js et Express",
+      "questions": [
+        {
+          "question": "Quel module Node.js est utilisé pour créer un serveur HTTP ?",
+          "options": ["http", "fs", "path", "url"],
+          "answer": "http"
+        },
+        {
+          "question": "Quelle commande est utilisée pour initialiser un projet Node.js ?",
+          "options": ["npm init", "node start", "npm create", "node init"],
+          "answer": "npm init"
+        },
+        {
+          "question": "Quel middleware Express est utilisé pour analyser les corps de requête JSON ?",
+          "options": ["express.json()", "bodyParser.json()", "express.urlencoded()", "bodyParser.urlencoded()"],
+          "answer": "express.json()"
+        },
+        {
+          "question": "Comment définir une route GET dans Express ?",
+          "options": [
+            "app.get('/route', (req, res) => {})",
+            "app.post('/route', (req, res) => {})",
+            "app.put('/route', (req, res) => {})",
+            "app.delete('/route', (req, res) => {})"
+          ],
+          "answer": "app.get('/route', (req, res) => {})"
+        },
+        {
+          "question": "Quelle commande est utilisée pour installer Express dans un projet Node.js ?",
+          "options": ["npm install express", "npm add express", "npm get express", "npm fetch express"],
+          "answer": "npm install express"
+        }
+      ]
+    }
+  ]
+}

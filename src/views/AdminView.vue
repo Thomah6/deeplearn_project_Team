@@ -1,328 +1,188 @@
 <script setup>
-import { ref, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
-//Valeur pour afficher le nombre de cours
-const router = useRouter()
+import { ref, onMounted, computed } from 'vue'
+import DashboardStats from '@/features/Admin/DashboardStats.vue'
+import CoursesTable from '@/features/Admin/CoursesTable.vue'
+import UsersTable from '@/features/Admin/UsersTable.vue'
+import CourseForm from '@/features/Admin/CourseForm.vue'
+import LessonForm from '@/features/Admin/LessonForm.vue'
+import Notification from '@/features/Admin/Notification.vue'
 
-//Tableau des cours
-
-
-
-const coursesCount = ref(0)
-//Valeur pour afficher le nombre d'utilisateurs
-const usersCount = ref(0)
-//Valeur pour afficher les utilisateurs
-const showUsers = ref(false)
-//Valeur pour afficher les cours
-const showCourses = ref(false)
-
-let id;
-//Tableau des utilisateurs
-const userArray = ref([
-    { id: 1, name: 'Alice', email: 'nadegedjossou299@gmail.com' , statues:'Débutant'},
-    { id: 2, name: 'Bob', email: 'bob@gmail.com' , statues:'Intermédiaire' },
-    { id: 3, name: 'Charlie', email: 'charlie@gmail.com', statues:'Expert' },
-])
-//Tableau des cours
-const courseArray = ref([
-    { id: 1, title: 'Introduction to Vue.js', description: 'Apprenez les bases en vue js' },
-    { id: 2, title: 'Advanced JavaScript',description: 'Approfondissez vos connaissances en JavaScript' },
-    { id: 3, title: 'Web Development Basics', description: 'Les bases du développement web'},
-])
-//Simuler la récupération des données depuis une API ou une base de données
-onMounted(() => {
-    coursesCount.value = 12
-    usersCount.value = 45
+const props = defineProps({
+  courses: Array,
+  usersData: Array,
 })
 
-//Fonction pour afficher les cours
-function courseButton() {
-  showCourses.value = !showCourses.value
+// --- State Management ---
+const currentView = ref('courses') // 'courses', 'users', 'editCourse', 'addLesson'
+
+// Data arrays
+const courseArray = ref([])
+const userArray = ref([])
+
+// Computed counts
+const coursesCount = computed(() => courseArray.value.length)
+const usersCount = computed(() => userArray.value.length)
+
+// State for forms
+const courseToEdit = ref(null) // For creating or editing a course
+const courseToEditForLessons = ref(null)
+
+// Notification state
+const notification = ref({ message: '', type: 'success', visible: false })
+
+onMounted(() => {
+  // Load from localStorage or use props as fallback
+  const storedCourses = localStorage.getItem('courses')
+  if (storedCourses) {
+    courseArray.value = JSON.parse(storedCourses)
+  } else {
+    courseArray.value = JSON.parse(JSON.stringify(props.courses || []))
+    localStorage.setItem('courses', JSON.stringify(courseArray.value))
+  }
+
+  const storedUsers = localStorage.getItem('users')
+  if (storedUsers) {
+    userArray.value = JSON.parse(storedUsers)
+  } else {
+    userArray.value = JSON.parse(JSON.stringify(props.usersData || []))
+    localStorage.setItem('users', JSON.stringify(userArray.value))
+  }
+})
+
+// --- View Navigation Handlers ---
+function showCoursesView() {
+  currentView.value = 'courses'
+  courseToEdit.value = null
+  courseToEditForLessons.value = null
 }
 
-//Fonction pour supprimer un cours
-function SupButton(courseId) {
-  id = courseId;
-  //filter pour supprimer le cours avec l'id correspondant
-  console.log(id);
-courseArray.value = courseArray.value.filter(course => course.id !== id);
-// coursesCount.value = courseArray.value.length;
+function showUsersView() {
+  currentView.value = 'users'
 }
 
-
-//Fonction pour modifier un cours
-function Update(courseId) {
-  id = courseId;
-  router.push('/modifycourse')
-  // Trouver le cours avec l'id correspondant
-  courseArray.value = courseArray.value.find(course => course.id === id);
-//   if (course) {
-//     // Logique de modification (par exemple, ouvrir un modal ou rediriger vers une page de modification)
-//     console.log('Modifier le cours :', course);
-//     alert(`Modifier le cours : ${course.title}`);
-//   } else {
-//     console.log('Cours non trouvé avec l\'ID :', id);
-//   }
-}   
-
-
-//Fonction pour ajouter un cours
-function addCourse(courseId) {
-  id = courseId;
-  router.push('/modifycourse')
-  // Trouver le cours avec l'id correspondant
-courseArray.value = courseArray.value.find(course => course.id === id);
-//   if (course) {
-//     // Logique pour ajouter le cours (par exemple, mettre à jour son statut dans la base de données)
-//     console.log('Ajouter le cours :', course);
-//    alert(`Ajouter le cours : ${course.title}`); 
-//   } else {
-//     console.log('Cours non trouvé avec l\'ID :', id);
-//   }
-}   
- 
-
-//Fonction pour afficher les utilisateurs
-function userButton() {
-    showUsers.value = !showUsers.value
+function showAddCourseForm() {
+  courseToEdit.value = null // Ensure we are in "create" mode
+  currentView.value = 'editCourse'
 }
 
-//Fonction pour supprimer un utilisateur
+function showEditCourseForm(course) {
+  courseToEdit.value = course
+  currentView.value = 'editCourse'
+}
+
+function showLessonForm(course) {
+  courseToEditForLessons.value = course
+  currentView.value = 'addLesson'
+}
+
+// --- Data Persistence ---
+function saveDataToLocalStorage() {
+  localStorage.setItem('courses', JSON.stringify(courseArray.value))
+  localStorage.setItem('users', JSON.stringify(userArray.value))
+}
+
+function showNotification(message, type = 'success') {
+  notification.value = { message, type, visible: true }
+  setTimeout(() => {
+    notification.value.visible = false
+  }, 3000)
+}
+
+// --- CRUD Handlers ---
+
+// Courses
+function handleSaveCourse(courseData) {
+  if (courseData.id) {
+    // Update existing course
+    const index = courseArray.value.findIndex((c) => c.id === courseData.id)
+    if (index !== -1) {
+      courseArray.value[index] = { ...courseArray.value[index], ...courseData }
+      saveDataToLocalStorage()
+      showNotification(`Le cours "${courseData.title}" a été mis à jour.`)
+    }
+  } else {
+    // Add new course
+    const newCourse = {
+      ...courseData,
+      id: Date.now(), // Simulate a new ID
+      lessons: [],
+      lessons_count: 0,
+    }
+    courseArray.value.unshift(newCourse)
+    saveDataToLocalStorage()
+    showNotification(`Le cours "${newCourse.title}" a été ajouté.`)
+  }
+  showCoursesView()
+}
+
+function handleDeleteCourse(courseId) {
+  if (confirm('Êtes-vous sûr de vouloir supprimer ce cours ?')) {
+    courseArray.value = courseArray.value.filter((course) => course.id !== courseId)
+    saveDataToLocalStorage()
+    showNotification('Cours supprimé avec succès.', 'success')
+  }
+}
+
+// Lessons
+function handleSaveLesson(lessonData) {
+  if (!courseToEditForLessons.value) return
+
+  const lessonToAdd = {
+    ...lessonData,
+    id: (courseToEditForLessons.value.lessons.length || 0) + 1,
+    done: 'false',
+  }
+
+  const course = courseArray.value.find(c => c.id === courseToEditForLessons.value.id);
+  if (course) {
+    course.lessons.push(lessonToAdd)
+    course.lessons_count = course.lessons.length
+    saveDataToLocalStorage()
+    showNotification(`Leçon "${lessonToAdd.title}" ajoutée.`)
+  }
+
+  showCoursesView()
+}
+
+// Users
 function userSupButton(userId) {
-  id = userId;
-  //filter pour supprimer l'utilisateur avec l'id correspondant
-  console.log(id);
-userArray.value = userArray.value.filter(user => user.id !== id);
-
+  if (confirm("Êtes-vous sûr de vouloir supprimer cet utilisateur ?")) {
+    userArray.value = userArray.value.filter((user) => user.id !== userId)
+    saveDataToLocalStorage()
+    showNotification('Utilisateur supprimé.', 'success')
+  }
 }
-//fonction pour faire le toggle du button Ajouter un admin en button admin ajouté
-const isAdmin = ref(true);
-// function toggleAdminButton(user) {
- 
-// } 
 
-//Fonction pour ajouter un utilisateur comme admin
-function addUserAsAdmin(userId) {
-  // Trouver l'utilisateur avec l'id correspondant
-id = userId;
-console.log(id);
- userId.isAdmin = !userId.isAdmin;
-
-  
-  // const user = userArray.value.find(user => user.id === id);
-//   if (user) {
-//     // Logique pour ajouter l'utilisateur comme admin (par exemple, mettre à jour son rôle dans la base de données)
-//     console.log('Ajouter comme admin :', user);
-//     alert(`Ajouter comme admin : ${user.name}`);
-//   } else {
-//     console.log('Utilisateur non trouvé avec l\'ID :', id);
-//   }
+function toggleAdminStatus(user) {
+  user.isAdmin = !user.isAdmin
+  saveDataToLocalStorage()
+  showNotification(`Le statut de ${user.name} a été mis à jour.`)
 }
 </script>
 
 <template>
-    <div class=" bg-gray-200 dark:bg-gray-900 w-full ">
-        <div class="w-full mx-auto mt-2 p-6 bg-gray-100 rounded-lg dark:bg-gray-900">
-            <h1 class="text-2xl font-bold text-center mb-6 text-white">Tableau de bord Admin</h1>
-            <div class="flex flex-col md:flex-row gap-6 mt-6">
-                <div class="flex-1 bg-white rounded-md shadow p-5 text-center dark:bg-gray-700 text-white">
-                    <h2 class="mb-3 text-lg font-semibold">Nombre de cours</h2>
-                    <p class="text-3xl font-bold text-gray-800 dark:text-white">{{ coursesCount }}</p>
-                    <div class="bg-sky-300 w-full flex justify-center items-center p-5 mt-5 border border-gray-700 rounded-lg font-bold cursor-pointer">
-                        <button class="cursor-pointer"@click="courseButton">Gérer les cours</button>
-                    </div>
-                </div>
-                 
-                 
-                <div class="flex-1 bg-white rounded-md shadow p-5 text-center dark:bg-gray-700 text-white">
-                    <h2 class="mb-3 text-lg font-semibold dark:text-white">Nombre d'utilisateurs</h2>
-                    <p class="text-3xl font-bold text-gray-800 dark:text-white">{{ usersCount }}</p>
-                    <div class="bg-sky-300 w-full flex justify-center items-center p-5 mt-5 border border-gray-700 rounded-lg font-bold cursor-pointer">
-                        <button class="cursor-pointer" @click="userButton">Gérer les utilisateurs</button>
-                    </div>
-        
-                </div>
-            </div>
-        </div>
-        <!-- //Affichage des utilisateurs -->
-         <div v-if="showUsers" class="mt-4 text-left text-white m-2 p-4 bg-gray-50 rounded-lg dark:bg-gray-800">
-                        <h3 class="font-semibold mb-2 ">Liste des utilisateurs :</h3>
+  <div class="w-full min-h-screen bg-gray-50 dark:bg-gray-900 p-4 sm:p-6 lg:p-8">
+    <h1 class="text-2xl font-bold text-center mb-6 text-gray-800 dark:text-white">Tableau de bord Admin</h1>
 
+    <!-- Notification Area -->
+    <Notification v-if="notification.visible" :message="notification.message" :type="notification.type" />
 
+    <!-- Stats Cards -->
+    <DashboardStats :courses-count="coursesCount" :users-count="usersCount" @manage-courses="showCoursesView" @add-course="showAddCourseForm" @manage-users="showUsersView" />
 
-                                                       <!-- Table Section -->
-<div class="px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-  <!-- Card -->
-  <div class="flex flex-col">
-    <div class="-m-1.5 overflow-x-auto">
-      <div class="p-1.5 min-w-full inline-block align-middle">
-        <div class="bg-white border border-gray-200 rounded-xl shadow-2xs overflow-hidden dark:bg-neutral-900 dark:border-neutral-700">
-       
- 
-          <!-- Table -->
-          <table class="min-w-full divide-y divide-gray-200 dark:divide-neutral-700">
-            <thead class="bg-gray-50 dark:bg-neutral-800">
-              <tr>
-                <th scope="col" class="px-6 py-3 text-start">
-                  <div class="flex items-center gap-x-2">
-                    <span class="text-xs font-semibold uppercase text-gray-800 dark:text-neutral-200">
-                      Nom
-                    </span>
-                  </div>
-                </th>
- 
-                <th scope="col" class="px-6 py-3 text-start">
-                  <div class="flex items-center gap-x-2">
-                    <span class="text-xs font-semibold uppercase text-gray-800 dark:text-neutral-200">
-                      Email
-                    </span>
-                  </div>
-                </th>
- 
-                <th scope="col" class="px-6 py-3 text-start">
-                  <div class="flex items-center gap-x-2">
-                    <span class="text-xs font-semibold uppercase text-gray-800 dark:text-neutral-200">
-                  Statues
-                    </span>
-                  </div>
-                </th>
+    <div class="mt-8">
+      <!-- Courses Table -->
+      <CoursesTable v-if="currentView === 'courses'" :courses="courseArray" @add-lesson="showLessonForm" @edit-course="showEditCourseForm" @delete-course="handleDeleteCourse" />
 
-                <th scope="col" class="px-6 py-3 text-start">
-                  <div class="flex items-center gap-x-2">
-                    <span class="text-xs font-semibold uppercase text-gray-800 dark:text-neutral-200">
-                     Actions
-                    </span>
-                  </div>
-                </th>
- 
-               
-              </tr>
-            </thead>
- 
-            <tbody class="divide-y divide-gray-200 dark:divide-neutral-700">
-           
-              <tr v-for="user in userArray" :key="user.id" class="bg-white text-black hover:bg-gray-50 dark:bg-neutral-900 dark:hover:bg-neutral-800 light:text-black">
-                <td class="size-px whitespace-nowrap align-top p-5 light:text-black">{{ user.name }} </td>
-                 
-                   
-               
-                <td class="size-px whitespace-nowrap align-top p-5 light:text-black">{{ user.email }} </td>
-                 
-                   
-                 <td class="size-px whitespace-nowrap align-top p-5 light:text-black">{{ user.statues }} </td>
-             
-                   <td class="size-px whitespace-nowrap align-top p-5">
-                    <button @click="userSupButton(user.id)" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 mr-2 dark:text-white">Supprimer</button>
-                    <button v-if="isAdmin" @click="addUserAsAdmin(user.id)" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 mr-2 dark:text-white">Ajouter comme Admin</button>
-                  
-                   <button v-else class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 mr-2 dark:text-white">Admin</button>
-                  </td>
-      
-              
-               
-              </tr>
- 
- 
-            </tbody>
-            
-          </table>
-               <div v-if="userArray.length === 0" class="p-4 text-yellow-800 text-center rounded-lg mb-4 dark:text-white dark:text-center"> Aucnun utilisateurs disponible.</div>
-          <!-- End Table -->
+      <!-- Users Table (Placeholder) -->
+      <UsersTable v-if="currentView === 'users'" :users="userArray" @delete-user="userSupButton" @toggle-admin="toggleAdminStatus" />
 
-        </div>
-      </div>
+      <!-- Course Add/Edit Form -->
+      <CourseForm v-if="currentView === 'editCourse'" :initial-data="courseToEdit" @save-course="handleSaveCourse" @cancel="showCoursesView" />
+
+      <!-- Lesson Add Form -->
+      <LessonForm v-if="currentView === 'addLesson' && courseToEditForLessons" :course="courseToEditForLessons" @save-lesson="handleSaveLesson" @cancel="showCoursesView" />
     </div>
   </div>
-  <!-- End Card -->
-</div>
-                  
-                    </div>
-    <!-- //Affichage des cours -->
-             <div v-if="showCourses" class="mt-4 text-left text-white m-2 p-4 bg-gray-50 rounded-lg dark:bg-gray-800">
-                        <h3 class="font-semibold mb-2 ">Liste des cours :</h3>
-                   
-                               <!-- Table Section -->
-<div class="px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-  <!-- Card -->
-  <div class="flex flex-col">
-    <div class="-m-1.5 overflow-x-auto">
-      <div class="p-1.5 min-w-full inline-block align-middle">
-        <div class="bg-white border border-gray-200 rounded-xl shadow-2xs overflow-hidden dark:bg-neutral-900 dark:border-neutral-700">
-       
- 
-          <!-- Table -->
-          <table class="min-w-full divide-y divide-gray-200 dark:divide-neutral-700">
-            <thead class="bg-gray-50 dark:bg-neutral-800">
-              <tr>
-                <th scope="col" class="px-6 py-3 text-start">
-                  <div class="flex items-center gap-x-2">
-                    <span class="text-xs font-semibold uppercase text-gray-800 dark:text-neutral-200">
-                      Titre
-                    </span>
-                  </div>
-                </th>
- 
-                <th scope="col" class="px-6 py-3 text-start">
-                  <div class="flex items-center gap-x-2">
-                    <span class="text-xs font-semibold uppercase text-gray-800 dark:text-neutral-200">
-                      Description
-                    </span>
-                  </div>
-                </th>
- 
-                <th scope="col" class="px-6 py-3 text-start">
-                  <div class="flex items-center gap-x-2">
-                    <span class="text-xs font-semibold uppercase text-gray-800 dark:text-neutral-200">
-                     Actions
-                    </span>
-                  </div>
-                </th>
- 
-               
-              </tr>
-            </thead>
- 
-
-           
-                <tbody class="divide-y divide-gray-200 dark:divide-neutral-700">
-                  <tr v-for="course in courseArray" :key="course.id" class="bg-white text-black hover:bg-gray-50 dark:bg-neutral-900 dark:hover:bg-neutral-800">
-                    <td class="size-px whitespace-nowrap align-top p-5">{{ course.title }} </td>
-                
-                
-                
-                    <td class="size-px whitespace-nowrap align-top p-5">{{ course.description }} </td>
-                
-                
-                
-                
-                       <td class="size-px whitespace-nowrap align-top p-5">
-                            <RouterLink to="modifycourse"><button @click="addCourse(course.id)" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 mr-2 cursor-pointer dark:text-white">Ajouter</button></RouterLink>
-                        <button @click="SupButton(course.id)" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 mr-2 cursor-pointer dark:text-white">Supprimer</button>
-                        <RouterLink to="modifycourse"><button @click="Update(course.id)" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 cursor-poniter dark:text-white">Modifier</button></RouterLink>
-                       </td>
-                
-                
-                
-                  </tr>
-                </tbody>
-            
-          </table>
-           <div v-if="courseArray.length === 0" class="p-4 text-yellow-800 rounded-lg mb-4 text-center dark:text-white"> Aucnun cours disponible.</div>
-          <!-- End Table -->
- 
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- End Card -->
-</div>
-                       
-
-                     
-                    </div> 
-    </div>
-
-
-
 </template>
 <style scoped> </style>
