@@ -35,6 +35,13 @@ function generateCode(length = 6) {
 }
 
 async function Register() {
+  // Vérifier si l'email existe déjà
+  const emailExists = users.value.some((user) => user.email === registrationEmail.value)
+  if (emailExists) {
+    alert('Cette adresse email est déjà utilisée. Veuillez en choisir une autre.')
+    return // Arrête le processus d'inscription
+  }
+
   const verificationCode = generateCode()
 
   const NewUser = ref({
@@ -42,7 +49,7 @@ async function Register() {
     name: registrationName.value,
     email: registrationEmail.value,
     password: registrationPassword.value,
-    completedCourses: [],
+    completedCourses: [5, 2],
   })
 
   // Préparer les paramètres pour EmailJS
@@ -80,7 +87,11 @@ function Login() {
     // Utilisateur trouvé, on crée la session
     localStorage.setItem('token', 'true')
     localStorage.setItem('user', JSON.stringify(user))
-    router.push('/') // Redirection vers la page d'accueil
+    if (user.isAdmin) {
+      router.push('/admin') // Redirection vers la page admin
+    } else {
+      router.push('/')// Redirection vers la page d'accueil
+    }
   } else {
     // Utilisateur non trouvé
     alert('Email ou mot de passe incorrect.')
@@ -89,11 +100,11 @@ function Login() {
 
 const isActive = ref(false)
 
-function handleRegister() {
+function showRegistrationForm() {
   isActive.value = true
 }
 
-function handleLogin() {
+function showLoginForm() {
   isActive.value = false
 }
 </script>
@@ -137,12 +148,12 @@ function handleLogin() {
           <div class="toggle-panel toggle-left">
             <h1>Welcome Back</h1>
             <p>Enter your personal details to use all of site features</p>
-            <button @click="handleLogin">Sign Up</button>
+            <button @click="showLoginForm">Sign In</button>
           </div>
           <div class="toggle-panel toggle-right">
             <h1>Hello, Friend</h1>
             <p>Register with your personal details to use all of site features</p>
-            <button @click="handleRegister">Sign In</button>
+            <button @click="showRegistrationForm">Sign Up</button>
           </div>
         </div>
       </div>

@@ -114,7 +114,7 @@ const filteredCourses = computed(() => {
       class="contents grid w-full mt-16 justify-center sm:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 lg:gap-10 px-4 sm:px-6 lg:px-8">
       <div class="relative w-full transition-item" :style="{ transitionDelay: `${index * 100}ms` }" v-for="cours in filteredCourses" :key="cours.id">
         <div
-          class="h-full  justify-center  mx-auto hover:shadow-2xl rounded-2xl cursor-pointer transition ease-in duration-500  transform ">
+          class="h-full border border-sky-200 justify-center  mx-auto hover:shadow-2xl rounded-2xl cursor-pointer transition ease-in duration-500  transform ">
           <!-- Centering wrapper -->
           <div
             class="relative flex reltive  w-full max-w-[26rem] flex-col h-full rounded-xl bg-white dark:bg-gray-800 bg-clip-border text-gray-700 dark:text-white/80 shadow-lg">

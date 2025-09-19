@@ -10,6 +10,7 @@ import AuthViews from '@/features/auth/AuthViews.vue'
 
 
 const testUsers = [
+ 
   {
     id: 1,
     name: 'John Doe',
@@ -33,9 +34,16 @@ const testUsers = [
   },
 ]
 
-const usersData = ref(JSON.parse(localStorage.getItem('users') || JSON.stringify(testUsers)))
+// Ensure localStorage is seeded with test data if it's empty
+if (!localStorage.getItem('users')) {
+  localStorage.setItem('users', JSON.stringify(testUsers))
+}
+
+// Always load from localStorage, which is now guaranteed to exist.
+const usersData = ref(JSON.parse(localStorage.getItem('users')))
 const route = useRoute()
 const catalog = CourseData
+// console.log(route.path)
 // console.log(route.path)
 
 const isLogin = ref(localStorage.getItem('token') === 'true')
@@ -52,14 +60,11 @@ const showFooter = computed(() => {
 
 </script>
 <template>
-  <div class="w-full">
+  <div class="w-full min-h-screen dark:bg-gray-900">
     <Header v-if="showLayout" />
     <Sidebar v-if="showLayout" />
     <div class="w-full">
-      <div style="height: 100%;" :class="showLayout
-          ? 'h-[fit-content] min-h-screen  bg-gray-50 dark:bg-gray-900 relative inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap w-full text-sm py-2.5 lg:ps-65'
-          : ''
-        ">
+      <div :class="showLayout ? 'w-full lg:ps-65' : ''">
         <RouterView :catalog="catalog" :usersData="usersData" :courses="catalog" ></RouterView>
       </div>
       <Footer v-if="showFooter" />

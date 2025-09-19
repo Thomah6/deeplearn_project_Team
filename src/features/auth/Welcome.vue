@@ -1,44 +1,9 @@
-<script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
-import { useRouter } from 'vue-router'
-
-const router = useRouter()
-const countdown = ref(5)
-const countdownProgress = ref(0)
-let countdownInterval = null
-
-// Fonction de redirection
-const redirectNow = () => {
-  
-  clearInterval(countdownInterval)
-  router.push('/')
-}
-
-// Démarrer le compte à rebours
-onMounted(() => {
-  countdownInterval = setInterval(() => {
-    countdown.value -= 1
-    countdownProgress.value = 100 - countdown.value * 20 // 5 secondes -> 20% par seconde
-
-    if (countdown.value === 0) {
-      redirectNow()
-    }
-  }, 1000)
-})
-
-// Nettoyer l'intervalle quand le composant est démonté
-onUnmounted(() => {
-  if (countdownInterval) {
-    clearInterval(countdownInterval)
-  }
-})
-</script>
-
+<!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <div
     class="w-full bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-neutral-800 px-4"
   >
-    <div class="items-center h-[500px] w-full gap-8 py-8">
+    <div class="items-center h-full  w-full gap-8 py-8">
       <!-- Logo --><br /><br /><br /><br />
       <h1
         class="rounded-md mb-12 text-center text-3xl text-black dark:text-white font-semibold focus:outline-hidden focus:opacity-80"
@@ -109,4 +74,38 @@ onUnmounted(() => {
   </div>
 </template>
 
+<script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
+const countdown = ref(5)
+const countdownProgress = ref(0)
+let countdownInterval = null
+
+// Fonction de redirection
+const redirectNow = () => {
+
+  clearInterval(countdownInterval)
+  router.push('/')
+}
+
+// Démarrer le compte à rebours
+onMounted(() => {
+  countdownInterval = setInterval(() => {
+    countdown.value -= 1
+    countdownProgress.value = 100 - countdown.value * 20 // 5 secondes -> 20% par seconde
+
+    if (countdown.value === 0) {
+      redirectNow()
+    }
+  }, 1000)
+})
+
+// Nettoyer l'intervalle quand le composant est démonté
+onUnmounted(() => {
+  if (countdownInterval) {
+    clearInterval(countdownInterval)
+  }
+})
+</script>

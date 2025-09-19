@@ -1,11 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import AdminView from '@/views/AdminView.vue'
 import CatalogView from '@/views/CatalogView.vue'
+import HomeView from '@/views/HomeView.vue'
 import CourseView from '@/views/CourseView.vue'
 import ProfileView from '@/views/ProfileView.vue'
 import AuthViews from '@/features/auth/AuthViews.vue'
 import VerificationCodeViews from '@/features/auth/VerificationCodeViews.vue'
 import Welcome from '@/features/auth/Welcome.vue'
+import Admin from '@/features/Admin/Admin.vue'
 import ChatAiView from '@/views/ChatAiView.vue'
 
 const router = createRouter({
@@ -14,7 +16,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'home_catalogue',
-      component: CatalogView,
+      component: HomeView,
       meta: { title: 'Accueil - DeepLearn' },
     },
     {
@@ -29,7 +31,7 @@ const router = createRouter({
       name: 'chatai',
       component: ChatAiView,
       props: true,
-      meta: { title: 'ChatAI - DeepLearn' },
+      meta: { title: 'ChatAI - DeepLearn' , requiresAuth: true },
     },
     {
       path: '/catalog',
@@ -56,8 +58,18 @@ const router = createRouter({
     name: 'lessons.show',
     component: () => import('@/cours/LessonItem.vue'),
     props:(route) => ({id: parseInt(route.params.id)}),
-    meta: { title: 'Lessons - DeepLearn' }
+    meta: { title: 'Lessons - DeepLearn', requiresAuth: true }
   },
+
+      {
+      path: '/modifycourse',
+      name: 'modifyourscourse',
+      component: Admin,
+      props: true,
+      meta: { title: 'modifycourses - DeepLearn' },
+    },
+
+
     {
       path: '/profile',
       name: 'profile',
@@ -68,7 +80,7 @@ const router = createRouter({
       path: '/admin',
       name: 'admin',
       component: AdminView,
-      meta: { title: 'Administration - DeepLearn', requiresAuth: true, isAdmin: true },
+      meta: { title: 'Administration - DeepLearn', requiresAuth: true , isAdmin: true},
     },
     {
       path: '/verification',
@@ -87,25 +99,39 @@ const router = createRouter({
       component: () => import("@/catalog/CourseCard.vue"),
     },
   ],
+  scrollBehavior(to, from, savedPosition) {
+    // Si l'utilisateur revient en arrière, on restaure la position de défilement
+    if (savedPosition) {
+      return savedPosition
+    }
+    // Sinon, on remonte en haut de la page avec un effet fluide
+    return { top: 0, behavior: 'smooth' }
+  },
 })
 
+router.beforeEach((to, from, next) => {
+  document.title = to.meta.title || 'DeepLearn'
 
-// router.beforeEach((to, from, next) => {
-//   document.title = to.meta.title || 'DeepLearn'
+  const isAuthenticated = localStorage.getItem('token') === 'true'
+  const user = JSON.parse(localStorage.getItem('user'))
+  const isAdmin = user && user.isAdmin
 
-//   const isAuthenticated = localStorage.getItem('token')
-//   const userStatus = localStorage.getItem('status') // "user" ou "admin"
-
-//   if (!isAuthenticated && to.meta.requiresAuth) {
-//     // Non connecté → direction login
-//     next({ name: 'login' })
-//   } else if (isAuthenticated && userStatus === 'admin' && to.name !== 'admin') {
-//     // Connecté ET admin → on force vers /admin (sauf si déjà dessus)
-//     next({ name: 'admin' })
-//   } else {
-//     // Sinon accès normal
-//     next({ name: 'home_catalogue' })
-//   }
-// })
+  // Si la route nécessite d'être admin mais l'utilisateur ne l'est pas
+  if (to.meta.isAdmin && !isAdmin) {
+    next({ name: 'home_catalogue' }) // Redirige vers l'accueil
+  }
+  // Si la route nécessite d'être authentifié mais l'utilisateur ne l'est pas
+  else if (to.meta.requiresAuth && !isAuthenticated) {
+    // Redirige vers la page de connexion, sauf si on y est déjà
+    if (to.name !== 'authviews') {
+      next({ name: 'authviews' })
+    } else {
+      next()
+    }
+  } else {
+    // Dans tous les autres cas, autorise la navigation
+    next()
+  }
+})
 
 export default router
