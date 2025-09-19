@@ -110,9 +110,9 @@ const filteredCourses = computed(() => {
 
 
 
-    <TransitionGroup name="fade" tag="article"
-      class="grid w-full mt-16 justify-center sm:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 lg:gap-10 px-4 sm:px-6 lg:px-8">
-      <div class="relative w-full " v-for="cours in filteredCourses" :key="cours.id">
+    <TransitionGroup name="fade-stagger" tag="div"
+      class="contents grid w-full mt-16 justify-center sm:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 lg:gap-10 px-4 sm:px-6 lg:px-8">
+      <div class="relative w-full transition-item" :style="{ transitionDelay: `${index * 100}ms` }" v-for="cours in filteredCourses" :key="cours.id">
         <div
           class="h-full  justify-center  mx-auto hover:shadow-2xl rounded-2xl cursor-pointer transition ease-in duration-500  transform ">
           <!-- Centering wrapper -->
@@ -176,14 +176,22 @@ const filteredCourses = computed(() => {
 
 
 <style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: all 0.3s ease;
+.fade-stagger-enter-from {
+  opacity: 0;
+  transform: translateY(20px);
 }
 
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-  transform: translateY(10px);
+.fade-stagger-enter-active {
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
+
+.fade-stagger-leave-to {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.fade-stagger-leave-active {
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
 </style>
