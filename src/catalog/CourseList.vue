@@ -12,9 +12,10 @@ import { RouterLink } from 'vue-router';
 
 
 <template>
-
+<div class="">
 
 <CourseCard :course="courses" />
+</div>
 </template>
 
 

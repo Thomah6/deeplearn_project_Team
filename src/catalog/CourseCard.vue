@@ -40,7 +40,6 @@ const filteredCourses = computed(() => {
   if (!props.course || !Array.isArray(props.course)) return []
   return props.course.filter(course => {
     const keyword = search.value
-
     const matchKeyword =
       course.title.toLowerCase().includes(keyword) ||
       course.category.toLowerCase().includes(keyword) ||
@@ -110,14 +109,14 @@ const filteredCourses = computed(() => {
 
 
 
-    <TransitionGroup name="fade" tag="article"
+    <TransitionGroup name="fade-stagger" tag="div"
       class="grid w-full mt-16 justify-center sm:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 lg:gap-10 px-4 sm:px-6 lg:px-8">
-      <div class="relative w-full " v-for="cours in filteredCourses" :key="cours.id">
+      <div class="relative w-full transition-item" :style="{ transitionDelay: `${index * 100}ms` }" v-for="cours in filteredCourses" :key="cours.id">
         <div
           class="h-full border border-sky-200 justify-center  mx-auto hover:shadow-2xl rounded-2xl cursor-pointer transition ease-in duration-500  transform ">
           <!-- Centering wrapper -->
           <div
-            class="relative flex reltive  w-full max-w-[26rem] flex-col h-full rounded-xl bg-white dark:bg-gray-800 bg-clip-border text-gray-700 dark:text-white/80 shadow-lg">
+            class="relative flex reltive  w-full flex-col h-full rounded-xl bg-white dark:bg-gray-800 bg-clip-border text-gray-700 dark:text-white/80 shadow-lg">
             <div
               class="relative mx-4 mt-4 overflow-hidden text-white shadow-lg rounded-xl bg-blue-gray-500 bg-clip-border shadow-blue-gray-500/40">
               <img
@@ -176,14 +175,21 @@ const filteredCourses = computed(() => {
 
 
 <style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: all 0.3s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
+.fade-stagger-enter-from {
   opacity: 0;
-  transform: translateY(10px);
+  transform: translateY(20px);
+}
+ 
+.fade-stagger-enter-active {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+ 
+.fade-stagger-leave-to {
+  opacity: 0;
+  transform: scale(0.95);
+}
+ 
+.fade-stagger-leave-active {
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
 </style>
