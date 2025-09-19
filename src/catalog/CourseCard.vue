@@ -192,4 +192,5 @@ const filteredCourses = computed(() => {
 .fade-stagger-leave-active {
   transition: opacity 0.4s ease, transform 0.4s ease;
 }
+
 </style>

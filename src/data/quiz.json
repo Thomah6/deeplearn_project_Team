@@ -36,38 +36,6 @@
     {
       "id": 2,
       "course_id": 2,
-      "title": "Quiz HTML",
-      "questions": [
-        {
-          "question": "Quelle balise HTML est utilisée pour créer un lien hypertexte ?",
-          "options": ["<a>", "<link>", "<href>", "<url>"],
-          "answer": "<a>"
-        },
-        {
-          "question": "Quelle balise HTML permet d’insérer une image ?",
-          "options": ["<img>", "<image>", "<src>", "<pic>"],
-          "answer": "<img>"
-        },
-        {
-          "question": "Quelle balise HTML est utilisée pour les titres principaux ?",
-          "options": ["<h1>", "<title>", "<header>", "<head>"],
-          "answer": "<h1>"
-        },
-        {
-          "question": "Quelle balise HTML permet de créer une liste non ordonnée ?",
-          "options": ["<ul>", "<ol>", "<li>", "<list>"],
-          "answer": "<ul>"
-        },
-        {
-          "question": "Quelle balise HTML permet d’insérer une ligne horizontale ?",
-          "options": ["<hr>", "<line>", "<br>", "<horizontal>"],
-          "answer": "<hr>"
-        }
-      ]
-    },
-    {
-      "id": 3,
-      "course_id": 3,
       "title": "Introduction à Python",
       "questions": [
         {
@@ -134,8 +102,8 @@
       ]
     },
     {
-      "id": 4,
-      "course_id": 4,
+      "id": 3,
+      "course_id": 3,
       "title": "JavaScript Moderne",
       "questions": [
         {
@@ -166,8 +134,8 @@
       ]
     },
     {
-      "id": 5,
-      "course_id": 5,
+      "id": 4,
+      "course_id": 4,
       "title": "React.js Fondamental",
       "questions": [
         {
@@ -209,8 +177,8 @@
     },
 
     {
-      "id": 6,
-      "course_id": 6,
+      "id": 5,
+      "course_id": 5,
       "title": "DevOps avec Docker",
       "questions": [
         {
@@ -241,8 +209,8 @@
       ]
     },
     {
-      "id": 7,
-      "course_id": 7,
+      "id": 6,
+      "course_id": 6,
       "title": "Git et GitHub avancé",
       "questions": [
         {
@@ -302,40 +270,10 @@
         }
       ]
     },
+ 
     {
-      "id": 8,
-      "course_id": 8,
-      "questions": [
-        {
-          "question": "Quelle commande est utilisée pour installer un package avec npm ?",
-          "options": ["npm install", "npm add", "npm get", "npm fetch"],
-          "answer": "npm install"
-        },
-        {
-          "question": "Quel fichier contient les dépendances d’un projet Node.js ?",
-          "options": ["package.json", "dependencies.json", "node_modules.json", "config.json"],
-          "answer": "package.json"
-        },
-        {
-          "question": "Quelle commande est utilisée pour exécuter un script défini dans package.json ?",
-          "options": ["npm run", "npm exec", "npm start", "npm launch"],
-          "answer": "npm run"
-        },
-        {
-          "question": "Quelle commande est utilisée pour mettre à jour un package installé ?",
-          "options": ["npm update", "npm upgrade", "npm refresh", "npm renew"],
-          "answer": "npm update"
-        },
-        {
-          "question": "Quelle commande est utilisée pour désinstaller un package avec npm ?",
-          "options": ["npm uninstall", "npm remove", "npm delete", "npm erase"],
-          "answer": "npm uninstall"
-        }
-      ]
-    },
-    {
-      "id": 9,
-      "course_id": 9,
+      "id": 7,
+      "course_id": 7,
       "title": "Cybersécurité Base",
       "questions": [
         {
@@ -376,8 +314,8 @@
       ]
     },
     {
-      "id": 11,
-      "course_id": 11,
+      "id": 8,
+      "course_id": 8,
       "title": " Machine Learning Fundamentals",
       "questions": [
         {
@@ -423,8 +361,8 @@
       ]
     },
     {
-      "id": 12,
-      "course_id": 12,
+      "id": 9,
+      "course_id": 9,
       "title": "Cloud Computing AWS",
       "questions": [
       {
@@ -475,8 +413,8 @@
       ]
     },
     {
-      "id": 13,
-      "course_id": 13,
+      "id": 10,
+      "course_id": 10,
       "title": " Node.js et Express",
       "questions": [
         {

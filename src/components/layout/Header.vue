@@ -55,8 +55,8 @@ function logout() {
 onMounted(() => {
   window.addEventListener('keydown', handleKeyDown)
   if (isLogin.value) {
-    console.log(localStorage.getItem('user'));
-    
+    // console.log(localStorage.getItem('user'));
+
     user.value = JSON.parse(localStorage.getItem('user'))
   }
   const savedTheme = localStorage.getItem('theme')
@@ -93,22 +93,23 @@ watch(search, (newValue) => {
 
 
 <template>
- 
+
   <header
-    class="sticky top-0 inset-x-0 flex  flex-wrap md:justify-start md:flex-nowrap z-48 w-full bg-sky-50 border-b border-sky-200 text-sm py-4 lg:ps-65 dark:bg-slate-900 dark:border-slate-800">
-    <nav class="px-4 sm:px-6 flex basis-full items-center w-full mx-auto">
-      <div class="me-5 lg:me-0 lg:hidden">
-        <!-- Logo -->
-        <router-link
-          to="/"
-          class="flex-none rounded-md text-xl md:text-3xl text-black dark:text-white inline-block font-semibold focus:outline-hidden focus:opacity-80"
-          aria-label="Preline"
-          style="font-family: 'Caveat', cursive"
-        >
+  class="sticky top-0 inset-x-0 flex  flex-wrap md:justify-start md:flex-nowrap z-48 w-full bg-sky-50 border-b border-sky-200 text-sm py-4 lg:ps-65 dark:bg-slate-900 dark:border-slate-800">
+  <nav class="px-4 sm:px-6 flex basis-full items-center w-full mx-auto">
+    <div class="me-5 lg:me-0 lg:hidden">
+      <!-- Logo -->
+
+      <router-link
+      to="/"
+      class="flex-none rounded-md text-xl md:text-3xl text-black dark:text-white inline-block font-semibold focus:outline-hidden focus:opacity-80"
+      aria-label="Preline"
+      style="font-family: 'Caveat', cursive"
+      >
           DeepLearn.io
         </router-link>
       </div>
-   
+
       <div
         class="w-full flex items-center justify-end ms-auto md:justify-between gap-x-1 md:gap-x-3"
       >
@@ -203,7 +204,7 @@ watch(search, (newValue) => {
               class="size-9.5 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 focus:outline-hidden disabled:opacity-50 disabled:pointer-events-none dark:text-white"
             >
               <img
-                class="shrink-0 size-9.5 rounded-full"
+                class="shrink-0 size-9.5 rounded-full cursor-pointer"
                 :src="image"
                 alt="Avatar"
               />

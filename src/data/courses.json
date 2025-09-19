@@ -8,6 +8,7 @@
     "description": "Apprentissage des bases de la programmation Python, de la syntaxe aux concepts fondamentaux",
     "lessons": [
       {
+
         "id": 1,
         "title": "Installation et Hello World",
         "description": "Mise en place de l'environnement Python et première exécution",
