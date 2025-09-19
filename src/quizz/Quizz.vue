@@ -27,18 +27,30 @@ console.log(QuizzDataFiltered.value);
 // Score & état du quiz
 const score = ref(0);
 const isFinished = ref(false);
+const results = ref([])
 
 // Fonction pour soumettre le quiz et calculer le score
 const submitQuiz = () => {
     if (!quiz) return;
     let count = 0;
+    const tempResults = []
+
     quiz.questions.forEach((question, index) => {
         const userAnswer = userAnswers.value[index];
-        if (userAnswer && userAnswer.trim().toLowerCase() === question.answer.trim().toLowerCase()) {
-            count++;
-        }
+        const isCorrect = userAnswer?.trim().toLowerCase() === question.answer.trim().toLowerCase();
+
+        if (isCorrect) count++;
+
+        tempResults.push({
+            question: question.question,
+            userAnswer: userAnswer || 'Aucune réponse',
+            correctAnswer: question.answer,
+            isCorrect
+        });
     });
+
     score.value = count;
+    results.value = tempResults;
     isFinished.value = true;
 };
 
@@ -55,23 +67,7 @@ const percentage = computed(() => {
     return ((score.value / quiz.questions.length) * 100).toFixed(0);
 });
 
-// onMounted (()=>{
-//   const totalQuestions = ref(5);
-//   const correctAnswers = ref(0);
-//   const score = ref(0);
 
-//   function checkAnswers(userAnswer, correctAnswers) {
-//     if(userAnswer == correctAnswers){
-//       correctAnswers ++
-//     }
-//   }
-//   checkAnswers()
-//   function finalScore() {
-//     const pourcentage = (correctAnswers.value / totalQuestions.value) * 100;
-//     score.value = pourcentage
-//   }
-//   finalScore()
-// })
 </script>
 
 
@@ -98,7 +94,7 @@ const percentage = computed(() => {
                                 v-model="userAnswers[index]"
                                 class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500" />
                             <label :for="`q${index}opt${optIndex}`" class="ml-2 text-gray-700 dark:text-white">{{ option
-                                }}</label>
+                            }}</label>
                         </div>
                     </div>
                 </div>
@@ -109,16 +105,7 @@ const percentage = computed(() => {
             </form>
         </div>
 
-        <!-- <div v-if="isFinished" class="text-center mt-8">
-      <h3 class="text-2xl font-semibold mb-4">Résultat</h3>
-      <p class="mb-2">Vous avez obtenu <strong>{{ score }}</strong> bonnes réponses sur <strong>{{ quiz.questions.length }}</strong>.</p>
-      <p>Soit <strong>{{ percentage }}%</strong> de réussite.</p>
-      <button
-        @click="resetQuiz"
-        class="mt-4 px-6 py-2 bg-green-600 text-white rounded hover:bg-green-700"
-      >
-        Recommencer le quiz
-      </button> -->
+     
     </div>
 
 
@@ -134,16 +121,7 @@ const percentage = computed(() => {
 
                         <div class="flex flex-col items-center">
                             <!-- Cercle de score -->
-                            <div class="relative w-48 h-48 mb-6">
-                                <svg class="w-full h-full" viewBox="0 0 100 100">
-                                    <!-- Cercle de fond -->
-                                    <circle class="text-gray-200 dark:text-gray-700 stroke-current" stroke-width="8"
-                                        cx="50" cy="50" r="40" fill="transparent"></circle>
-                                    <!-- Cercle de progression -->
-                                    <circle class="text-primary-500 progress-ring stroke-current" stroke-width="8"
-                                        stroke-linecap="round" cx="50" cy="50" r="40" fill="transparent"
-                                        stroke-dasharray="251.2" stroke-dashoffset="75.36"></circle>
-                                </svg>
+                            <div class="relative w-48 h-48 mb-6 bg-white dark:bg-sky-800 dark:border-sky-400 rounded-full border-7">
                                 <div class="absolute inset-0 flex flex-col items-center justify-center">
                                     <span class="text-4xl font-bold"> {{ percentage }} %</span>
                                     <span class="text-gray-600 dark:text-gray-400">Score</span>
@@ -159,10 +137,7 @@ const percentage = computed(() => {
                                     class="mt-4 px-6 py-2 bg-green-600 text-white rounded hover:bg-green-700">
                                     Recommencer le quiz
                                 </button>
-                                <!-- <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg text-center">
-                                    <p class="text-2xl font-bold">5:24</p>
-                                  <p class="text-sm text-gray-600 dark:text-gray-400">Temps passé</p>
-                                </div> -->
+                               
                             </div>
                         </div>
                     </div>
@@ -172,63 +147,38 @@ const percentage = computed(() => {
                 <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 mb-6">
                     <h3 class="text-xl font-bold mb-4">Détail des réponses</h3>
 
-                    <!-- Question correcte -->
-                    <div class="mb-4 p-4 border-l-4 border-green-500 bg-green-50 dark:bg-green-900/20 rounded-r">
+                    <div v-for="(res, index) in results" :key="index" :class="res.isCorrect
+                        ? 'mb-4 p-4 border-l-4 border-green-500 bg-green-50 dark:bg-green-900/20 rounded-r'
+                        : 'mb-4 p-4 border-l-4 border-red-500 bg-red-50 dark:bg-red-900/20 rounded-r'">
                         <div class="flex justify-between items-start">
                             <div>
-                                <p class="font-medium">1-{{ }}</p>
-                                <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Votre réponse: <span
-                                        class="text-green-600 dark:text-green-400">{{ }}</span></p>
+                                <p class="font-medium">{{ index + 1 }} - {{ res.question }}</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                                    Votre réponse :
+                                    <span :class="res.isCorrect ? 'text-green-600' : 'text-red-600'">
+                                        {{ res.userAnswer }}
+                                    </span>
+                                </p>
+                                <p v-if="!res.isCorrect" class="text-sm text-green-600 dark:text-green-400 mt-1">
+                                    Réponse correcte : <span class="font-medium">{{ res.correctAnswer }}</span>
+                                </p>
                             </div>
-                            <span
-                                class="bg-green-100 dark:bg-green-800 text-green-800 dark:text-green-100 text-xs px-2 py-1 rounded-full">Correct</span>
+                            <span :class="res.isCorrect
+                                ? 'bg-green-100 dark:bg-green-800 text-green-800 dark:text-green-100'
+                                : 'bg-red-100 dark:bg-red-800 text-red-800 dark:text-red-100'"
+                                class="text-xs px-2 py-1 rounded-full">
+                                {{ res.isCorrect ? 'Correct' : 'Incorrect' }}
+                            </span>
                         </div>
                     </div>
 
-                    <!-- Question incorrecte -->
-                    <div class="mb-4 p-4 border-l-4 border-red-500 bg-red-50 dark:bg-red-900/20 rounded-r">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <p class="font-medium">2-{{}}</p>
-                                <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Votre réponse: <span
-                                        class="text-red-600 dark:text-red-400">{{ }}</span></p>
-                                <p class="text-sm text-green-600 dark:text-green-400 mt-1">Réponse correcte: <span
-                                        class="font-medium">{{ }}</span></p>
-                            </div>
-                            <span
-                                class="bg-red-100 dark:bg-red-800 text-red-800 dark:text-red-100 text-xs px-2 py-1 rounded-full">Incorrect</span>
-                        </div>
-                    </div>
+                 
 
-                    <!-- Question correcte -->
-                    <div class="mb-4 p-4 border-l-4 border-green-500 bg-green-50 dark:bg-green-900/20 rounded-r">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <p class="font-medium">3-{{ }}</p>
-                                <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Votre réponse: <span
-                                        class="text-green-600 dark:text-green-400">{{ }}</span></p>
-                            </div>
-                            <span
-                                class="bg-green-100 dark:bg-green-800 text-green-800 dark:text-green-100 text-xs px-2 py-1 rounded-full">Correct</span>
-                        </div>
-                    </div>
-                    <!-- Question correcte -->
-                    <div class="mb-4 p-4 border-l-4 border-green-500 bg-green-50 dark:bg-green-900/20 rounded-r">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <p class="font-medium">4-{{ }}</p>
-                                <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Votre réponse: <span
-                                        class="text-green-600 dark:text-green-400">{{ }}</span></p>
-                            </div>
-                            <span
-                                class="bg-green-100 dark:bg-green-800 text-green-800 dark:text-green-100 text-xs px-2 py-1 rounded-full">Correct</span>
-                        </div>
-                    </div>
 
-                    <button
+                    <!-- <button
                         class="w-full mt-4 text-primary-500 dark:text-primary-400 font-medium flex items-center justify-center">
                         Voir toutes les questions <i class="fas fa-chevron-down ml-2"></i>
-                    </button>
+                    </button> -->
                 </div>
 
                 <!-- Classement et partage -->
@@ -281,8 +231,6 @@ const percentage = computed(() => {
             </div>
         </main>
     </section>
-
-
 
 </template>
 
