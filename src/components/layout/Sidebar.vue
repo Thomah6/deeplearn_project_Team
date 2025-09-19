@@ -24,12 +24,12 @@ onMounted(() => {
       <div class="px-6 pt-4 flex items-center">
         <!-- Logo -->
         <router-link
-          to="/"
-          style="font-family: 'Caveat', cursive"
-          class="text-black dark:text-white text-3xl flex-none rounded-xl inline-block font-semibold focus:outline-hidden focus:opacity-80"
-          aria-label="Preline"
+        to="/"
+        style="font-family: 'Caveat', cursive"
+        class="text-black dark:text-white text-3xl flex-none rounded-xl inline-block font-semibold focus:outline-hidden focus:opacity-80"
+        aria-label="Preline"
         >
-          DeepLearn.io
+        DeepLearn.io
         </router-link>
         <!-- End Logo -->
 
