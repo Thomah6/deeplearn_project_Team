@@ -43,6 +43,29 @@ onMounted(() => {
     allComments.value = JSON.parse(storedComments)
   }
 
+  allComments.value.forEach((comment) => {
+      if (!comment.reactions) {
+        comment.reactions = {
+          love: 0,
+          laugh: 0,
+          wow: 0,
+        }
+      }
+
+      // Corriger les anciennes réponses si nécessaire
+      if (comment.replies && Array.isArray(comment.replies)) {
+        comment.replies.forEach((reply) => {
+          if (!reply.reactions) {
+            reply.reactions = {
+              love: 0,
+              laugh: 0,
+              wow: 0,
+            }
+          }
+        })
+      }
+    })
+
   // Get current user
   const storedUser = localStorage.getItem('user')
   if (storedUser) {
@@ -221,6 +244,10 @@ const react = (comment, type) => {
     comment.reactions[type]++
     saveCommentsToLocalStorage()
   }
+  if (comment.reactions[type] !== undefined) {
+    comment.reactions[type]++
+    saveCommentsToLocalStorage()
+  }
 }
 
 
@@ -317,7 +344,6 @@ const react = (comment, type) => {
         <!-- Formulaire de réponse -->
         <div v-if="replyFormVisible === comment.id" class="mt-4">
           <EditorContent :editor="replyEditor" class="w-full h-24 px-3 py-2 border rounded dark:bg-gray-800 dark:text-white dark:border-gray-600" />
-
           <button @click="addReply(comment)"
             class="mt-2 inline-block bg-sky-600 text-white px-3 py-1 rounded hover:bg-sky-700 text-sm">
             Envoyer la réponse

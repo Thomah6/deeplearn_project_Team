@@ -1,5 +1,5 @@
 <template>
-<div class="max-w-[85rem] mt-14 mb-10 px-4 sm:px-6 lg:px-8 mx-auto">
+<div class="mt-14 mb-10 px-4 sm:px-6 lg:px-8 mx-auto">
   <div class="bg-blue-600 flex items-center justify-center min-h-[100px] bg-[url('https://preline.co/assets/svg/examples/abstract-1.svg')] bg-no-repeat bg-cover bg-center p-4 rounded-lg text-center">
     <div class="flex flex-wrap justify-center items-center gap-2">
       <p class="inline-block text-white font-medium">
