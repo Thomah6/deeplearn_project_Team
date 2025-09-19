@@ -64,7 +64,9 @@ onMounted(() => {
           }
         })
       }
-    })
+    })................
+
+    +.---------------------+-.
 
   // Get current user
   const storedUser = localStorage.getItem('user')
