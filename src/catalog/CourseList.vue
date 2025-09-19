@@ -12,9 +12,10 @@ import courses from '@/data/courses.json'
 
 
 <template>
-
+<div class="">
 
 <CourseCard :course="courses" />
+</div>
 </template>
 
 

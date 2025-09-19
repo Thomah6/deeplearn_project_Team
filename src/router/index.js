@@ -9,6 +9,7 @@ import VerificationCodeViews from '@/features/auth/VerificationCodeViews.vue'
 import Welcome from '@/features/auth/Welcome.vue'
 import Admin from '@/features/Admin/Admin.vue'
 import ChatAiView from '@/views/ChatAiView.vue'
+import Quizz from '@/quizz/Quizz.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -92,6 +93,11 @@ const router = createRouter({
       path: '/welcome',
       name: 'welcome',
       component: Welcome,
+    },
+        {
+      path: '/quizz',
+      name: 'quizz',
+      component: Quizz,
     },
     {
       path: '/coursecard',

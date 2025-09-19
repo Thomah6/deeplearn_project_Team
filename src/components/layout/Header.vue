@@ -17,12 +17,22 @@ const showMobileSearch = ref(false)
 
 const isDark = ref(false)
 
+onMounted(() => {
+  const savedTheme = localStorage.getItem('theme')
+  console.log("Saved theme:", savedTheme);
+  if (savedTheme) {
+    isDark.value = savedTheme === 'dark'
+    document.documentElement.classList.toggle('dark', isDark.value)
+  }
+})
+
 function toggleDark() {
+  console.log(isDark.value);
   isDark.value = !isDark.value
   document.documentElement.classList.toggle('dark', isDark.value)
+  console.log(document.documentElement.classList);
   localStorage.setItem('theme', isDark.value ? 'dark' : 'light')
 }
-
 
 
 const user = ref(null)
@@ -45,12 +55,25 @@ function logout() {
 onMounted(() => {
   window.addEventListener('keydown', handleKeyDown)
   if (isLogin.value) {
+    console.log(localStorage.getItem('user'));
+    
     user.value = JSON.parse(localStorage.getItem('user'))
   }
   const savedTheme = localStorage.getItem('theme')
 
   isDark.value = document.documentElement.classList.contains('dark')
+
+  // Réinitialise Preline après navigation
+  router.afterEach(() => {
+    nextTick(() => {
+      if (window.HS && window.HS.dropdown) {
+        window.HS.dropdown.init()
+      }
+    })
+  })
 })
+
+
 
 onUnmounted(() => {
   window.removeEventListener('keydown', handleKeyDown)
