@@ -4,6 +4,7 @@
 import { defineProps, ref, watch } from 'vue';
 import CourseProgress from './CourseProgress.vue';
 
+
 const props = defineProps({
   lesson: Object,
   progress: Number,
@@ -70,8 +71,10 @@ watch(() => props.lesson, (newLesson) => {
       <p class="text-center">Félicitations ! Leçon terminée ✅</p>
       <p v-if="props.progressComplete" class="text-center text-sm mt-2">Passage à la leçon suivante...</p>
     </div> -->
-
-
+<div v-if="progress === 100" class="mt-4 p-3 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-lg text-center">
+  
+  <RouterLink to="/quizz"><button class="border text-white">Commencer le quiz</button></RouterLink>
+</div>
   </section>
 </template>
 

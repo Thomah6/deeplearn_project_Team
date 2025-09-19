@@ -12,7 +12,7 @@
         "title": "Installation et Hello World",
         "description": "Mise en place de l'environnement Python et première exécution",
         "contenu": "Python est un langage interprété, haut niveau et généraliste. Pour commencer, téléchargez Python depuis python.org. Installez-le et vérifiez l'installation avec 'python --version'. Créez un fichier hello.py avec le code: print('Hello World!'). Exécutez-le avec 'python hello.py'. Les IDE recommandés sont VS Code ou PyCharm. Python utilise l'indentation pour définir les blocs de code, contrairement à d'autres langages qui utilisent des accolades.",
-        "link_miniature": "https://miro.medium.com/v2/resize:fit:1400/1*veIE0Qo1K59Q5e6Otai2Yw.png",
+        "link_miniature": "pexels-danny-meneses-340146-943096.jpg",
         "link_video": "https://www.youtube.com/watch?v=rfscVS0vtbw",
         "done": false
       },
@@ -21,7 +21,7 @@
         "title": "Variables et types de données",
         "description": "Déclaration de variables et types de base en Python",
         "contenu": "En Python, les variables sont créées lorsqu'on leur assigne une valeur. Pas besoin de déclarer le type. Les types de base incluent: int (nombres entiers), float (nombres décimaux), str (chaînes de caractères), bool (True/False). Exemples: age = 25, prix = 19.99, nom = 'Alice', est_actif = True. La fonction type() permet de vérifier le type d'une variable. Python supporte aussi les listes, tuples, dictionnaires et sets pour des structures de données plus complexes.",
-        "link_miniature": "https://www.askpython.com/wp-content/uploads/2020/02/python-data-types.jpg",
+        "link_miniature": "pexels-thisisengineering-3861972.jpg",
         "link_video": "https://www.youtube.com/watch?v=ghCbURMWBD8",
         "done": false
       },
@@ -30,7 +30,7 @@
         "title": "Structures de contrôle",
         "description": "Utilisation des conditions et boucles en Python",
         "contenu": "Les structures conditionnelles: if, elif, else. Syntaxe: if condition: ... elif condition: ... else: ... Les opérateurs de comparaison: ==, !=, <, >, <=, >=. Les opérateurs logiques: and, or, not. Les boucles: for et while. La boucle for itère sur une séquence: for i in range(5): ... for item in liste: ... La boucle while exécute tant qu'une condition est vraie. Instructions de contrôle: break (sort de la boucle), continue (passe à l'itération suivante).",
-        "link_miniature": "https://data-flair.training/blogs/wp-content/uploads/sites/2/2018/01/Python-Conditional-Statements.jpg",
+        "link_miniature": "pexels-kevin-ku-92347-577585.jpg",
         "link_video": "https://www.youtube.com/watch?v=HZARg5BjfLs",
         "done": false
       },
@@ -39,7 +39,7 @@
         "title": "Fonctions et modules",
         "description": "Création et utilisation de fonctions et modules Python",
         "contenu": "Une fonction se définit avec def nom_fonction(paramètres): ... Elle peut retourner une valeur avec return. Les paramètres peuvent avoir des valeurs par défaut. Les modules permettent d'organiser le code. Pour importer: import module, from module import fonction. Les modules standards: math (fonctions mathématiques), datetime (manipulation dates), os (interaction système). Créer son propre module: dans un fichier .py, définir fonctions/variables, puis importer dans un autre script.",
-        "link_miniature": "https://www.askpython.com/wp-content/uploads/2020/02/Python-Modules.png",
+        "link_miniature": "pexels-kindelmedia-8566531.jpg",
         "link_video": "https://www.youtube.com/watch?v=5MxY5k3w-1E",
         "done": false
       },
@@ -48,7 +48,7 @@
         "title": "Manipulation de fichiers",
         "description": "Lecture et écriture de fichiers en Python",
         "contenu": "Python permet de manipuler des fichiers avec open(). Modes: 'r' (lecture), 'w' (écriture, écrase existant), 'a' (ajout), 'x' (création exclusive). Lecture: with open('fichier.txt', 'r') as f: contenu = f.read(). Lecture ligne par ligne: for ligne in f: ... Écriture: with open('fichier.txt', 'w') as f: f.write('texte'). Gestion d'erreurs avec try/except. Formats courants: CSV (module csv), JSON (module json). Toujours fermer les fichiers avec close() ou utiliser with pour une fermeture automatique.",
-        "link_miniature": "https://www.pythontutorial.net/wp-content/uploads/2020/09/Python-file-handling.jpg",
+        "link_miniature": "pexels-darlene-alderson-4385547.jpg",
         "link_video": "https://www.youtube.com/watch?v=4mX0uPQFLDU",
         "done": false
       },
@@ -57,7 +57,7 @@
         "title": "Gestion des erreurs et exceptions",
         "description": "Techniques de gestion des erreurs avec try/except",
         "contenu": "Les exceptions permettent de gérer les erreurs sans faire planter le programme. Structure de base: try: code à risque except ExceptionType: gestion erreur. On peut avoir plusieurs except pour différents types d'erreurs. finally: s'exécute toujours, pour le nettoyage. else: s'exécute si aucune exception. Exceptions communes: ValueError, TypeError, IndexError, KeyError, FileNotFoundError. On peut lever des exceptions avec raise. Créer ses propres exceptions en héritant de la classe Exception. Bonnes pratiques: attraper des exceptions spécifiques, ne pas utiliser d'except vide.",
-        "link_miniature": "https://data-flair.training/blogs/wp-content/uploads/sites/2/2018/01/Python-Exception-Handling.jpg",
+        "link_miniature": "pexels-thisisengineering-3861958.jpg",
         "link_video": "https://www.youtube.com/watch?v=NIWwJbo-9_8",
         "done": false
       }
@@ -76,7 +76,7 @@
         "title": "Les bases du langage SQL",
         "description": "Syntaxe fondamentale des requêtes SQL",
         "contenu": "SQL (Structured Query Language) est le langage standard pour interagir avec les bases de données relationnelles. Une base se compose de tables avec des colonnes et lignes. Commandes de base: SELECT (récupère des données), FROM (spécifie la table), WHERE (filtre les résultats). Exemple: SELECT nom, age FROM utilisateurs WHERE age > 30. Les opérateurs de comparaison: =, !=, <, >, <=, >=, BETWEEN, LIKE, IN. Le caractère % dans LIKE représente zéro ou plusieurs caractères. Le ; termine les instructions.",
-        "link_miniature": "https://www.sqlshack.com/wp-content/uploads/2020/04/sql-server-database-indexes-wallpaper-1.png",
+        "link_miniature": "pexels-shkrabaanthony-5475758.jpg",
         "link_video": "https://www.youtube.com/watch?v=HXV3zeQKqGY",
         "done": false
       },
@@ -85,7 +85,7 @@
         "title": "Fonctions d'agrégation et GROUP BY",
         "description": "Utilisation des fonctions statistiques et regroupements",
         "contenu": "Les fonctions d'agrégation effectuent des calculs sur un ensemble de valeurs: COUNT() (nombre), SUM() (somme), AVG() (moyenne), MAX() (maximum), MIN() (minimum). GROUP BY regroupe les lignes ayant des valeurs communes. HAVING filtre les groupes (équivalent de WHERE pour les groupes). Exemple: SELECT ville, AVG(salaire) FROM employés GROUP BY ville HAVING AVG(salaire) > 50000. DISTINCT élimine les doublons: SELECT DISTINCT ville FROM employés. Les alias avec AS renomment les colonnes résultats.",
-        "link_miniature": "https://www.sqltutorial.org/wp-content/uploads/2016/04/SQL-GROUP-BY.png",
+        "link_miniature": "pexels-shkrabaanthony-5475758.jpg",
         "link_video": "https://www.youtube.com/watch?v=9p1hZ5aH4xI",
         "done": false
       },
@@ -94,7 +94,7 @@
         "title": "Jointures entre tables",
         "description": "Combinaison de données de multiples tables",
         "contenu": "Les jointures permettent de combiner des lignes de plusieurs tables basées sur une colonne relationnelle. INNER JOIN: retourne les lignes correspondantes dans les deux tables. LEFT JOIN: retourne toutes les lignes de la table gauche et les correspondances de la droite. RIGHT JOIN: inverse de LEFT JOIN. FULL JOIN: retourne toutes les lignes quand il y a une correspondance dans une des tables. CROSS JOIN: produit cartésien de toutes les lignes. Syntaxe: SELECT * FROM table1 JOIN table2 ON table1.id = table2.table1_id. Les jointures multiples sont possibles.",
-        "link_miniature": "https://www.w3resource.com/w3r_images/sql-joins.png",
+        "link_miniature": "pexels-olia-danilevich-4974912.jpg",
         "link_video": "https://www.youtube.com/watch?v=2HVMiPPuPIs",
         "done": false
       },
@@ -103,7 +103,7 @@
         "title": "Sous-requêtes et requêtes imbriquées",
         "description": "Utilisation avancée des requêtes dans d'autres requêtes",
         "contenu": "Les sous-requêtes (subqueries) sont des requêtes imbriquées dans d'autres. Elles peuvent être dans SELECT, FROM, WHERE ou HAVING. Types: 1) Sous-requêtes scalaires (retournent une seule valeur), 2) Sous-requêtes en ligne (retournent une colonne), 3) Sous-requêtes corrélées (dépendent de la requête externe). Exemple: SELECT nom FROM produits WHERE prix > (SELECT AVG(prix) FROM produits). EXISTS vérifie si une sous-requête retourne des résultats. IN vérifie si une valeur est dans une liste de valeurs. Les sous-requêtes peuvent souvent être remplacées par des jointures.",
-        "link_miniature": "https://www.complexsql.com/wp-content/uploads/2017/02/subquery.png",
+        "link_miniature": "pexels-olia-danilevich-4974914.jpg",
         "link_video": "https://www.youtube.com/watch?v=6F2DUuelSTE",
         "done": false
       },
@@ -112,7 +112,7 @@
         "title": "Modification de données (INSERT, UPDATE, DELETE)",
         "description": "Manipulation des données avec les commandes DML",
         "contenu": "INSERT ajoute de nouvelles lignes: INSERT INTO table (col1, col2) VALUES (val1, val2). On peut insérer plusieurs lignes en une commande. UPDATE modifie des données existantes: UPDATE table SET col1 = val1 WHERE condition. Attention à toujours spécifier WHERE pour éviter de modifier toutes les lignes. DELETE supprime des lignes: DELETE FROM table WHERE condition. TRUNCATE TABLE supprime toutes les lignes plus rapidement. Ces commandes peuvent être annulées avec ROLLBACK si utilisées dans une transaction. Les transactions garantissent l'intégrité avec BEGIN TRANSACTION, COMMIT et ROLLBACK.",
-        "link_miniature": "https://www.tutorialspoint.com/sql/images/sql-insert.png",
+        "link_miniature": "pexels-olia-danilevich-4974915.jpg",
         "link_video": "https://www.youtube.com/watch?v=FR8gkEfy-P4",
         "done": false
       }
@@ -131,7 +131,7 @@
         "title": "Introduction aux conteneurs",
         "description": "Fondamentaux de la technologie Docker et des conteneurs",
         "contenu": "Docker est une plateforme de conteneurisation qui permet d'empaqueter une application et ses dépendances dans un conteneur isolé. Avantages: portabilité, isolation, légèreté, scalabilité. Différence avec les machines virtuelles: les conteneurs partagent le noyau du système hôte. Architecture: Docker Engine (démon + CLI), Images (modèles en lecture seule), Conteneurs (instances d'exécution), Registry (Docker Hub). Installation: télécharger Docker Desktop pour Windows/Mac ou Docker Engine pour Linux. Vérification: docker --version. Premier conteneur: docker run hello-world.",
-        "link_miniature": "https://docs.docker.com/get-started/images/containerized-app.png",
+        "link_miniature": "pexels-olia-danilevich-4974922.jpg",
         "link_video": "https://www.youtube.com/watch?v=fqMOX6JJhGo",
         "done": false
       },
@@ -140,7 +140,7 @@
         "title": "Création d'images avec Dockerfile",
         "description": "Construction d'images Docker personnalisées",
         "contenu": "Un Dockerfile est un script texte contenant les instructions pour construire une image. Instructions de base: FROM (image de base), RUN (exécute des commandes), COPY (copie des fichiers), ADD (copie avec extraction), CMD (commande par défaut du conteneur), EXPOSE (expose un port), ENV (définit variables d'environnement), WORKDIR (définit le répertoire de travail). Construction: docker build -t nom-image . Bonnes pratiques: utiliser des images officielles, minimiser le nombre de couches, utiliser .dockerignore, ordonner les instructions pour mieux utiliser le cache.",
-        "link_miniature": "https://www.bogotobogo.com/devops/images/docker/dockerfile.png",
+        "link_miniature": "pexels-pixabay-159299.jpg",
         "link_video": "https://www.youtube.com/watch?v=WmcdMiyqfZs",
         "done": false
       },
@@ -149,7 +149,7 @@
         "title": "Gestion des volumes et données persistantes",
         "description": "Stockage persistant avec les volumes Docker",
         "contenu": "Par défaut, les données dans un conteneur sont éphémères. Les volumes permettent la persistance des données. Types: 1) Volumes nommés (gérés par Docker), 2) Bind mounts (lien direct avec un répertoire hôte), 3) tmpfs mounts (en mémoire). Création: docker volume create nom-volume. Utilisation: docker run -v nom-volume:/chemin/conteneur. Inspection: docker volume inspect. Les bind mounts: docker run -v /chemin/hôte:/chemin/conteneur. Meilleures pratiques: utiliser des volumes nommés pour la portabilité, sauvegarder les volumes importants.",
-        "link_miniature": "https://miro.medium.com/v2/resize:fit:1400/1*_CQp4hFQ8pI9VZ6p_zqX5Q.png",
+        "link_miniature": "pexels-pixabay-270348.jpg",
         "link_video": "https://www.youtube.com/watch?v=4F4hAMzYP_s",
         "done": false
       },
@@ -158,7 +158,7 @@
         "title": "Orchestration avec Docker Compose",
         "description": "Gestion d'applications multi-conteneurs",
         "contenu": "Docker Compose permet de définir et exécuter des applications multi-conteneurs avec un fichier YAML. Installation incluse avec Docker Desktop. Structure: fichier docker-compose.yml avec les services, réseaux et volumes. Commandes: docker-compose up (démarre), down (arrête), build (construit les images), ps (liste les conteneurs). Avantages: configuration déclarative, isolation par projet, variables d'environnement. Exemple typique: application web + base de données. On peut définir les dépendances entre services avec depends_on, variables d'environnement, ports, volumes.",
-        "link_miniature": "https://miro.medium.com/v2/resize:fit:1400/1*4Rykbl1Vh5mpnC2oO67nLw.png",
+        "link_miniature": "pexels-pixabay-270366.jpg",
         "link_video": "https://www.youtube.com/watch?v=Qw9zlE3t8Ko",
         "done": false
       },
@@ -167,7 +167,7 @@
         "title": "Réseaux Docker et communication entre conteneurs",
         "description": "Configuration réseau avancée pour conteneurs",
         "contenu": "Docker propose plusieurs types de réseaux: bridge (par défaut, isolation au niveau hôte), host (supprime l'isolation réseau), overlay (pour clusters multi-hôtes), macvlan (attribution d'adresses MAC). Lister les réseaux: docker network ls. Créer un réseau: docker network create nom-reseau. Connecter un conteneur: docker run --network=nom-reseau. DNS intégré: les conteneurs peuvent se communiquer par leur nom. Communication entre conteneurs sur le même réseau sans exposition de ports. Isolation: les conteneurs sur différents réseaux ne peuvent pas communiquer.",
-        "link_miniature": "https://www.tutorialworks.com/assets/images/docker-networking/docker-networking-hero.png",
+        "link_miniature": "pexels-andrew-16053029.jpg",
         "link_video": "https://www.youtube.com/watch?v=bKFMS5C4CG0",
         "done": false
       },
@@ -176,7 +176,7 @@
         "title": "Déploiement en production et bonnes pratiques",
         "description": "Optimisation et sécurisation des déploiements Docker",
         "contenu": "Pour la production: utiliser des images minimales (Alpine), scanner les vulnérabilités (docker scan), éviter les privilèges élevés (USER), utiliser des secrets pour les données sensibles. Surveillance: logs avec docker logs, métriques avec docker stats. Orchestration: Docker Swarm ou Kubernetes pour la haute disponibilité. CI/CD: intégration avec Jenkins, GitLab CI, GitHub Actions. Optimisation: multi-stage builds pour réduire la taille des images, .dockerignore pour exclure les fichiers inutiles. Sécurité: mettre à jour régulièrement, ne pas exécuter en root, limiter les capacités.",
-        "link_miniature": "https://miro.medium.com/v2/resize:fit:1400/1*_CQp4hFQ8pI9VZ6p_zqX5Q.png",
+        "link_miniature": "pexels-divinetechygirl-1181359.jpg",
         "link_video": "https://www.youtube.com/watch?v=4F4hAMzYP_s",
         "done": false
       }
@@ -195,7 +195,7 @@
         "title": "Types de menaces informatiques",
         "description": "Panorama des cybermenaces modernes et leurs caractéristiques",
         "contenu": "Les malware sont des logiciels malveillants: virus (se reproduisent), vers (se propagent sans intervention), trojans (se font passer pour légitimes), ransomware (cryptent les données contre rançon), spyware (espionnage). Phishing: tentative d'obtenir des informations sensibles par usurpation d'identité. Attaques par déni de service (DoS/DDoS): surchargent un service pour le rendre indisponible. Ingénierie sociale: manipulation psychologique. Injection SQL: insertion de code malveillant dans des requêtes. Cross-site scripting (XSS): injection de scripts dans des pages web. Menaces internes: employés malveillants ou négligents.",
-        "link_miniature": "https://www.cloud4c.com/sites/default/files/2023-10/cyber-security.png",
+        "link_miniature": "pexels-abdullah-bin-mubarak-2067629-3693732.jpg",
         "link_video": "https://www.youtube.com/watch?v=inWWhr5tnEA",
         "done": false
       },
@@ -204,7 +204,7 @@
         "title": "Principes de l'authentification et autorisation",
         "description": "Mécanismes de contrôle d'accès et gestion des identités",
         "contenu": "Authentification: vérification de l'identité (quelque chose que vous savez - mot de passe, que vous avez - token, que vous êtes - biométrie). Authentification multi-facteur (MFA) combine plusieurs méthodes. Autorisation: ce qu'un utilisateur authentifié a le droit de faire. Principes: moindre privilège (accès minimum nécessaire), séparation des duties. Protocoles: OAuth (délégation d'autorisation), OpenID Connect (authentification), SAML (échange d'identité). Gestion des sessions: tokens, cookies sécurisés, expiration. Bonnes pratiques: mots de passe forts, rotation régulière, revue des permissions.",
-        "link_miniature": "https://www.okta.com/sites/default/files/styles/1640w_scaled/public/media/image/2020-10/Authentication_vs_Authorization.png",
+        "link_miniature": "pexels-abdullah-bin-mubarak-2067629-3693732.jpg",
         "link_video": "https://www.youtube.com/watch?v=2p4Pc2L1ePI",
         "done": false
       },
@@ -213,7 +213,7 @@
         "title": "Cryptographie basique",
         "description": "Fondamentaux du chiffrement et de la protection des données",
         "contenu": "Cryptographie: protection de l'information par transformation en forme illisible. Chiffrement symétrique: même clé pour chiffrer/déchiffrer (AES, DES). Chiffrement asymétrique: paire clé publique/privée (RSA, ECC). Hashage: transformation irréversible (SHA-256, MD5) pour vérifier l'intégrité. Signature numérique: hash signé avec clé privée. Certificats numériques: lient une identité à une clé publique, signés par une autorité de certification (CA). TLS/SSL: protocole sécurisant les communications internet. Applications: HTTPS, VPN, chiffrement de disque, messagerie sécurisée. Bonnes pratiques: algorithmes forts, gestion sécurisée des clés.",
-        "link_miniature": "https://www.comparitech.com/blog/wp-content/uploads/2019/05/Principles-of-Cryptography.png",
+        "link_miniature": "pexels-pavel-danilyuk-8294830",
         "link_video": "https://www.youtube.com/watch?v=jhXCTbFnK8o",
         "done": false
       },
@@ -222,7 +222,7 @@
         "title": "Sécurisation des réseaux",
         "description": "Protection des infrastructures réseau contre les intrusions",
         "contenu": "Firewall: filtre le trafic réseau selon des règles (port, adresse IP, protocole). Types: stateless (paquet par paquet), stateful (tient compte de l'état des connexions). VPN: tunnel chiffré à travers un réseau non sécurisé. Segmentation réseau: division en sous-réseaux pour limiter la propagation des menaces. IDS/IPS: détection et prévention d'intrusions. Wi-Fi sécurisé: WPA2/WPA3, masquage SSID, filtrage MAC. Network Access Control (NAC): contrôle d'accès aux ressources réseau. Surveillance: logs, analyse du trafic. Défense en profondeur: multiples couches de sécurité.",
-        "link_miniature": "https://www.comparitech.com/blog/wp-content/uploads/2019/05/Principles-of-Cryptography.png",
+        "link_miniature": "pexels-pixabay-373543.jpg",
         "link_video": "https://www.youtube.com/watch?v=jhXCTbFnK8o",
         "done": false
       },
@@ -231,7 +231,7 @@
         "title": "Bonnes pratiques d'hygiène numérique",
         "description": "Comportements sécurisés pour les utilisateurs et organisations",
         "contenu": "Pour les individus: mots de passe forts et uniques, MFA, méfiance envers les emails suspects, mises à jour régulières, sauvegardes, vigilance sur les réseaux sociaux. Pour les organisations: politique de sécurité, formation des employés, gestion des correctifs, contrôle d'accès, plan de réponse aux incidents, audits réguliers. DevSecOps: intégration de la sécurité dans le cycle de développement. Respect des réglementations: RGPD, HIPAA, PCI DSS selon le contexte. Veille sécurité: se tenir informé des nouvelles menaces. Tests: pentesting, audits de code. Culture sécurité: responsabilité partagée.",
-        "link_miniature": "https://www.systoolsys.com/wp-content/uploads/cyber-hygiene-practices.png",
+        "link_miniature": "pexels-pixabay-373543.jpg",
         "link_video": "https://www.youtube.com/watch?v=9U3IhLAnSxM",
         "done": false
       }
@@ -250,7 +250,7 @@
         "title": "Les arrow functions",
         "description": "Syntaxe et cas d'usage des fonctions fléchées",
         "contenu": "Les arrow functions introduites dans ES6 offrent une syntaxe concise: const add = (a, b) => a + b. Différences avec les fonctions traditionnelles: pas de binding de this (hérite du contexte parent), pas d'objet arguments, ne peuvent pas être utilisées comme constructeurs, pas de prototype. Syntaxe: paramètre unique sans parenthèses, return implicite si pas d'accolades, accolades nécessaires pour corps multi-lignes. Cas d'usage: callbacks, méthodes courtes, fonctions pures. Cas à éviter: méthodes d'objet (problème avec this), fonctions constructeurs, quand on a besoin de arguments.",
-        "link_miniature": "https://www.freecodecamp.org/news/content/images/2023/06/JavaScript-Blog.png",
+        "link_miniature": "pexels-divinetechygirl-1181568.jpg",
         "link_video": "https://www.youtube.com/watch?v=NCwa_xi0Uuc",
         "done": false
       },
@@ -259,7 +259,8 @@
         "title": "Destructuring et spread operator",
         "description": "Extraction de données et manipulation des tableaux/objets",
         "contenu": "Destructuring permet d'extraire des valeurs de tableaux ou propriétés d'objets: const [a, b] = [1, 2]; const {name, age} = user. Valeurs par défaut: const {name = 'Anonyme'} = user. Alias: const {name: userName} = user. Spread operator (...) étend les itérables: const newArr = [...arr1, ...arr2], const newObj = {...obj1, ...obj2}. Rest parameter collecte les arguments restants: function f(a, b, ...rest). Utilisations: copie superficielle, fusion, passage d'arguments, extraction de propriétés résiduelles. Attention: la copie d'objets avec spread est superficielle.",
-        "link_miniature": "https://miro.medium.com/v2/resize:fit:1400/1*KGVgV_Ur6eNq3J7o-dnLbA.png",
+        "link_miniature":"  pexels-divinetechygirl-1181568.jpg"  ,
+     
         "link_video": "https://www.youtube.com/watch?v=NIq3qLaHCIs",
         "done": false
       },
@@ -268,7 +269,7 @@
         "title": "Promises et async/await",
         "description": "Gestion asynchrone moderne et élégante",
         "contenu": "Les Promises représentent une valeur disponible maintenant, plus tard ou jamais. États: pending, fulfilled, rejected. Création: new Promise((resolve, reject) => {...}). Méthodes: then() (succès), catch() (erreur), finally() (toujours). Promise.all() (toutes résolues), Promise.race() (première résolue/rejetée). Async/await (ES2017): syntaxe synchrone pour code asynchrone. async function retourne une Promise. await pause l'exécution jusqu'à résolution. Gestion d'erreurs avec try/catch. Avantages: code plus lisible, gestion d'erreurs centralisée. Patterns: séquentialité, parallélisme, annulation.",
-        "link_miniature": "https://www.freecodecamp.org/news/content/images/2021/06/async-await.png",
+        "link_miniature": "pexels-abdullah-bin-mubarak-2067629-3693732.jpg",
         "link_video": "https://www.youtube.com/watch?v=PoRJizFvM7s",
         "done": false
       },
@@ -277,7 +278,7 @@
         "title": "Modules ES6 et import/export",
         "description": "Système de modules natif pour organiser le code",
         "contenu": "ES6 introduit un système de modules natif. Export: export const name = 'value'; export function f() {}; export default class MyClass {}. Import: import {name, f} from './module.js'; import MyClass from './MyClass.js'. Alias: import {name as nom} from './module.js'. Import namespace: import * as module from './module.js'. Caractéristiques: strict mode par défaut, scope module, chargement asynchrone possible. Différences avec CommonJS: syntaxe, static vs dynamic, valeur vs référence. Outils: Webpack, Rollup, Parcel pour bundling. Bonnes pratiques: exports nommés pour utilitaires, default pour composants principaux.",
-        "link_miniature": "https://dmitripavlutin.com/static/773742097063fc8b9f1ff708e96f1f99/6967d/javascript-modules.png",
+        "link_miniature": "pexels-thisisengineering-3861967.jpg",
         "link_video": "https://www.youtube.com/watch?v=cRHQNNcYf6s",
         "done": false
       },
@@ -286,7 +287,7 @@
         "title": "Classes et héritage",
         "description": "Programmation orientée objet avec syntaxe moderne",
         "contenu": "Les classes ES6 sont du sucre syntaxique sur le système prototype existant. Déclaration: class MyClass { constructor() {...} method() {...} }. Héritage: class Child extends Parent { constructor() { super(); ... } }. Méthodes statiques: static method() {...}. Propriétés d'instance: définies dans constructor avec this.prop = value. Propriétés de classe (static): static prop = value. Getters/setters: get prop() {...} set prop(value) {...}. Champs privés: #privateField (préfixe #). Mixins avec fonctions. Sous-classing built-ins: possible mais avec précautions. Limitations: pas de multiple inheritance, pas de modificateurs d'accès (sauf #).",
-        "link_miniature": "https://www.javascripttutorial.net/wp-content/uploads/2022/01/JavaScript-Class.png",
+        "link_miniature": "pexels-thisisengineering-3861967.jpg",
         "link_video": "https://www.youtube.com/watch?v=2ZphE5HcQPQ",
         "done": false
       },
@@ -295,7 +296,7 @@
         "title": "Structures de données modernes",
         "description": "Map, Set, WeakMap, WeakSet et leurs use cases",
         "contenu": "Map: collection clé-valeur, clés peuvent être de n'importe quel type (vs Object: seulement string/symbol). Méthodes: set(), get(), has(), delete(), size. Set: collection de valeurs uniques. Méthodes: add(), has(), delete(), size. WeakMap: Map avec clés comme objets seulement, non énumérable, garbage collectable. WeakMap: Set avec objets seulement, garbage collectable. Use cases: Map pour dictionnaires avec clés complexes, Set pour suppression de doublés, WeakMap/WeakSet pour métadonnées associées à des objets sans empêcher le GC. Opérations: itération avec for...of, conversion depuis/vers Tableaux.",
-        "link_miniature": "https://www.javascripttutorial.net/wp-content/uploads/2022/01/JavaScript-Class.png",
+        "link_miniature": "pexels-olia-danilevich-4974912",
         "link_video": "https://www.youtube.com/watch?v=2ZphE5HcQPQ",
         "done": false
       },
@@ -304,7 +305,7 @@
         "title": "Proxies et métaprogrammation",
         "description": "Interception et personnalisation des opérations fondamentales",
         "contenu": "Proxy permet de créer un wrapper pour un objet qui peut intercepter et redéfinir des opérations fondamentales. Création: new Proxy(target, handler). Traps (intercepteurs): get(), set(), has(), deleteProperty(), apply() (pour fonctions), construct() (pour constructeurs), et bien d'autres. Use cases: validation, logging, valeurs par défaut, observation de changements, émulation d'API. Reflect API: méthodes statiques correspondant aux traps, pour faciliter l'implémentation des proxies. Limitations: certains invariants doivent être préservés. Performance: impact possible, à utiliser judicieusement. Métaprogrammation avancée: manipulation au niveau du langage lui-même.",
-        "link_miniature": "https://miro.medium.com/v2/resize:fit:1400/1*_CQp4hFQ8pI9VZ6p_zqX5Q.png",
+        "link_miniature": "pexels-alex-green-5700184.jpg",
         "link_video": "https://www.youtube.com/watch?v=4F4hAMzYP_s",
         "done": false
       }
@@ -323,7 +324,7 @@
         "title": "Composants et JSX",
         "description": "Fondamentaux des composants React et syntaxe JSX",
         "contenu": "React est une bibliothèque JavaScript pour construire des interfaces utilisateur. Composants: briques réutilisables et indépendantes. Deux types: fonctionnels (avec hooks) et classiques. JSX: syntaxe extension JavaScript qui ressemble à HTML. Règles JSX: toujours fermer les balises, className au lieu de class, style prend un objet, expression JavaScript avec {}. Premier composant: function Welcome(props) { return <h1>Hello, {props.name}</h1>; }. Rendering: ReactDOM.render(<Welcome name=\"Sarah\" />, document.getElementById('root')). Props: données passées au composant, en lecture seule. Composition: imbriquer des composants. Fragments: <>...</> pour retourner multiple éléments.",
-        "link_miniature": "https://miro.medium.com/v2/resize:fit:1400/1*_CQp4hFQ8pI9VZ6p_zqX5Q.png",
+        "link_miniature": "pexels-diva-plavalaguna-6149793.jpg",
         "link_video": "https://www.youtube.com/watch?v=4F4hAMzYP_s",
         "done": false
       },
@@ -332,7 +333,7 @@
         "title": "State et cycle de vie",
         "description": "Gestion de l'état local et gestion des événements",
         "contenu": "State: données internes à un composant, pouvant changer over time. Dans les composants fonctionnels: useState hook. const [state, setState] = useState(initialValue). Mise à jour: setState(newValue) ou setState(prev => prev + 1). Événements: onClick, onChange, onSubmit etc. Gestion: function handleClick() {...} puis onClick={handleClick}. Cycle de vie dans les composants fonctionnels: useEffect hook pour side effects. useEffect(() => { effect; return () => cleanup; }, [dependencies]). Conditions de déclenchement: pas de dépendances (après chaque render), dépendances vides [] (uniquement après mount), avec dépendances (quand elles changent).",
-        "link_miniature": "https://miro.medium.com/v2/resize:fit:1400/1*_CQp4hFQ8pI9VZ6p_zqX5Q.png",
+        "link_miniature": "pexels-andrew-16053029.jpg",
         "link_video": "https://www.youtube.com/watch?v=4F4hAMzYP_s",
         "done": false
       },
@@ -341,7 +342,7 @@
         "title": "Listes et clés",
         "description": "Rendu de listes dynamiques et gestion des clés",
         "contenu": "Rendu de listes: map() sur un tableau pour produire un tableau d'éléments JSX. Clés: attribut key unique pour aider React à identifier quels éléments ont changé. Règles: doivent être uniques parmi les frères, stables entre les rendus, éviter les index comme clés si possible. Exemple: {items.map(item => <li key={item.id}>{item.name}</li>)}. Pour des listes complexes: extraire dans un composant séparé. Performance: les clés aident React à optimiser le ré-rendu. Cas d'erreur: clés dupliquées → warning. Clés et state: si les clés changent, le composant est remonté (state reset).",
-        "link_miniature": "https://miro.medium.com/v2/resize:fit:1400/1*_CQp4hFQ8pI9VZ6p_zqX5Q.png",
+        "link_miniature": "pexels-divinetechygirl-1181263.jpg",
         "link_video": "https://www.youtube.com/watch?v=4F4hAMzYP_s",
         "done": false
       },
@@ -350,7 +351,7 @@
         "title": "Forms et contrôlés components",
         "description": "Gestion des formulaires et entrées utilisateur",
         "contenu": "Composants contrôlés: la valeur de l'input est contrôlée par React via state. Avantages: validation en temps réel, contrôle précis. Exemple: const [value, setValue] = useState(''); <input value={value} onChange={e => setValue(e.target.value)} />. Textarea: similaire à input. Select: value sur le select, onChange gère la sélection. Checkbox/radio: checked property. Soumission: onSubmit sur le form, preventDefault(), traitement des données. Validation: peut être faite à la soumission ou en temps réel. Alternatives: composants non contrôlés (via refs), librairies comme Formik ou React Hook Form pour formulaires complexes.",
-        "link_miniature": "https://miro.medium.com/v2/resize:fit:1400/1*_CQp4hFQ8pI9VZ6p_zqX5Q.png",
+        "link_miniature": "pexels-divinetechygirl-1181269.jpg",
         "link_video": "https://www.youtube.com/watch?v=4F4hAMzYP_s",
         "done": false
       },
@@ -359,7 +360,7 @@
         "title": "Hooks personnalisés",
         "description": "Création de hooks réutilisables pour partager la logique",
         "contenu": "Hooks personnalisés: fonctions JavaScript qui utilisent d'autres hooks. Convention: nom commençant par \"use\". Permettent d'extraire la logique stateful des composants pour la réutiliser. Exemple: useLocalStorage hook qui synchronise state avec localStorage. Règles: n'appeler les hooks qu'au top level, pas dans conditions/boucles, seulement dans les fonctions React ou hooks personnalisés. Partage de logique: avant les hooks, mixins, HOCs, render props. Avantages: simplification des composants, réutilisabilité, testabilité. Patterns communs: useApi (data fetching), useToggle (boolean state), useDebounce (valeur retardée), usePrevious (valeur précédente).",
-        "link_miniature": "https://miro.medium.com/v2/resize:fit:1400/1*_CQp4hFQ8pI9VZ6p_zqX5Q.png",
+        "link_miniature": "pexels-divinetechygirl-1181359.jpg",
         "link_video": "https://www.youtube.com/watch?v=4F4hAMzYP_s",
         "done": false
       },
@@ -368,7 +369,7 @@
         "title": "Context API",
         "description": "Gestion d'état global sans bibliothèque externe",
         "contenu": "Context API: permet de passer des données à travers l'arbre de composants sans avoir à passer les props manuellement à chaque niveau. Création: const MyContext = React.createContext(defaultValue). Provider: <MyContext.Provider value={someValue}>...</MyContext.Provider> pour fournir la valeur aux descendants. Consumption: useContext hook dans les composants enfants: const value = useContext(MyContext). Use cases: thème, préférences utilisateur, état authentification. Performance: le Provider re-rend tous les consommateurs quand sa valeur change. Optimisation: memoization des valeurs avec useMemo. Alternatives pour état complexe: Redux, Zustand, Jotai. Bonnes pratiques: découper les contexts par domaine.",
-        "link_miniature": "https://miro.medium.com/v2/resize:fit:1400/1*_CQp4hFQ8pI9VZ6p_zqX5Q.png",
+        "link_miniature": "pexels-divinetechygirl-1181571.jpg",
         "link_video": "https://www.youtube.com/watch?v=4F4hAMzYP_s",
         "done": false
       }
@@ -387,7 +388,7 @@
         "title": "Introduction à Node.js",
         "description": "Fondamentaux de l'exécution JavaScript côté serveur",
         "contenu": "Node.js est un runtime JavaScript construit sur le moteur V8 de Chrome. Permet d'exécuter JavaScript côté serveur. Caractéristiques: asynchrone, event-driven, non-bloquant I/O. Module system: CommonJS (require/module.exports) ou ES Modules. Process object: informations sur le processus courant. Global object: équivalent du window en browser. NPM: gestionnaire de paquets, package.json pour la configuration. Scripts npm: définis dans package.json pour automatisation. Hello World: créer server avec http module. Utilisation: APIs, serveurs web, outils CLI, microservices. Avantages: même langage front/back, vaste écosystème, performant pour I/O intensive applications.",
-        "link_miniature": "https://miro.medium.com/v2/resize:fit:1400/1*_CQp4hFQ8pI9VZ6p_zqX5Q.png",
+        "link_miniature": "pexels-divinetechygirl-1181675.jpg",
         "link_video": "https://www.youtube.com/watch?v=4F4hAMzYP_s",
         "done": false
       },
@@ -396,7 +397,7 @@
         "title": "Express.js fondamentaux",
         "description": "Création d'APIs REST avec le framework Express",
         "contenu": "Express.js est un framework web minimaliste pour Node.js. Installation: npm install express. Premier serveur: const express = require('express'); const app = express(); app.get('/', (req, res) => res.send('Hello World!')); app.listen(3000). Routing: méthodes HTTP correspondantes (get, post, put, delete, etc.). Routes paramétrées: /users/:id. Query parameters: req.query. Body parsing: middleware express.json() pour JSON, express.urlencoded() pour form data. Response methods: send(), json(), status(), redirect(). Middleware: fonctions avec accès à req, res, next. Organisation: structure en routers pour modularité. Error handling: middleware d'erreur avec 4 paramètres.",
-        "link_miniature": "https://miro.medium.com/v2/resize:fit:1400/1*_CQp4hFQ8pI9VZ6p_zqX5Q.png",
+        "link_miniature": "pexels-fotios-photos-811587.jpg",
         "link_video": "https://www.youtube.com/watch?v=4F4hAMzYP_s",
         "done": false
       },
@@ -405,7 +406,7 @@
         "title": "Middleware et routage avancé",
         "description": "Utilisation des middleware et techniques de routage",
         "contenu": "Middleware: fonctions qui ont accès à req, res, et next. Peuvent exécuter du code, modifier req/res, terminer le cycle, appeler next middleware. Types: application-level, router-level, error-handling, built-in, third-party. Création: function middleware(req, res, next) { ...; next(); }. Utilisation: app.use(middleware) pour tous les routes, app.use('/path', middleware) pour path spécifique, app.get('/path', middleware, handler) pour route spécifique. Order matters: exécutés dans l'ordre de définition. Routage: app.route() pour chaîner les handlers, express.Router() pour modularité. Patterns: validation, logging, authentication, compression comme middleware.",
-        "link_miniature": "https://miro.medium.com/v2/resize:fit:1400/1*_CQp4hFQ8pI9VZ6p_zqX5Q.png",
+        "link_miniature": "pexels-goumbik-574071.jpg",
         "link_video": "https://www.youtube.com/watch?v=4F4hAMzYP_s",
         "done": false
       },
@@ -414,7 +415,7 @@
         "title": "Integration base de données",
         "description": "Connexion et interaction avec bases de données",
         "contenu": "Choix de base de données: SQL (PostgreSQL, MySQL) ou NoSQL (MongoDB). ORMs/ODMs: Sequelize (SQL), Mongoose (MongoDB). Connexion: configuration avec credentials, connection pool. Modèles: définition des schémas et relations. CRUD operations: Create, Read, Update, Delete. Avec Mongoose: User.create(), User.find(), User.findByIdAndUpdate(), User.findByIdAndDelete(). Transactions: pour opérations atomiques. Validation: au niveau base de données et application. Performance: indexing, pagination, population/references. Sécurité: prévention injection SQL, validation input, sanitization. Alternatives: query builders (Knex), drivers natifs. Bonnes pratiques: séparation concerns, repository pattern.",
-        "link_miniature": "https://miro.medium.com/v2/resize:fit:1400/1*_CQp4hFQ8pI9VZ6p_zqX5Q.png",
+        "link_miniature": "pexels-joshsorenson-1714208.jpg",
         "link_video": "https://www.youtube.com/watch?v=4F4hAMzYP_s",
         "done": false
       },
@@ -423,7 +424,7 @@
         "title": "Authentification et sécurité",
         "description": "Mise en place de l'authentification et mesures de sécurité",
         "contenu": "Authentification: process de vérification d'identité. Strategies: local (username/password), OAuth, JWT. bcrypt pour hasher les mots de passe. Sessions: express-session middleware, stockage cookie ou server-side. JWT (JSON Web Tokens): tokens signés contenant des claims. Structure: header.payload.signature. Avantages: stateless, portable. Sécurité: HTTPS obligatoire, pas d'informations sensibles dans JWT. Middleware d'authentification: vérifier token/session avant d'accéder aux routes protégées. Autorisation: vérifier les permissions. Mesures sécurité: helmet.js (headers sécurisés), rate limiting, validation input, CORS configuration. Tests: penetration testing, audits de sécurité.",
-        "link_miniature": "https://miro.medium.com/v2/resize:fit:1400/1*_CQp4hFQ8pI9VZ6p_zqX5Q.png",
+        "link_miniature": "pexels-kevin-ku-92347-577585.jpg",
         "link_video": "https://www.youtube.com/watch?v=4F4hAMzYP_s",
         "done": false
       }
@@ -442,7 +443,7 @@
         "title": "Introduction à AWS",
         "description": "Fondamentaux du cloud computing et overview AWS",
         "contenu": "Cloud computing: fourniture de services informatiques via Internet avec paiement à l'usage. Modèles: IaaS (Infrastructure), PaaS (Platform), SaaS (Software). AWS: leader du cloud, +200 services. Regions et Availability Zones: géographie et redondance. Compte AWS: création, MFA, IAM pour la sécurité. Services de base: EC2 (machines virtuelles), S3 (stockage objet), RDS (bases de données), Lambda (serverless). Console AWS: interface web de management. CLI: command line interface pour automation. SDK: intégration dans code. Pricing model: pay-as-you-go, free tier. Best practices: well-architected framework, tags pour le suivi, monitoring des coûts.",
-        "link_miniature": "https://miro.medium.com/v2/resize:fit:1400/1*_CQp4hFQ8pI9VZ6p_zqX5Q.png",
+        "link_miniature": "pexels-olia-danilevich-4974915.jpg",
         "link_video": "https://www.youtube.com/watch?v=4F4hAMzYP_s",
         "done": false
       },
@@ -451,7 +452,7 @@
         "title": "EC2 et gestion des instances",
         "description": "Déploiement et management de serveurs virtuels",
         "contenu": "EC2 (Elastic Compute Cloud): serveurs virtuels configurables. Types d'instances: général purpose, compute optimized, memory optimized, storage optimized. AMI (Amazon Machine Image): modèles préconfigurés. Launch: choisir type, AMI, storage, security group. Storage: EBS (block storage), Instance Store (temporaire). Security Groups: firewall au niveau instance. Key Pairs: connexion SSH. Auto Scaling: ajustement automatique de la capacité. Load Balancing: répartition de charge. Spot Instances: à prix réduit mais interruptibles. Best practices: utiliser IAM roles au lieu d'access keys, monitoring avec CloudWatch, backup avec AMIs, patch management.",
-        "link_miniature": "https://miro.medium.com/v2/resize:fit:1400/1*_CQp4hFQ8pI9VZ6p_zqX5Q.png",
+        "link_miniature": "pexels-pavel-danilyuk-8294621.jpg",
         "link_video": "https://www.youtube.com/watch?v=4F4hAMzYP_s",
         "done": false
       },
@@ -460,7 +461,7 @@
         "title": "S3 et stockage cloud",
         "description": "Utilisation de Simple Storage Service pour le stockage objet",
         "contenu": "S3 (Simple Storage Service): stockage objet scalable et durable. Concepts: buckets (conteneurs), objects (fichiers), keys (noms de fichier). Classes de stockage: Standard, Intelligent-Tiering, Standard-IA, One Zone-IA, Glacier (archivage). Durability et availability: conçu pour 99.999999999% de durabilité. Versioning: conservation de toutes les versions d'un objet. Encryption: SSE-S3, SSE-KMS, SSE-C, client-side. Access control: bucket policies, ACLs, IAM. Lifecycle policies: transition automatique entre classes. Use cases: stockage site web, data lake, backup, big data. Performance: multipart upload, transfer acceleration. Event notifications: déclencher Lambda, SQS etc. sur changements.",
-        "link_miniature": "https://miro.medium.com/v2/resize:fit:1400/1*_CQp4hFQ8pI9VZ6p_zqX5Q.png",
+        "link_miniature": "pexels-diva-plavalaguna-6149793.jpg",
         "link_video": "https://www.youtube.com/watch?v=4F4hAMzYP_s",
         "done": false
       },
@@ -469,7 +470,7 @@
         "title": "Bases de données managées",
         "description": "Services de bases de données managées AWS",
         "contenu": "RDS (Relational Database Service): bases de données relationnelles managées. Engines: MySQL, PostgreSQL, MariaDB, Oracle, SQL Server. Avantages: automated provisioning, patching, backup, recovery, scaling. Read Replicas: pour scaling lecture. Multi-AZ: haute disponibilité. Aurora: moteur propriétaire AWS, compatible MySQL/PostgreSQL, plus performant. DynamoDB: base de données NoSQL managée, serverless, clé-valeur et document. Caractéristiques: performance prédictible, auto-scaling, global tables. Redshift: data warehouse pétabyte-scale. ElastiCache: cache en mémoire (Redis/Memcached). Choix: selon besoins en consistency, scaling, structure des données. Best practices: monitoring, backup, encryption, IAM authentication.",
-        "link_miniature": "https://miro.medium.com/v2/resize:fit:1400/1*_CQp4hFQ8pI9VZ6p_zqX5Q.png",
+        "link_miniature": "pexels-cottonbro-6804613.jpg",
         "link_video": "https://www.youtube.com/watch?v=4F4hAMzYP_s",
         "done": false
       },
@@ -478,7 +479,7 @@
         "title": "Serverless avec Lambda",
         "description": "Développement d'applications sans serveur",
         "contenu": "AWS Lambda: compute serverless, exécution de code sans provisionner de serveurs. Pricing: pay per request and compute time. Triggers: API Gateway, S3, DynamoDB, CloudWatch Events, etc. Runtimes: Node.js, Python, Java, Go, Ruby, .NET. Deployment: zip upload, container images, layers pour les dépendances. Configuration: mémoire, timeout, environment variables, VPC. Concurrency: contrôle du nombre d'exécutions simultanées. Stateless: utiliser S3/DynamoDB pour state persistent. Best practices: fonctions petites et spécialisées, éviter long cold starts, monitoring avec CloudWatch, X-Ray pour tracing. Patterns: event processing, data transformation, web backends, cron jobs.",
-        "link_miniature": "https://miro.medium.com/v2/resize:fit:1400/1*_CQp4hFQ8pI9VZ6p_zqX5Q.png",
+        "link_miniature": "pexels-hiteshchoudhary-879109.jpg",
         "link_video": "https://www.youtube.com/watch?v=4F4hAMzYP_s",
         "done": false
       },
@@ -487,7 +488,7 @@
         "title": "Architecture cloud avancée",
         "description": "Design patterns et best practices pour architectures AWS",
         "contenu": "Well-Architected Framework: cinq piliers - operational excellence, security, reliability, performance efficiency, cost optimization. High availability: multi-AZ, auto-scaling, load balancing. Fault tolerance: design for failure, graceful degradation. Microservices: découplage avec API Gateway, ECS/EKS, Lambda. Event-driven architecture: SNS, SQS, EventBridge. Caching: CloudFront, ElastiCache. Security: shared responsibility model, IAM least privilege, encryption everywhere, monitoring avec GuardDuty, Config. Cost optimization: right sizing, reserved instances, spot instances, cost allocation tags. Automation: CloudFormation, CDK, Terraform pour Infrastructure as Code. Monitoring: CloudWatch, X-Ray, Health Dashboard.",
-        "link_miniature": "https://miro.medium.com/v2/resize:fit:1400/1*_CQp4hFQ8pI9VZ6p_zqX5Q.png",
+        "link_miniature": "pexels-divinetechygirl-1181263.jpg",
         "link_video": "https://www.youtube.com/watch?v=4F4hAMzYP_s",
         "done": false
       }
@@ -506,7 +507,7 @@
         "title": "Introduction au Machine Learning",
         "description": "Concepts de base et types de machine learning",
         "contenu": "Machine Learning: domaine de l'IA permettant aux systèmes d'apprendre à partir de données sans programmation explicite. Types: Supervised Learning (données labellées, prédiction), Unsupervised Learning (données non labellées, patterns), Reinforcement Learning (apprentissage par essai-erreur avec récompenses). Applications: reconnaissance d'images, traitement du langage, recommandations, fraud detection. Processus: collecte données, préprocessing, feature engineering, entraînement modèle, évaluation, déploiement. Bibliothèques: scikit-learn, TensorFlow, PyTorch. Défis: overfitting, underfitting, biais dans les données. Évaluation: metrics comme accuracy, precision, recall, F1-score. Éthique: fairness, transparency, privacy.",
-        "link_miniature": "https://miro.medium.com/v2/resize:fit:1400/1*_CQp4hFQ8pI9VZ6p_zqX5Q.png",
+        "link_miniature": "pexels-fotios-photos-811587.jpg",
         "link_video": "https://www.youtube.com/watch?v=4F4hAMzYP_s",
         "done": false
       },
@@ -515,7 +516,7 @@
         "title": "Régression linéaire et logistique",
         "description": "Algorithmes fondamentaux de prédiction",
         "contenu": "Régression linéaire: modélise la relation entre variables dépendantes et indépendantes avec une ligne droite. Equation: y = mx + b. Utilisation: prédiction de valeurs continues. Méthode des moindres carrés pour trouver les meilleurs paramètres. Évaluation: R-squared, MSE. Régression logistique: pour classification binaire, prédit des probabilités entre 0 et 1. Fonction sigmoïde. Utilisation: spam detection, diagnostic médical. Évaluation: confusion matrix, accuracy, ROC curve. Implémentation avec scikit-learn: LinearRegression(), LogisticRegression(). Préprocessing: scaling des features, handling missing values. Régularisation: L1/L2 pour éviter overfitting. Limitations: relations linéaires seulement.",
-        "link_miniature": "https://miro.medium.com/v2/resize:fit:1400/1*_CQp4hFQ8pI9VZ6p_zqX5Q.png",
+        "link_miniature": "pexels-thisisengineering-3861967.jpg",
         "link_video": "https://www.youtube.com/watch?v=4F4hAMzYP_s",
         "done": false
       },
@@ -524,7 +525,7 @@
         "title": "Arbres de décision et forêts aléatoires",
         "description": "Algorithmes basés sur les arbres pour classification et régression",
         "contenu": "Arbres de décision: modèles non-linéaires qui font des décisions basées sur des règles. Structure: nodes (décisions), branches (résultats), leaves (prédictions). Avantages: interpretabilité, handling mixed data types, non-linear relationships. Désavantages: prone to overfitting. Forêts aléatoires: ensemble method qui combine multiple arbres de décision (bagging). Réduction du overfitting, meilleure généralisation. Important features: mesure d'importance des variables. Paramètres: nombre d'arbres, profondeur max, nombre de features par split. Implémentation: DecisionTreeClassifier, RandomForestClassifier. XGBoost: algorithm gradient boosting avancé, souvent gagnant de compétitions. Use cases: classification, regression, feature selection.",
-        "link_miniature": "https://miro.medium.com/v2/resize:fit:1400/1*_CQp4hFQ8pI9VZ6p_zqX5Q.png",
+        "link_miniature": "pexels-pixabay-256502.jpg",
         "link_video": "https://www.youtube.com/watch?v=4F4hAMzYP_s",
         "done": false
       },
@@ -533,7 +534,7 @@
         "title": "Clustering avec K-means",
         "description": "Algorithme non supervisé de regroupement de données",
         "contenu": "Clustering: regroupement de données similaires sans labels préexistants. K-means: algorithme populaire de clustering. Étapes: 1) Choisir k (nombre de clusters), 2) Initialiser centroids aléatoirement, 3) Assigner points au centroid le plus proche, 4) Recalculer centroids, 5) Répéter jusqu'à convergence. Détermination de k: méthode elbow, silhouette score. Préprocessing: scaling des features important. Limitations: sensible à l'initialisation, assume clusters sphériques de taille similaire. Variantes: K-means++ (meilleure initialisation), Mini-batch K-means (pour grandes datasets). Applications: segmentation clients, regroupement documents, image compression. Implémentation: KMeans dans scikit-learn. Validation: metrics internes (silhouette) ou externes si labels disponibles.",
-        "link_miniature": "https://miro.medium.com/v2/resize:fit:1400/1*_CQp4hFQ8pI9VZ6p_zqX5Q.png",
+        "link_miniature": "pexels-thisisengineering-3861958.jpg",
         "link_video": "https://www.youtube.com/watch?v=4F4hAMzYP_s",
         "done": false
       },
@@ -542,7 +543,7 @@
         "title": "Introduction aux réseaux de neurones",
         "description": "Fondamentaux des réseaux de neurones artificiels",
         "contenu": "Réseaux de neurones: modèles inspirés du cerveau, capables d'apprendre des patterns complexes. Neurone: unité de base avec inputs, weights, bias, fonction d'activation. Couches: input, hidden, output. Perceptron: simplest neural network. Feedforward: information passe des inputs aux outputs. Backpropagation: algorithme d'apprentissage qui ajuste les weights basé sur l'erreur. Fonctions d'activation: sigmoid, tanh, ReLU, softmax. Deep Learning: réseaux avec plusieurs couches cachées. Frameworks: TensorFlow, Keras, PyTorch. Applications: computer vision, NLP, speech recognition. Défis: besoin de beaucoup de données, compute intensive, hyperparameter tuning. Regularization: dropout, weight decay pour éviter overfitting. Visualisation: tools like TensorBoard.",
-        "link_miniature": "https://miro.medium.com/v2/resize:fit:1400/1*_CQp4hFQ8pI9VZ6p_zqX5Q.png",
+        "link_miniature": "pexels-pixabay-276452.jpg",
         "link_video": "https://www.youtube.com/watch?v=4F4hAMzYP_s",
         "done": false
       }
@@ -561,7 +562,7 @@
         "title": "Branches et stratégies de branching",
         "description": "Gestion avancée des branches et workflows d'équipe",
         "contenu": "Branches: lignes de développement indépendantes. Création: git branch nom-branche, git checkout -b nom-branche. Merge: intégration des changements d'une branche dans une autre. Strategies: merge commit, squash merge, rebase. Conflits: résolution manuelle quand Git ne peut pas merger automatiquement. Workflows: Git Flow (branches develop, feature, release, hotfix), GitHub Flow (simplifié, branches feature + main), GitLab Flow (avec environnements). Best practices: branches court-lived, naming convention, protection de la branche main, revues de code. Remote branches: suivre les branches sur le dépôt distant. Tracking: git branch --set-upstream-to=origin/branche.",
-        "link_miniature": "https://miro.medium.com/v2/resize:fit:1400/1*_CQp4hFQ8pI9VZ6p_zqX5Q.png",
+        "link_miniature": "pexels-olia-danilevich-4974914.jpg",
         "link_video": "https://www.youtube.com/watch?v=4F4hAMzYP_s",
         "done": false
       },
@@ -570,7 +571,7 @@
         "title": "Rebase vs Merge",
         "description": "Comparaison et utilisation appropriée du rebase",
         "contenu": "Rebase: réécriture de l'historique, applique les commits de la branche courante sur la pointe d'une autre branche. Avantages: historique linéaire plus propre, évite les merge commits inutiles. Désavantages: réécriture de l'historique (dangereux pour les commits déjà poussés). Interactive rebase: git rebase -i, permet de modifier l'historique (reword, edit, squash, drop commits). Golden rule: ne pas rebaser des commits qui ont été poussés sur une branche partagée. Merge: préserve l'historique exact, crée un merge commit. Use cases: rebase pour nettoyer l'historique local, merge pour intégrer des branches. Strategies: --no-ff pour forcer un merge commit même quand fast-forward possible.",
-        "link_miniature": "https://miro.medium.com/v2/resize:fit:1400/1*_CQp4hFQ8pI9VZ6p_zqX5Q.png",
+        "link_miniature": "pexels-pixabay-373543.jpg",
         "link_video": "https://www.youtube.com/watch?v=4F4hAMzYP_s",
         "done": false
       },
@@ -579,7 +580,7 @@
         "title": "Git hooks et automation",
         "description": "Automatisation des workflows avec les hooks Git",
         "contenu": "Git hooks: scripts qui se déclenchent à des événements spécifiques du workflow Git. Emplacement: .git/hooks/. Types: pre-commit, prepare-commit-msg, commit-msg, post-commit, pre-push, etc. Use cases: validation de code (linting, tests), vérification de message de commit, déploiement automatique. Langage: tout langage exécutable (bash, Python, Node.js). Partage: les hooks ne sont pas versionnés par défaut, mais peuvent être gérés via le répertoire .githooks et config core.hooksPath. Outils: Husky pour projets JavaScript, pre-commit pour Python. Best practices: hooks rapides, échec si validation non passée, documentation. Alternatives: CI/CD pipelines pour des vérifications plus lourdes.",
-        "link_miniature": "https://miro.medium.com/v2/resize:fit:1400/1*_CQp4hFQ8pI9VZ6p_zqX5Q.png",
+        "link_miniature": "pexels-pixabay-159299.jpg",
         "link_video": "https://www.youtube.com/watch?v=4F4hAMzYP_s",
         "done": false
       },
@@ -588,7 +589,7 @@
         "title": "GitHub Actions CI/CD",
         "description": "Mise en place de l'intégration continue avec GitHub",
         "contenu": "GitHub Actions: plateforme d'automatisation intégrée à GitHub. Composants: workflows (fichiers YAML), events (déclencheurs), jobs, steps, actions. Events: push, pull_request, schedule, manual. Actions: unités réutilisables de code. Marketplace: actions partagées par la communauté. CI: linting, tests sur chaque push/PR. CD: déploiement automatique. Environnements: production, staging, avec secrets spécifiques. Matrices: exécution parallèle sur plusieurs OS/runtimes. Caching: pour accélérer les builds. Artifacts: stockage des build outputs. Self-hosted runners: pour besoins spécifiques. Monitoring: status des workflows, logs. Best practices: security (secrets, permissions), efficiency (parallelism, caching), maintenance.",
-        "link_miniature": "https://miro.medium.com/v2/resize:fit:1400/1*_CQp4hFQ8pI9VZ6p_zqX5Q.png",
+        "link_miniature": "pexels-pavel-danilyuk-8294830.jpg",
         "link_video": "https://www.youtube.com/watch?v=4F4hAMzYP_s",
         "done": false
       },
@@ -597,7 +598,7 @@
         "title": "Collaboration avancée sur GitHub",
         "description": "Techniques professionnelles de collaboration open source",
         "contenu": "Pull Requests: mécanisme de contribution et revue de code. Best practices: descriptions claires, templates, linked issues, atomic changes. Code review: commentaires constructifs, checklist, approbations. Issues: bug reports, feature requests, templates. Projects: gestion de projet avec boards. Discussions: forum pour questions et idées. Organizations: gestion d'équipes, permissions, repositories. Permissions: read, write, admin, maintain, triage. Branch protection rules: require reviews, status checks, prevent force push. CODEOWNERS: automatic reviewers pour certains fichiers. Security: vulnerability alerts, Dependabot, code scanning. Community: guidelines, code of conduct, license. Open source: fostering community, accepting contributions.",
-        "link_miniature": "https://miro.medium.com/v2/resize:fit:1400/1*_CQp4hFQ8pI9VZ6p_zqX5Q.png",
+        "link_miniature": "pexels-joshsorenson-1714208.jpg",
         "link_video": "https://www.youtube.com/watch?v=4F4hAMzYP_s",
         "done": false
       }
