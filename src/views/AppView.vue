@@ -30,6 +30,7 @@ const testUsers = [
     name: 'Hermès H',
     email: 'test@test.com',
     password: 'test',
+    isAdmin: true,
     completedCourses: [2],
   },
 ]

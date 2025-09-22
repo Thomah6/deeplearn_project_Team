@@ -120,8 +120,8 @@ const filteredCourses = computed(() => {
             <div
               class="relative mx-4 mt-4 overflow-hidden text-white shadow-lg rounded-xl bg-blue-gray-500 bg-clip-border shadow-blue-gray-500/40">
               <img
-                 :src="`/${cours.lessons[0].link_miniature}`"
-                alt="ui/ux review check" class="object-fit h-sm" />
+                 :src="`${cours.lessons[0].link_miniature}`"
+                alt="ui/ux review check" class="object-cover h-[250px] w-full" />
               <div
                 class="absolute inset-0 w-full h-full to-bg-black-10 bg-gradient-to-tr from-transparent via-transparent to-black/60">
               </div>

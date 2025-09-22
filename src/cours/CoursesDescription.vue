@@ -26,6 +26,7 @@ watch(() => props.id, getCourse)
 
 
 <template>
+  
 
   <div class="w-full">
     <section class="text-blueGray-700 w-full ">
@@ -37,7 +38,7 @@ watch(() => props.id, getCourse)
               <div class="flex items-center justify-between">
                 <div class="flex items-center pb-12">
                   <div class="h-12 w-12">
-                    <img src="" alt="proff" class="h-full w-full object-cover overflow-hidden rounded-full" />
+                    <img src="https://image.pollinations.ai/prompt/profil_utilisateur" alt="proff" class="h-full w-full object-cover overflow-hidden rounded-full" />
                   </div>
                   <p class="text-indigo-500 dark:text-indigo-200 font-bold ml-3">
                     Jane Doe <br />
@@ -52,7 +53,7 @@ watch(() => props.id, getCourse)
               </div>
           </div>
           <div class="w-full lg:w-1/3 lg:max-w-lg md:w-1/2">
-              <img class="w-full object-cover object-center rounded-lg " alt="hero" src="https://dummyimage.com/720x600/F3F4F7/8693ac">
+              <img class="w-full object-cover object-center rounded-lg " alt="hero" :src="`https://image.pollinations.ai/prompt/${dataTable.title}`">
           </div>
       </div>
     </section>
@@ -63,7 +64,7 @@ watch(() => props.id, getCourse)
           <div class="grid   xl:grid-cols-2 xl:gap-8 xl:items-center justify-center xL:-mx-4  w-full">
               <div class="grid 0 justify-center grid-cols-1 mt-8 xl:mt-0 border bg-sky-50 dark:bg-gray-700 border-gray-200  dark:border-sky-200 rounded-lg p-4 " v-for="lesson in dataTable.lessons" :key="lesson.id">
                   <div class=" text-xl gap-4 p-2 md:grid-cols-2  md:grid text-center">
-                        <img class="object-cover mx-auto rounded-xl h-60 w-full" :src="`/${lesson.link_miniature}`" alt="">
+                        <img class="object-cover mx-auto rounded-xl h-60 w-full" :src="`${lesson.link_miniature}`" alt="">
                         <div class="text-left">
                        <p class="mt-2 text-gray-500 capitalize dark:text-gray-300">
                          <strong>Leçon n°{{ lesson.id }} sur {{ dataTable.lessons_count }}</strong>

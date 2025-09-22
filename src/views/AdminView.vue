@@ -130,7 +130,8 @@ function handleSaveLesson(lessonData) {
   const lessonToAdd = {
     ...lessonData,
     id: (courseToEditForLessons.value.lessons.length || 0) + 1,
-    done: 'false',
+    done: false,
+    link_miniature: `https://image.pollinations.ai/prompt/${encodeURIComponent(lessonData.title)}`,
   }
 
   const course = courseArray.value.find(c => c.id === courseToEditForLessons.value.id);

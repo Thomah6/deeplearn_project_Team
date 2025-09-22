@@ -51,7 +51,7 @@ const router = createRouter({
       path: '/description/:id',
       name: 'description.show',
       component: () => import('@/cours/CoursesDescription.vue'),
-      props: (route) => ({ id: parseInt(route.params.id) }),
+      props: (route) => ({ id: Number(route.params.id) }),
       meta: { title: 'Description - DeepLearn' },
     },
     {
