@@ -20,9 +20,9 @@ const users = ref([])
 onMounted(() => {
   // Initialise EmailJS avec ta clé publique
   emailjs.init('2V_Zjk6uljc9CuaIx')
-  console.log('EmailJS initialized')
+  // console.log('EmailJS initialized')
   users.value = props.usersData
-  console.log(users.value)
+  // console.log(users.value)
 })
 
 function generateCode(length = 6) {

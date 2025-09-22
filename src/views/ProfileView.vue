@@ -22,7 +22,7 @@ onMounted(() => {
 
     if (currentUserData) {
       user.value = currentUserData
-      console.log('Utilisateur actuel:', user.value)
+      // console.log('Utilisateur actuel:', user.value)
 
       // Get full course details for completed courses
       if (user.value.completedCourses && props.courses) {

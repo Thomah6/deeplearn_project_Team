@@ -1,15 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import AdminView from '@/views/AdminView.vue'
 import CatalogView from '@/views/CatalogView.vue'
 import HomeView from '@/views/HomeView.vue'
-import CourseView from '@/views/CourseView.vue'
-import ProfileView from '@/views/ProfileView.vue'
-import AuthViews from '@/features/auth/AuthViews.vue'
-import VerificationCodeViews from '@/features/auth/VerificationCodeViews.vue'
 import Welcome from '@/features/auth/Welcome.vue'
-import Admin from '@/features/Admin/Admin.vue'
-import ChatAiView from '@/views/ChatAiView.vue'
-import Quizz from '@/quizz/Quizz.vue'
+import CourseData from '@/data/courses.json'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -23,14 +16,14 @@ const router = createRouter({
     {
       path: '/auth',
       name: 'authviews',
-      component: AuthViews,
+      component: () => import('@/features/auth/AuthViews.vue'),
       props: true,
       meta: { title: 'AuthViews - DeepLearn' },
     },
     {
       path: '/c',
       name: 'chatai',
-      component: ChatAiView,
+      component: () => import('@/views/ChatAiView.vue'),
       props: true,
       meta: { title: 'ChatAI - DeepLearn', requiresAuth: true },
     },
@@ -43,7 +36,7 @@ const router = createRouter({
     {
       path: '/course/:id',
       name: 'course',
-      component: CourseView,
+      component: () => import('@/views/CourseView.vue'),
       props: true,
       meta: { title: 'Cours - DeepLearn' },
     },
@@ -65,7 +58,7 @@ const router = createRouter({
     {
       path: '/modifycourse',
       name: 'modifyourscourse',
-      component: Admin,
+      component: () => import('@/features/Admin/Admin.vue'),
       props: true,
       meta: { title: 'modifycourses - DeepLearn' },
     },
@@ -73,30 +66,35 @@ const router = createRouter({
     {
       path: '/profile',
       name: 'profile',
-      component: ProfileView,
+      component: () => import('@/views/ProfileView.vue'),
       meta: { title: 'Profil - DeepLearn', requiresAuth: true },
     },
     {
       path: '/admin',
       name: 'admin',
-      component: AdminView,
+      component:() => import('@/views/AdminView.vue'),
       meta: { title: 'Administration - DeepLearn', requiresAuth: true, isAdmin: true },
     },
     {
       path: '/verification',
       name: 'Verification',
-      component: VerificationCodeViews,
+      component: () => import('@/features/auth/VerificationCodeViews.vue'),
       meta: { title: 'Vérification - DeepLearn' },
     },
     {
       path: '/welcome',
       name: 'welcome',
-      component: Welcome,
+      component: () => import('@/features/auth/Welcome.vue'),
     },
     {
       path: '/quizz/:id',
       name: 'quizz',
-      component: Quizz,
+      component: () => import('@/quizz/Quizz.vue'),
+      props: route => ({
+        catalog: CourseData,
+        usersData: JSON.parse(localStorage.getItem('users')),
+        courses: CourseData
+      })
     },
     {
       path: '/coursecard',

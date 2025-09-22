@@ -36,7 +36,7 @@ onMounted(() => {
 
 // Filtrage global
 const filteredCourses = computed(() => {
-  console.log(search.value);
+  // console.log(search.value);
   if (!props.course || !Array.isArray(props.course)) return []
   return props.course.filter(course => {
     const keyword = search.value
@@ -111,7 +111,7 @@ const filteredCourses = computed(() => {
 
     <TransitionGroup name="fade-stagger" tag="div"
       class="grid w-full mt-16 justify-center sm:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 lg:gap-10 px-4 sm:px-6 lg:px-8">
-      <div class="relative w-full transition-item" :style="{ transitionDelay: `${index * 100}ms` }" v-for="cours in filteredCourses" :key="cours.id">
+      <div class="relative w-full transition-item" :style="{ transitionDelay: `${index * 100}ms` }" v-for="(cours, index) in filteredCourses" :key="cours.id">
         <div
           class="h-full border border-sky-200 justify-center  mx-auto hover:shadow-2xl rounded-2xl cursor-pointer transition ease-in duration-500  transform ">
           <!-- Centering wrapper -->
