@@ -67,15 +67,9 @@ watch(() => props.lesson, (newLesson) => {
         Marquer comme terminé
       </button>
     </div>
-
-    <!-- Message de progression complète -->
-    <!-- <div v-if="progress === 100" class="mt-4 p-3 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-lg">
-      <p class="text-center">Félicitations ! Leçon terminée ✅</p>
-      <p v-if="props.progressComplete" class="text-center text-sm mt-2">Passage à la leçon suivante...</p>
-    </div> -->
 <div class="mt-4 p-3 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-lg text-center">
   
-  <RouterLink :to="{name:'quizz' , params : {id:route.params.id}}"><button class=" text-white cursor-pointer">Commencer le quiz</button></RouterLink>
+  <RouterLink :to="{name:'quizz' , params : {id:route.params.id}}"><button class=" text-white cursor">Commencer le quiz</button></RouterLink>
 
 </div>
   </section>

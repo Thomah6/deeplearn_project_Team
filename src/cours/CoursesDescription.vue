@@ -13,7 +13,7 @@ const dataTable = ref([])
 const getCourse = () => {
   dataTable.value = courseData.find((cour) => cour.id === props.id)
 }
-console.log(dataTable);
+// console.log(dataTable);
 
 onMounted(() => {
   getCourse()

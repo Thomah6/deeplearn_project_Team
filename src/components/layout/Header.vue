@@ -1,8 +1,8 @@
-<!-- eslint-disable vue/multi-word-component-names -->
 <script setup>
 import { ref, onMounted, onUnmounted, computed, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { useRoute } from 'vue-router'
+import { nextTick } from 'vue'
 
 const route = useRoute()
 
@@ -19,7 +19,7 @@ const isDark = ref(false)
 
 onMounted(() => {
   const savedTheme = localStorage.getItem('theme')
-  console.log("Saved theme:", savedTheme);
+  // console.log("Saved theme:", savedTheme);
   if (savedTheme) {
     isDark.value = savedTheme === 'dark'
     document.documentElement.classList.toggle('dark', isDark.value)
@@ -27,10 +27,10 @@ onMounted(() => {
 })
 
 function toggleDark() {
-  console.log(isDark.value);
+  // console.log(isDark.value);
   isDark.value = !isDark.value
   document.documentElement.classList.toggle('dark', isDark.value)
-  console.log(document.documentElement.classList);
+  // console.log(document.documentElement.classList);
   localStorage.setItem('theme', isDark.value ? 'dark' : 'light')
 }
 

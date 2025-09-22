@@ -1,12 +1,17 @@
-<!-- eslint-disable vue/multi-word-component-names -->
 <script setup>
 import { computed, ref } from 'vue';
 import QuizzData from '@/data/quiz.json'
 import { useRoute } from 'vue-router';
-console.log(QuizzData);
+// console.log(QuizzData);
 const route = useRoute();
 const courseId = Number(route.params.id);
 const quiz = QuizzData.quizzes.find(q => q.course_id === courseId);
+
+defineProps({
+  catalog: Array,
+  usersData: Array,
+  courses: Array
+})
 
 // Vérifie si quiz est trouvé
 const title = quiz ? quiz.title : '';
@@ -20,7 +25,7 @@ const filteredQuizzes = QuizzData.quizzes.filter((quiz) => quiz.course_id == cou
 
 const QuizzDataFiltered = computed(() => QuizzData.quizzes.filter((quiz) => quiz.title == title))
 
-console.log(QuizzDataFiltered.value);
+// console.log(QuizzDataFiltered.value);
 
 
 
@@ -93,19 +98,19 @@ const percentage = computed(() => {
                             <input :id="`q${index}opt${optIndex}`" type="radio" :name="`question-${index}`" :value="opt"
                                 v-model="userAnswers[index]"
                                 class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500" />
-                            <label :for="`q${index}opt${optIndex}`" class="ml-2 text-gray-700 dark:text-white">{{ option
-                            }}</label>
+                            <label :for="`q${index}opt${optIndex}`" class="ml-2 text-gray-700 dark:text-white">{{ opt
+                                }}</label>
                         </div>
                     </div>
                 </div>
                 <div class="text-center">
-                    <button @click="submitQuiz" :disabled="userAnswers.includes(null)"
+                    <button @click.prevent="submitQuiz" :disabled="userAnswers.includes(null)"
                         class="px-6 py-3 text-white bg-blue-600 rounded-lg hover:bg-blue-700">Soumettre</button>
                 </div>
             </form>
         </div>
 
-     
+
     </div>
 
 
@@ -121,24 +126,18 @@ const percentage = computed(() => {
 
                         <div class="flex flex-col items-center">
                             <!-- Cercle de score -->
-                            <div class="relative w-48 h-48 mb-6 bg-white dark:bg-sky-800 dark:border-sky-400 rounded-full border-7">
+                            <div
+                                class="relative w-48 h-48 mb-6 bg-white dark:bg-sky-800 dark:border-sky-400 rounded-full border-7">
                                 <div class="absolute inset-0 flex flex-col items-center justify-center">
                                     <span class="text-4xl font-bold"> {{ percentage }} %</span>
                                     <span class="text-gray-600 dark:text-gray-400">Score</span>
                                 </div>
                             </div>
 
-                            <div class="grid grid-cols-2 gap-6 w-full max-w-md">
-                                <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg text-center">
+                            <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg text-center w-75">
                                     <p class="text-2xl font-bold">{{ score }}/{{ quiz.questions.length }}</p>
                                     <p class="text-sm text-gray-600 dark:text-gray-400">Bonnes réponses</p>
                                 </div>
-                                <button @click="resetQuiz"
-                                    class="mt-4 px-6 py-2 bg-green-600 text-white rounded hover:bg-green-700">
-                                    Recommencer le quiz
-                                </button>
-                               
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -171,19 +170,11 @@ const percentage = computed(() => {
                             </span>
                         </div>
                     </div>
-
-                 
-
-
-                    <!-- <button
-                        class="w-full mt-4 text-primary-500 dark:text-primary-400 font-medium flex items-center justify-center">
-                        Voir toutes les questions <i class="fas fa-chevron-down ml-2"></i>
-                    </button> -->
                 </div>
 
                 <!-- Classement et partage -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6">
+                    <!-- <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6">
                         <h3 class="text-xl font-bold mb-4">Votre classement</h3>
                         <div class="flex items-center justify-center mb-4">
                             <div class="relative">
@@ -194,9 +185,9 @@ const percentage = computed(() => {
                         </div>
                         <p class="text-center">Vous êtes classé <span class="font-bold">42ème</span> sur 256
                             participants</p>
-                    </div>
+                    </div> -->
 
-                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6">
+                    <!-- <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6">
                         <h3 class="text-xl font-bold mb-4">Partager vos résultats</h3>
                         <p class="text-gray-600 dark:text-gray-400 mb-4">Faites savoir à vos amis comment vous avez
                             réussi!</p>
@@ -211,21 +202,23 @@ const percentage = computed(() => {
                                 <i class="fab fa-whatsapp"></i>
                             </button>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
 
                 <!-- Actions -->
                 <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6">
                     <h3 class="text-xl font-bold mb-4">Prochaines étapes</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <button
-                            class="bg-primary-500 hover:bg-primary-600 text-white py-3 px-4 rounded-lg font-medium flex items-center justify-center">
-                            <i class="fas fa-redo mr-2"></i> Refaire le quiz
-                        </button>
-                        <button
+                        <button @click="resetQuiz"
                             class="border border-primary-500 text-primary-500 dark:text-primary-400 dark:border-primary-400 hover:bg-primary-50 dark:hover:bg-gray-700 py-3 px-4 rounded-lg font-medium flex items-center justify-center">
+                            <i class="fas fa-redo mr-2"></i>
+                            Recommencer le quiz
+                        </button>
+                        <Router-link :to="{ name : 'home_catalogue' }" class="border border-primary-500 text-primary-500 dark:text-primary-400 dark:border-primary-400 hover:bg-primary-50 dark:hover:bg-gray-700 py-3 px-4 rounded-lg font-medium flex items-center justify-center">
+                            <button>
                             <i class="fas fa-home mr-2"></i> Retour à l'accueil
                         </button>
+                        </Router-link>
                     </div>
                 </div>
             </div>
