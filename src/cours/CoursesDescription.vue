@@ -2,7 +2,7 @@
 import { defineProps, ref, onMounted, watch } from 'vue';
 // import { useRouter } from 'vue-router';
 import courseData from '@/data/courses.json'
-
+const data=ref(JSON.parse(localStorage.getItem('courses')) || courseData)
 const props = defineProps({
   id: Number,
 });
@@ -11,7 +11,7 @@ const props = defineProps({
 const dataTable = ref([])
 
 const getCourse = () => {
-  dataTable.value = courseData.find((cour) => cour.id === props.id)
+  dataTable.value = data.value.find((cour) => cour.id === props.id)
 }
 // console.log(dataTable);
 

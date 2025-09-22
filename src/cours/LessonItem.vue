@@ -3,6 +3,7 @@ import { defineProps, ref, onMounted, watch, computed } from 'vue'
 import courseData from '@/data/courses.json';
 import Ressource from './Ressource.vue';
 import CompoComponent from '@/component/compoComponent.vue';
+const data=ref(JSON.parse(localStorage.getItem('courses')) || courseData)
 
 const props = defineProps({
   id: Number,
@@ -25,7 +26,7 @@ const isCurrentLessonCompleted = computed(() => {
 })
 
 function getCourse() {
-  getData.value = courseData.filter((cour) => cour.id === props.id)
+  getData.value = data.value.filter((cour) => cour.id === props.id)
   const course = getData.value[0]
   if (course) {
     lengthLessons.value = course.lessons.length

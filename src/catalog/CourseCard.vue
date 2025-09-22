@@ -50,7 +50,7 @@ const filteredCourses = computed(() => {
     const matchLevel = activeLevel.value === 'all' || course.level === activeLevel.value
     const matchCategory = activeCategory.value === 'all' || course.category === activeCategory.value
 
-    return matchKeyword && matchLevel && matchCategory
+    return matchKeyword && matchLevel && matchCategory && course.lessons && course.lessons.length > 0
   })
 })
 

@@ -33,10 +33,21 @@ const QuizzDataFiltered = computed(() => QuizzData.quizzes.filter((quiz) => quiz
 const score = ref(0);
 const isFinished = ref(false);
 const results = ref([])
+const notification = ref('')
 
 // Fonction pour soumettre le quiz et calculer le score
 const submitQuiz = () => {
     if (!quiz) return;
+
+    // Vérifie si au moins une question a été répondue
+    const hasAnswered = userAnswers.value.some(answer => answer !== null);
+    if (!hasAnswered) {
+        notification.value = 'Veuillez répondre à au moins une question.';
+        setTimeout(() => {
+            notification.value = '';
+        }, 3000); // La notification disparaît après 3 secondes
+        return;
+    }
     let count = 0;
     const tempResults = []
 
@@ -104,12 +115,33 @@ const percentage = computed(() => {
                     </div>
                 </div>
                 <div class="text-center">
-                    <button @click.prevent="submitQuiz" :disabled="userAnswers.includes(null)"
-                        class="px-6 py-3 text-white bg-blue-600 rounded-lg hover:bg-blue-700">Soumettre</button>
+                    <div v-if="notification" class="p-3 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
+                        {{ notification }}
+                    </div>
+                    <button @click.prevent="submitQuiz"
+                        :disabled="!userAnswers.some(a => a !== null)"
+                        class="px-6 py-3 text-white bg-blue-600 rounded-lg hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed"
+                    >Soumettre</button>
                 </div>
             </form>
+           
         </div>
-
+ <div v-else class="flex flex-col items-center justify-center text-center px-4 py-16">
+                <div class="max-w-md">
+                    <svg class="mx-auto h-24 w-24 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                        aria-hidden="true">
+                        <path vector-effect="non-scaling-stroke" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+                    </svg>
+                    <h2 class="mt-6 text-2xl font-bold text-gray-900 dark:text-white">
+                        Pas de quiz disponible
+                    </h2>
+                    <p class="mt-2 text-base text-gray-500 dark:text-gray-400">
+                        Il n'y a pas encore de quiz pour ce cours. Revenez plus tard !
+                    </p>
+                </div>
+            </div>
 
     </div>
 

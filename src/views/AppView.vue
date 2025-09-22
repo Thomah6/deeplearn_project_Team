@@ -65,7 +65,7 @@ const showFooter = computed(() => {
     <Header v-if="showLayout" />
     <Sidebar v-if="showLayout" />
     <div class="w-full">
-      <div :class="showLayout ? 'mx-auto lg:ps-65' : ''">
+      <div :class="showLayout ? 'mx-auto lg:ps-65 min-h-screen' : ''">
         <RouterView :catalog="catalog" :usersData="usersData" :courses="catalog" ></RouterView>
       </div>
       <Footer v-if="showFooter" />
